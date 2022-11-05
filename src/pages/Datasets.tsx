@@ -1,4 +1,4 @@
-import { Box, Flex, H1, H2 } from "../elements/shared";
+import { Box, Flex, Grid, H1, H2 } from "../elements/shared";
 import { Showing } from "../elements/Showing";
 import { Dataset, useDatasets } from "../hooks/datasets";
 import { useTheme } from "@emotion/react";
@@ -55,20 +55,27 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
 }
 
 export default function Datasets() {
-  const countries = ["United States", "Canada"];
   const dataSets = useDatasets();
   const orderCount = dataSets.length;
-  const theme = useTheme() as any;
   return (
     <div>
       <H1>Datasets</H1>
-      <Showing count={orderCount} countries={countries} />
-      <Flex flexDirection="column" css={{ gap: theme.space[2] }}>
-        {dataSets.map((dataset) => (
-          <div key={dataset.id}>
-            <DatasetItem dataset={dataset} />
-          </div>
-        ))}
+      <Flex flexDirection="row" justifyContent="center">
+        <Box>
+          <Showing count={orderCount} />
+          <Grid
+            gridTemplateColumns={"auto auto"}
+            alignItems="start"
+            gridRowGap={2}
+            gridColumnGap={2}
+          >
+            {dataSets.map((dataset) => (
+              <div key={dataset.id}>
+                <DatasetItem dataset={dataset} />
+              </div>
+            ))}
+          </Grid>
+        </Box>
       </Flex>
     </div>
   );
