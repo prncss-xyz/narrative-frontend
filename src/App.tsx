@@ -1,34 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import "modern-css-reset/dist/reset.min.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { Global, ThemeProvider, useTheme } from "@emotion/react";
+import Navigation from "./elements/Navigation";
+import BuyOrders from "./pages/BuyOrders";
+import Datasets from "./pages/Datasets";
+import BuyOrderDetails from "./pages/BuyOrder";
+import EditBuyOrder from "./pages/EditBuyOrder";
+import NewBuyOrder from "./pages/NewBuyOrder";
+import Error404 from "./pages/404";
+import { CountrySelectorContext } from "./elements/CountrySelector";
 
-function App() {
-  const [count, setCount] = useState(0)
+import theme from "./theme";
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+function GlobalStyle() {
+  const theme = useTheme() as any;
+  return <Global styles={{ ...theme.styles.global }} />;
 }
 
-export default App
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <CountrySelectorContext>
+        <GlobalStyle />
+        <Router>
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<Navigate replace to="/buy-orders" />} />
+            <Route path="/buy-orders" element={<BuyOrders />} />
+            <Route path="/datasets" element={<Datasets />} />
+            <Route path="/buy-order/:id" element={<BuyOrderDetails />} />
+            <Route path="/edit-buy-order/:id" element={<EditBuyOrder />} />
+            <Route path="/new-buy-order/" element={<NewBuyOrder />} />
+            <Route path="*" element={<Error404 />} />
+          </Routes>
+        </Router>
+      </CountrySelectorContext>
+    </ThemeProvider>
+  );
+}
+
+export default App;
