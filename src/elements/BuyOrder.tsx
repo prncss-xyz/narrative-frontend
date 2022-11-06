@@ -1,8 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useTheme } from "@emotion/react";
 import { CountrySelector } from "../elements/CountrySelector";
 import { Clickable } from "../elements/Clickable";
-import { Box, Flex, Grid, H2 } from "../elements/shared";
+import { ActionBox, Box, Flex, Grid, H3, Img } from "../elements/shared";
 import { useBuyOrder } from "../hooks/buyOrders";
 import { useState } from "react";
 import { Mode } from "../utils/mode";
@@ -15,7 +14,6 @@ function deleteOrder(id: string) {
 }
 
 function ActionsView() {
-  const theme = useTheme() as any;
   const [overlayVisible, setOverlayVisible] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -33,18 +31,12 @@ function ActionsView() {
       >
         <Box>Do you really want to delete this order?</Box>
       </Confirm>
-      <Flex
-        justifyContent="flex-end"
-        gap={2}
-        css={{
-          // gap: theme.space[2],
-        }}
-      >
+      <Flex justifyContent="flex-end" gap={2}>
         <Link to={`/edit-buy-order/${id}`}>
-          <Box css={theme.styles.actionButton}>Edit Order</Box>
+          <ActionBox>Edit order</ActionBox>
         </Link>
         <Clickable onClick={() => setOverlayVisible(true)}>
-          <Box css={theme.styles.actionButton}>Delete Order</Box>
+          <ActionBox>Delete Order</ActionBox>
         </Clickable>
       </Flex>
     </>
@@ -59,11 +51,10 @@ function ActionsEdit() {
     console.log("save id"); //TODO:
     navigate("/buy-orders");
   };
-  const theme = useTheme() as any;
   return (
     <Flex justifyContent="center">
       <Clickable onClick={saveHandler}>
-        <Box css={theme.styles.actionButton}>Save</Box>
+        <ActionBox>Save</ActionBox>
       </Clickable>
     </Flex>
   );
@@ -75,11 +66,10 @@ function ActionsNew() {
     console.log("new order"); //TODO:
     navigate("/buy-orders");
   };
-  const theme = useTheme() as any;
   return (
     <Flex justifyContent="center">
       <Clickable onClick={newHandler}>
-        <Box css={theme.styles.actionButton}>Create Order</Box>
+        <ActionBox>Create Order</ActionBox>
       </Clickable>
     </Flex>
   );
@@ -97,20 +87,13 @@ function Actions({ mode }: { mode: Mode }) {
 }
 
 function DatasetItem({ dataset }: { dataset: Dataset }) {
-  const theme = useTheme() as any;
-  const imgSide = theme.space[4];
   return (
-    <Flex
-      p={1}
-      flexDirection="row"
-      backgroundColor="gray3"
-      css={{ gap: theme.space[2] }}
-    >
-      <Flex minWidth={imgSide} flexDirection="column" justifyContent="center">
-        <img
+    <Flex p={1} flexDirection="row" backgroundColor="gray3" gap={2}>
+      <Flex minWidth={1} flexDirection="column" justifyContent="center">
+        <Img
           src={dataset.thumbnailUrl}
-          width={imgSide}
-          height={imgSide}
+          width={1}
+          height={1}
           alt="dataset thumbnail"
         />
       </Flex>
@@ -143,7 +126,6 @@ function Datasets() {
 }
 
 export function BuyOrder({ mode }: { mode: Mode }) {
-  const theme = useTheme() as any;
   const { id } = useParams();
   let buyOrder;
   if (mode !== Mode.New) {
@@ -161,11 +143,11 @@ export function BuyOrder({ mode }: { mode: Mode }) {
         </Box>
       );
   }
-  const createdAt = buyOrder ? new Date(buyOrder?.createdAt) : new Date();
+  const createdAt = buyOrder ? new Date(buyOrder.createdAt) : new Date();
   return (
     <>
       <Flex justifyContent="center">
-        <Flex flexDirection="column" width={theme.space[9]}>
+        <Flex flexDirection="column" width={6}>
           <Box px={4} py={3} backgroundColor="gray25">
             <Grid
               gridTemplateColumns={"1fr 1fr"}
@@ -174,14 +156,14 @@ export function BuyOrder({ mode }: { mode: Mode }) {
               gridColumnGap={2}
             >
               <Box>
-                <H2>Order name</H2>
+                <H3>Order name</H3>
                 {buyOrder?.name ?? ""}
               </Box>
               <Box>
-                <H2>Order budget</H2>${buyOrder?.budget ?? ""}
+                <H3>Order budget</H3>${buyOrder?.budget ?? ""}
               </Box>
               <Box>
-                <H2>Date Created</H2>
+                <H3>Date Created</H3>
                 {createdAt.toLocaleString([], {
                   year: "numeric",
                   month: "numeric",
@@ -190,10 +172,10 @@ export function BuyOrder({ mode }: { mode: Mode }) {
                 {}
               </Box>
               <Box>
-                <H2>Forecasted Records</H2>
+                <H3>Forecasted Records</H3>
                 {`${0} of ${0} available records`}
               </Box>
-              <H2>Included datasets</H2>
+              <H3>Included datasets</H3>
             </Grid>
 
             <Datasets />

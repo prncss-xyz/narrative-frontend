@@ -1,4 +1,3 @@
-import { useTheme } from "@emotion/react";
 import { Link } from "react-router-dom";
 import { Box, Flex, Grid, H1 } from "../elements/shared";
 import { Showing } from "../elements/Showing";
@@ -7,7 +6,7 @@ import { BuyOrder, useBuyOrders } from "../hooks/buyOrders";
 function OrderRow({ name, value }: { name: string; value: string }) {
   return (
     <Flex px={2} py={3} backgroundColor="gray2" flexDirection="column">
-      <Box color="gray1" pb={1} css={{ textDecoration: "underline" }}>
+      <Box color="gray1" pb={1} textDecoration="underline">
         {name}
       </Box>
       <Box>{value}</Box>
@@ -53,12 +52,11 @@ function BuyOrderItem({ buyOrders }: { buyOrders: BuyOrder[] }) {
 export default function BuyOrdersList() {
   const buyOrders = useBuyOrders();
   const orderCount = buyOrders.length;
-  const theme = useTheme() as any;
   return (
     <>
       <H1>Your Buy Orders</H1>
       <Flex justifyContent="center">
-        <Flex flexDirection="column" width={theme.space[9]}>
+        <Flex flexDirection="column">
           <Showing count={orderCount} />
           <BuyOrderItem buyOrders={buyOrders} />
         </Flex>

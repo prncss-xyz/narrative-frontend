@@ -1,41 +1,32 @@
-import { Box, Flex, Grid, H1, H2 } from "../elements/shared";
+import { Box, Flex, Grid, H1, H3, Img } from "../elements/shared";
 import { Showing } from "../elements/Showing";
 import { Dataset, useDatasets } from "../hooks/datasets";
-import { useTheme } from "@emotion/react";
 
 function DatasetItem({ dataset }: { dataset: Dataset }) {
   const available = 4500; // TODO:
-  const theme = useTheme() as any;
-  const imgSide = theme.space[6];
   return (
     <Flex
       p={2}
-      width={theme.space[8]}
-      minHeight={theme.space[8]}
+      width={5}
+      minHeight={5}
       flexDirection="column"
       backgroundColor="gray2"
     >
       <Flex flexDirection="row">
-        <Box minWidth={imgSide} backgroundColor="gray3">
-          <img
+        <Box minWidth={3} backgroundColor="gray3">
+          <Img
             src={dataset.thumbnailUrl}
-            width={imgSide}
-            height={imgSide}
+            width={3}
+            height={3}
             alt="dataset thumbnail"
           />
         </Box>
-        <Box
-          px={2}
-          width="100%"
-          css={{
-            textAlign: "center",
-          }}
-        >
+        <Box px={2} width="100%" textAlign="center">
           {dataset.label}
         </Box>
       </Flex>
       <Flex flexDirection="column">
-        <H2>Dataset Description</H2>
+        <H3>Dataset Description</H3>
         <Box>{dataset.description}</Box>
       </Flex>
       <Flex
@@ -43,11 +34,11 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
         justifyContent="space-between"
         alignItems="flex-end"
       >
-        <H2 my={0}>Cost Per Record</H2>
-        <Box css={{}}>${dataset.costPerRecord}</Box>
+        <H3 my={0}>Cost Per Record</H3>
+        <Box>${dataset.costPerRecord}</Box>
       </Flex>
       <Flex flexDirection="row" justifyContent="space-between">
-        <H2 my={0}>Available Records</H2>
+        <H3 my={0}>Available Records</H3>
         <Box>{`${available} records`}</Box>
       </Flex>
     </Flex>

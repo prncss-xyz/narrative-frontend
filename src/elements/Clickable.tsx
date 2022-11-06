@@ -1,10 +1,14 @@
+import { boolean } from "zod";
+
 export function Clickable({
   onClick,
   children,
+  disabled,
   ...props
 }: {
   onClick: () => void;
   children: React.ReactNode;
+  disabled?: boolean;
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
@@ -13,8 +17,9 @@ export function Clickable({
         border: "0px",
         background: "transparent",
         padding: "0px",
-        cursor: "pointer",
+        cursor: disabled ? undefined : "pointer",
       }}
+      disabled={disabled}
       onClick={onClick}
       {...props}
     >

@@ -1,8 +1,7 @@
-import { useTheme } from "@emotion/react";
 import { createContext, ReactNode, useContext, useReducer } from "react";
 import { Country, useCountries } from "../hooks/countries";
 import { Clickable } from "./Clickable";
-import { Box, Flex, H2 } from "./shared";
+import { Box, Flex, H3 } from "./shared";
 import { Mode } from "../utils/mode";
 
 function normalize<T>(a: T[]) {
@@ -41,7 +40,12 @@ export function CountryButton({
       disabled={mode === Mode.View}
       onClick={() => dispatch({ type: active ? "REMOVE" : "ADD", countryCode })}
     >
-      <Box p={1} backgroundColor={active ? "white" : "gray3"} border="solid">
+      <Box
+        p={1}
+        backgroundColor={active ? "white" : "gray3"}
+        border="solid"
+        borderRadius={3}
+      >
         {name}
       </Box>
     </Clickable>
@@ -90,11 +94,10 @@ export function CountrySelector({ mode }: { mode: Mode }) {
       "CountrySelector should always be used inside CountrySelectorContext"
     );
   const [state, dispatch] = context;
-  const theme = useTheme() as any;
   return (
     <Box>
-      <H2>Included countries</H2>
-      <Flex css={{ gap: theme.space[3] }}>
+      <H3>Included countries</H3>
+      <Flex gap={3}>
         {countries.map((country) => (
           <div key={country.countryCode}>
             <CountryButton

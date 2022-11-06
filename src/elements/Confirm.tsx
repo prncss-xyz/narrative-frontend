@@ -1,7 +1,7 @@
-import { useTheme } from "@emotion/react";
 import { ReactNode } from "react";
 import { Clickable } from "./Clickable";
 import { Overlay } from "./Overlay";
+import { OverlayActionBox, Flex } from "./shared";
 
 export function Confirm({
   overlayVisible,
@@ -14,28 +14,20 @@ export function Confirm({
   handler: () => void;
   children: ReactNode;
 }) {
-  const theme = useTheme() as any;
   return (
     <Overlay
       visible={overlayVisible}
       onClickOutside={() => setOverlayVisible(false)}
     >
       {children}
-      <Flex
-        mt={4}
-        css={{
-          justifyContent: "flex-end",
-          gap: theme.space[2],
-        }}
-      >
+      <Flex mt={4} gap={2} justifyContent="flex-end">
         <Clickable onClick={handler}>
-          <Box css={theme.styles.overlayActionButton}>Yes</Box>
+          <OverlayActionBox>Yes</OverlayActionBox>
         </Clickable>
         <Clickable onClick={() => setOverlayVisible(false)}>
-          <Box css={theme.styles.overlayActionButton}>No</Box>
+          <OverlayActionBox>No</OverlayActionBox>
         </Clickable>
       </Flex>
     </Overlay>
   );
 }
-import { Box, Flex } from "./shared";

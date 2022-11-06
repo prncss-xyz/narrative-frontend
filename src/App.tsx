@@ -19,7 +19,25 @@ import theme from "./theme";
 
 function GlobalStyle() {
   const theme = useTheme() as any;
-  return <Global styles={{ ...theme.styles.global }} />;
+  return (
+    <Global
+      styles={{
+        body: {
+          backgroundColor: theme.colors.gray3,
+          fontFamily: "Arial, Helvetica, sans serif",
+          fontSize: theme.fontSizes[2],
+          "& a": {
+            color: "inherit",
+            textDecoration: "inherit",
+            fontStyle: "inherit",
+          },
+          "& :disabled": {
+            color: "inherit",
+          },
+        },
+      }}
+    />
+  );
 }
 
 function App() {
