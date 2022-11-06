@@ -143,7 +143,7 @@ export function BuyOrder({ mode }: { mode: Mode }) {
         </Box>
       );
   }
-  const createdAt = buyOrder ? new Date(buyOrder.createdAt) : new Date();
+  const createdAt = buyOrder?.createdAt ?? new Date();
   return (
     <>
       <Flex justifyContent="center">
