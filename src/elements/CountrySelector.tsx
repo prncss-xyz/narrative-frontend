@@ -3,6 +3,7 @@ import { createContext, ReactNode, useContext, useReducer } from "react";
 import { Country, useCountries } from "../hooks/countries";
 import { Clickable } from "./Clickable";
 import { Box, Flex, H2 } from "./shared";
+import { Mode } from "../utils/mode";
 
 function normalize<T>(a: T[]) {
   a.sort();
@@ -10,7 +11,9 @@ function normalize<T>(a: T[]) {
 }
 
 type State = string[];
-type Action = { type: "ADD" | "REMOVE"; countryCode: string };
+type Action =
+  | { type: "ADD"; countryCode: string }
+  | { type: "REMOVE"; countryCode: string };
 type Dispatch = (a: Action) => void;
 
 function reducer(state: State, action: Action) {
@@ -26,13 +29,16 @@ export function CountryButton({
   country: { name, countryCode },
   active,
   dispatch,
+  mode,
 }: {
   country: Country;
   active: boolean;
   dispatch: Dispatch;
+  mode: Mode;
 }) {
   return (
     <Clickable
+      disabled={mode === Mode.View}
       onClick={() => dispatch({ type: active ? "REMOVE" : "ADD", countryCode })}
     >
       <Box p={1} backgroundColor={active ? "white" : "gray3"} border="solid">
@@ -75,7 +81,7 @@ export function useCountrySelectorList() {
     .map((country) => country.name);
 }
 
-export function CountrySelector() {
+export function CountrySelector({ mode }: { mode: Mode }) {
   const countries = useCountries();
   countries.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
   const context = useContext(Context);
@@ -87,7 +93,7 @@ export function CountrySelector() {
   const theme = useTheme() as any;
   return (
     <Box>
-      <H2>Included countries:</H2>
+      <H2>Included countries</H2>
       <Flex css={{ gap: theme.space[3] }}>
         {countries.map((country) => (
           <div key={country.countryCode}>
@@ -95,6 +101,7 @@ export function CountrySelector() {
               country={country}
               active={state.includes(country.countryCode)}
               dispatch={dispatch}
+              mode={mode}
             />
           </div>
         ))}

@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
+import { BuyOrder } from "../elements/BuyOrder";
+import { CountrySelectorContext } from "../elements/CountrySelector";
 import { Box, H1 } from "../elements/shared";
 import { useBuyOrder } from "../hooks/buyOrders";
+import { Mode } from "../utils/mode";
 
 export default function EditBuyOrder() {
   const { id } = useParams();
@@ -19,6 +22,9 @@ export default function EditBuyOrder() {
   return (
     <>
       <H1>Buy Order Details</H1>
+      <CountrySelectorContext init={[]}>
+        <BuyOrder mode={Mode.Edit} />
+      </CountrySelectorContext>
     </>
   );
 }

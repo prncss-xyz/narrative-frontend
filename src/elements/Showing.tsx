@@ -4,6 +4,7 @@ import { Overlay } from "./Overlay";
 import { Clickable } from "./Clickable";
 import { useState } from "react";
 import { CountrySelector, useCountrySelectorList } from "./CountrySelector";
+import { Mode } from "../utils/mode";
 
 function Select({
   overlayVisible,
@@ -17,16 +18,12 @@ function Select({
       visible={overlayVisible}
       onClickOutside={() => setOverlayVisible(false)}
     >
-      <CountrySelector />
+      <CountrySelector mode={Mode.Edit} />
     </Overlay>
   );
 }
 
-export function Showing({
-  count,
-}: {
-  count: number;
-}) {
+export function Showing({ count }: { count: number }) {
   const [overlayVisible, setOverlayVisible] = useState(false);
   const countries = useCountrySelectorList();
   return (
