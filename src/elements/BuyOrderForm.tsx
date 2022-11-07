@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BuyOrder } from "../hooks/buyOrders";
-import { useCountries } from "../hooks/countries";
-import { useDatasets } from "../hooks/datasets";
+import { Country } from "../hooks/countries";
+import { Dataset } from "../hooks/datasets";
 import { DatasetItemSmall } from "./DataItemSmall";
 import { useGlobalCountyList } from "./GlobalCountrySelection";
 import { Input, identityString, positve } from "./Input";
@@ -22,14 +22,16 @@ export type BuyOrderFormResult = {
 export function BuyOrderForm({
   disabled,
   buyOrder,
+  datasets,
+  countries,
   toActions,
 }: {
   disabled?: boolean;
   buyOrder?: BuyOrder;
+  datasets: Dataset[];
+  countries: Country[];
   toActions: (result: BuyOrderFormResult) => React.ReactNode;
 }) {
-  const countries = useCountries();
-  const datasets = useDatasets();
   const [activeDatasets, setActiveDatasets] = useState<number[]>(
     buyOrder?.datasetIds ?? []
   );

@@ -1,7 +1,9 @@
 import { Box, Flex, Grid, H1, H3, Img } from "../elements/shared";
 import { GlobalCountryList } from "../elements/GlobalCountrySelection";
-import { useCountries } from "../hooks/countries";
+import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
+import React from "react";
+import { Await } from "react-router-dom";
 
 function DatasetItem({ dataset }: { dataset: Dataset }) {
   const available = 4500; // TODO:
@@ -46,30 +48,46 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
   );
 }
 
-export default function DatasetList() {
-  const dataSets = useDatasets();
-  const orderCount = dataSets.length;
-  const countries = useCountries();
+function DatasetListFetch() {
+  const datasetsPromise = useDatasets();
+  const countriesPromise = useCountries();
+  const resolve = Promise.all([datasetsPromise, countriesPromise]);
   return (
-    <div>
+    <React.Suspense>
+      <Await
+        resolve={resolve}
+        children={([datasets, countries]: [Dataset[], Country[]]) => (
+          <Flex flexDirection="row" justifyContent="center">
+            <Box>
+              <GlobalCountryList
+                count={datasets.length}
+                countries={countries}
+              />
+              <Grid
+                gridTemplateColumns={"auto auto"}
+                alignItems="start"
+                gridRowGap={2}
+                gridColumnGap={2}
+              >
+                {datasets.map((dataset) => (
+                  <div key={dataset.id}>
+                    <DatasetItem dataset={dataset} />
+                  </div>
+                ))}
+              </Grid>
+            </Box>
+          </Flex>
+        )}
+      />
+    </React.Suspense>
+  );
+}
+
+export default function DatasetList() {
+  return (
+    <>
       <H1>Datasets</H1>
-      <Flex flexDirection="row" justifyContent="center">
-        <Box>
-          <GlobalCountryList count={orderCount} countries={countries} />
-          <Grid
-            gridTemplateColumns={"auto auto"}
-            alignItems="start"
-            gridRowGap={2}
-            gridColumnGap={2}
-          >
-            {dataSets.map((dataset) => (
-              <div key={dataset.id}>
-                <DatasetItem dataset={dataset} />
-              </div>
-            ))}
-          </Grid>
-        </Box>
-      </Flex>
-    </div>
+      <DatasetListFetch />
+    </>
   );
 }

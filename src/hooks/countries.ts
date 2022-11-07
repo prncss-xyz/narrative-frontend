@@ -19,5 +19,5 @@ export type Country = z.infer<typeof CountrySchema>;
 const CountriesSchema = z.array(CountrySchema);
 
 export function useCountries() {
-  return CountriesSchema.parse(countries);
+  return Promise.resolve(CountriesSchema.parse(countries));
 }

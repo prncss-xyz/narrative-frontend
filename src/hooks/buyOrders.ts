@@ -40,10 +40,11 @@ export type BuyOrders = z.infer<typeof BuyOrdersSchema>;
 
 export function useBuyOrder(id: string) {
   const buyOrder = buyOrders.find((b) => b.id === id);
-  if (!buyOrder) return undefined;
-  return BuyOrderSchema.parse(processDate(buyOrder));
+  if (!buyOrder) return Promise.resolve(null);
+  return Promise.resolve(BuyOrderSchema.parse(processDate(buyOrder)));
 }
 
 export function useBuyOrders() {
-  return BuyOrdersSchema.parse(processDates(buyOrders));
+  return Promise.resolve(BuyOrdersSchema.parse(processDates(buyOrders)));
 }
+

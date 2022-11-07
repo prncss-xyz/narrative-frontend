@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Await, Link } from "react-router-dom";
+import React from "react";
 import { Box, Flex, Grid, H1 } from "../elements/shared";
 import { GlobalCountryList } from "../elements/GlobalCountrySelection";
-import { BuyOrder, useBuyOrders } from "../hooks/buyOrders";
-import { useCountries } from "../hooks/countries";
+import { BuyOrder, useBuyOrder, useBuyOrders } from "../hooks/buyOrders";
+import { Country, useCountries } from "../hooks/countries";
 
 function OrderRow({ name, value }: { name: string; value: string }) {
   return (
@@ -49,19 +50,35 @@ function BuyOrderItem({ buyOrders }: { buyOrders: BuyOrder[] }) {
   );
 }
 
+function BuyOrderListFetch() {
+  const buyOrdersPromise = useBuyOrders();
+  const countriesPromise = useCountries();
+  const resolve = Promise.all([buyOrdersPromise, countriesPromise]);
+  return (
+    <React.Suspense>
+      <Await
+        resolve={resolve}
+        children={([buyOrders, countries]: [BuyOrder[], Country[]]) => (
+          <Flex justifyContent="center">
+            <Flex flexDirection="column">
+              <GlobalCountryList
+                count={buyOrders.length}
+                countries={countries}
+              />
+              <BuyOrderItem buyOrders={buyOrders} />
+            </Flex>
+          </Flex>
+        )}
+      />
+    </React.Suspense>
+  );
+}
+
 export default function BuyOrderList() {
-  const buyOrders = useBuyOrders();
-  const orderCount = buyOrders.length;
-  const countries = useCountries();
   return (
     <>
       <H1>Your Buy Orders</H1>
-      <Flex justifyContent="center">
-        <Flex flexDirection="column">
-          <GlobalCountryList count={orderCount} countries={countries} />
-          <BuyOrderItem buyOrders={buyOrders} />
-        </Flex>
-      </Flex>
+      <BuyOrderListFetch />
     </>
   );
 }

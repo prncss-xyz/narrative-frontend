@@ -16,12 +16,6 @@ const DatasetsSchema = z.array(DatasetSchema);
 
 export type Datasets = z.infer<typeof DatasetsSchema>;
 
-export function useDataset(id: number) {
-  const dataset = datasets.find((b) => b.id === id);
-  if (!dataset) return undefined;
-  return DatasetsSchema.parse(dataset);
-}
-
 export function useDatasets() {
-  return DatasetsSchema.parse(datasets);
+  return Promise.resolve(DatasetsSchema.parse(datasets));
 }
