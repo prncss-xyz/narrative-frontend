@@ -24,7 +24,7 @@ function reducer(state: State, action: Action) {
   }
 }
 
-export function CountryButton({
+function CountryButton({
   country: { name, countryCode },
   active,
   dispatch,

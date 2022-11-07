@@ -4,26 +4,25 @@ import {
   CountrySelectorContext,
 } from "../elements/CountrySelector";
 import { ActionBox, Box, Flex, H1, H3 } from "../elements/shared";
-import { useBuyOrder } from "../hooks/buyOrders";
+import { BuyOrder, BuyOrderSchema, useBuyOrder } from "../hooks/buyOrders";
 import { Mode } from "../utils/mode";
 import { BuyOrderLayout } from "../elements/BuyOrderLayout";
 import { DatasetsSmall } from "../elements/DatasetsSmall";
 import { Clickable } from "../elements/Clickable";
 import { useState } from "react";
 import { Confirm } from "../elements/Confirm";
+import { BuyOrderForm } from "../elements/BuyOrderForm";
 
 function deleteOrder(id: string) {
   // TODO:
   console.log("TODO", id);
 }
 
-function Actions() {
+function Actions({ buyOrder }: { buyOrder: BuyOrder }) {
   const [overlayVisible, setOverlayVisible] = useState(false);
-  const { id } = useParams();
   const navigate = useNavigate();
-  if (!id) throw new Error("There should be an id here");
   const deleteHandler = () => {
-    deleteOrder(id);
+    deleteOrder(buyOrder.id);
     navigate("/buy-orders");
   };
   return (
@@ -36,7 +35,7 @@ function Actions() {
         <Box>Do you really want to delete this order?</Box>
       </Confirm>
       <Flex justifyContent="flex-end" gap={2}>
-        <Link to={`/edit-buy-order/${id}`}>
+        <Link to={`/edit-buy-order/${buyOrder.id}`}>
           <ActionBox>Edit order</ActionBox>
         </Link>
         <Clickable onClick={() => setOverlayVisible(true)}>
@@ -47,8 +46,7 @@ function Actions() {
   );
 }
 
-export default function BuyOrder() {
-  const mode = Mode.View;
+function ViewBuyOrderValidate() {
   const { id } = useParams();
   if (!id)
     return (
@@ -60,46 +58,27 @@ export default function BuyOrder() {
   if (!buyOrder)
     return (
       <>
-        <H1>Buy Order Details</H1>
         <Box>
           Order with id <i>{id}</i> do not seem to exist.
         </Box>
       </>
     );
   return (
+    <BuyOrderForm
+      disabled
+      buyOrder={buyOrder}
+      toActions={(result) => {
+        return <Actions buyOrder={BuyOrderSchema.parse(result)} />;
+      }}
+    />
+  );
+}
+
+export default function ViewBuyOrder() {
+  return (
     <>
       <H1>Buy Order Details</H1>
-      <CountrySelectorContext init={[]}>
-        <BuyOrderLayout
-          grid={
-            <>
-              <Box>
-                <H3>Order name</H3>
-                {buyOrder.name}
-              </Box>
-              <Box>
-                <H3>Order budget</H3>${buyOrder.budget}
-              </Box>
-              <Box>
-                <H3>Date Created</H3>
-                {buyOrder.createdAt.toLocaleString([], {
-                  year: "numeric",
-                  month: "numeric",
-                  day: "numeric",
-                })}
-                {}
-              </Box>
-              <Box>
-                <H3>Forecasted Records</H3>
-                {`${0} of ${0} available records`}
-              </Box>
-            </>
-          }
-          datasets={<DatasetsSmall />}
-          countrySelector={<CountrySelector mode={mode} />}
-          actionBox={<Actions />}
-        />
-      </CountrySelectorContext>
+      <ViewBuyOrderValidate />
     </>
   );
 }

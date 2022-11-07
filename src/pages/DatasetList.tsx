@@ -45,7 +45,7 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
   );
 }
 
-export default function Datasets() {
+export default function DatasetList() {
   const dataSets = useDatasets();
   const orderCount = dataSets.length;
   return (

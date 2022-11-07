@@ -15,17 +15,16 @@ function OrderRow({ name, value }: { name: string; value: string }) {
 }
 
 function BuyOrderItem({ buyOrders }: { buyOrders: BuyOrder[] }) {
-  // const url = `/buy-order/${buyOrder.id}`;
   return (
     <Grid gridTemplateColumns={"auto auto auto"} gridRowGap="3">
       {buyOrders.flatMap((buyOrder) => [
         <div key={`${buyOrder.id}-name`}>
-          <Link to={`/buy-order/${buyOrder.id}`}>
+          <Link to={`/view-buy-order/${buyOrder.id}`}>
             <OrderRow name="Order name" value={buyOrder.name} />
           </Link>
         </div>,
         <div key={`${buyOrder.id}-createdAt`}>
-          <Link to={`/buy-order/${buyOrder.id}`}>
+          <Link to={`/view-buy-order/${buyOrder.id}`}>
             <OrderRow
               name="Date Created"
               value={new Date(buyOrder.createdAt).toLocaleString([], {
@@ -37,7 +36,7 @@ function BuyOrderItem({ buyOrders }: { buyOrders: BuyOrder[] }) {
           </Link>
         </div>,
         <div key={`${buyOrder.id}-forcasted`}>
-          <Link to={`/buy-order/${buyOrder.id}`}>
+          <Link to={`/view-buy-order/${buyOrder.id}`}>
             <OrderRow
               name="Forecasted Records"
               value={(1000).toLocaleString()}
@@ -49,7 +48,7 @@ function BuyOrderItem({ buyOrders }: { buyOrders: BuyOrder[] }) {
   );
 }
 
-export default function BuyOrdersList() {
+export default function BuyOrderList() {
   const buyOrders = useBuyOrders();
   const orderCount = buyOrders.length;
   return (

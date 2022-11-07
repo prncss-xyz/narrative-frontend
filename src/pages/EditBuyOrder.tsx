@@ -1,20 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { BuyOrderLayout } from "../elements/BuyOrderLayout";
+import { BuyOrderForm } from "../elements/BuyOrderForm";
 import { Clickable } from "../elements/Clickable";
-import {
-  CountrySelector,
-  CountrySelectorContext,
-} from "../elements/CountrySelector";
-import { DatasetsSmall } from "../elements/DatasetsSmall";
-import { ActionBox, Box, Flex, H1, H3 } from "../elements/shared";
-import { useBuyOrder } from "../hooks/buyOrders";
-import { Mode } from "../utils/mode";
+import { ActionBox, Box, Flex, H1 } from "../elements/shared";
+import { BuyOrder, BuyOrderSchema, useBuyOrder } from "../hooks/buyOrders";
 
-function Actions({ id }: { id: string }) {
+function Actions({ buyOrder }: { buyOrder: BuyOrder }) {
   const navigate = useNavigate();
   const saveHandler = () => {
-    console.log("save id", id); //TODO:
-    navigate("/buy-orders");
+    console.log("save id", buyOrder.id); //TODO:
+    navigate("/buy-order-list");
   };
   return (
     <Flex justifyContent="center">
@@ -25,8 +19,7 @@ function Actions({ id }: { id: string }) {
   );
 }
 
-export default function BuyOrder() {
-  const mode = Mode.Edit;
+function EditBuyOrderValidate() {
   const { id } = useParams();
   if (!id)
     return (
@@ -38,46 +31,26 @@ export default function BuyOrder() {
   if (!buyOrder)
     return (
       <>
-        <H1>Buy Order Details</H1>
         <Box>
           Order with id <i>{id}</i> do not seem to exist.
         </Box>
       </>
     );
   return (
+    <BuyOrderForm
+      buyOrder={buyOrder}
+      toActions={(result) => {
+        return <Actions buyOrder={BuyOrderSchema.parse(result)} />;
+      }}
+    />
+  );
+}
+
+export default function EditBuyOrder() {
+  return (
     <>
-      <H1>Buy Order Details</H1>
-      <CountrySelectorContext init={[]}>
-        <BuyOrderLayout
-          grid={
-            <>
-              <Box>
-                <H3>Order name</H3>
-                {buyOrder?.name ?? ""}
-              </Box>
-              <Box>
-                <H3>Order budget</H3>${buyOrder?.budget ?? ""}
-              </Box>
-              <Box>
-                <H3>Date Created</H3>
-                {buyOrder.createdAt.toLocaleString([], {
-                  year: "numeric",
-                  month: "numeric",
-                  day: "numeric",
-                })}
-                {}
-              </Box>
-              <Box>
-                <H3>Forecasted Records</H3>
-                {`${0} of ${0} available records`}
-              </Box>
-            </>
-          }
-          datasets={<DatasetsSmall />}
-          countrySelector={<CountrySelector mode={mode} />}
-          actionBox={<Actions id={id} />}
-        />
-      </CountrySelectorContext>
+      <H1>Edit Buy Order</H1>
+      <EditBuyOrderValidate />
     </>
   );
 }

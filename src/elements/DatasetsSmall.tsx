@@ -1,7 +1,13 @@
 import { Dataset, useDatasets } from "../hooks/datasets";
 import { Box, Flex, Grid, Img } from "./shared";
 
-function DatasetItem({ dataset }: { dataset: Dataset }) {
+function DatasetItemSmall({
+  dataset,
+  active,
+}: {
+  dataset: Dataset;
+  active: boolean;
+}) {
   return (
     <Flex p={1} flexDirection="row" backgroundColor="gray3" gap={2}>
       <Flex minWidth={1} flexDirection="column" justifyContent="center">
@@ -14,7 +20,7 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
       </Flex>
       <Flex flexDirection="column">
         <Box>{dataset.label}</Box>
-        <Box color="gray1">${dataset.costPerRecord} per record</Box>
+        <Box color={"gray1"}>${dataset.costPerRecord} per record</Box>
       </Flex>
     </Flex>
   );
@@ -32,7 +38,7 @@ export function DatasetsSmall() {
       >
         {dataSets.map((dataset) => (
           <div key={dataset.id}>
-            <DatasetItem dataset={dataset} />
+            <DatasetItemSmall dataset={dataset} />
           </div>
         ))}
       </Grid>

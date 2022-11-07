@@ -1,9 +1,9 @@
-import { unknown, z } from "zod";
+import { z } from "zod";
 import { buyOrders } from "../utils/samples.test";
 
 // TODO: preprocess
 
-const BuyOrderSchema = z.object({
+export const BuyOrderSchema = z.object({
   id: z.string(), // FIX: docs says its a number
   name: z.string(),
   createdAt: z.date(),
@@ -34,7 +34,7 @@ function processDates(rawBuyOrders: object[]) {
 
 export type BuyOrder = z.infer<typeof BuyOrderSchema>;
 
-const BuyOrdersSchema = z.array(BuyOrderSchema);
+export const BuyOrdersSchema = z.array(BuyOrderSchema);
 
 export type BuyOrders = z.infer<typeof BuyOrdersSchema>;
 

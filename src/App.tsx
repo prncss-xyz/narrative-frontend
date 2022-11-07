@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import { Global, ThemeProvider, useTheme } from "@emotion/react";
 import Navigation from "./elements/Navigation";
-import BuyOrders from "./pages/BuyOrders";
-import Datasets from "./pages/Datasets";
-import BuyOrderDetails from "./pages/BuyOrder";
+import BuyOrderList from "./pages/BuyOrderList";
+import DatasetList from "./pages/DatasetList";
+import ViewBuyOrder from "./pages/ViewBuyOrder";
 import EditBuyOrder from "./pages/EditBuyOrder";
 import NewBuyOrder from "./pages/NewBuyOrder";
 import Error404 from "./pages/404";
@@ -48,10 +48,10 @@ function App() {
         <Router>
           <Navigation />
           <Routes>
-            <Route path="/" element={<Navigate replace to="/buy-orders" />} />
-            <Route path="/buy-orders" element={<BuyOrders />} />
-            <Route path="/datasets" element={<Datasets />} />
-            <Route path="/buy-order/:id" element={<BuyOrderDetails />} />
+            <Route path="/" element={<Navigate replace to="/buy-order-list" />} />
+            <Route path="/buy-order-list" element={<BuyOrderList />} />
+            <Route path="/dataset-list" element={<DatasetList />} />
+            <Route path="/view-buy-order/:id" element={<ViewBuyOrder />} />
             <Route path="/edit-buy-order/:id" element={<EditBuyOrder />} />
             <Route path="/new-buy-order/" element={<NewBuyOrder />} />
             <Route path="*" element={<Error404 />} />

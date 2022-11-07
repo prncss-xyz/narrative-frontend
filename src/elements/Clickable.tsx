@@ -1,5 +1,3 @@
-import { boolean } from "zod";
-
 export function Clickable({
   onClick,
   children,

@@ -20,10 +20,10 @@ export default function Navigation() {
       }}
     >
       <Box mx={4}>
-        <NavLink to="/buy-orders">Buy Orders</NavLink>
+        <NavLink to="/buy-order-list">Buy Orders</NavLink>
       </Box>
       <Box mx={4}>
-        <NavLink to="/datasets">Datasets</NavLink>
+        <NavLink to="/dataset-list">Datasets</NavLink>
       </Box>
     </Flex>
   );
