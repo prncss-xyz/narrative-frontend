@@ -1,5 +1,6 @@
 import { Box, Flex, Grid, H1, H3, Img } from "../elements/shared";
-import { Showing } from "../elements/Showing";
+import { GlobalCountryList } from "../elements/GlobalCountrySelection";
+import { useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
 
 function DatasetItem({ dataset }: { dataset: Dataset }) {
@@ -48,12 +49,13 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
 export default function DatasetList() {
   const dataSets = useDatasets();
   const orderCount = dataSets.length;
+  const countries = useCountries();
   return (
     <div>
       <H1>Datasets</H1>
       <Flex flexDirection="row" justifyContent="center">
         <Box>
-          <Showing count={orderCount} />
+          <GlobalCountryList count={orderCount} countries={countries} />
           <Grid
             gridTemplateColumns={"auto auto"}
             alignItems="start"

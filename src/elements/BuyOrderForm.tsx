@@ -3,6 +3,7 @@ import { BuyOrder } from "../hooks/buyOrders";
 import { useCountries } from "../hooks/countries";
 import { useDatasets } from "../hooks/datasets";
 import { DatasetItemSmall } from "./DataItemSmall";
+import { useGlobalCountyList } from "./GlobalCountrySelection";
 import { Input, identityString, positve } from "./Input";
 import { RoundedButton } from "./RoundedButton";
 import { Box, Flex, Grid, H3 } from "./shared";
@@ -29,8 +30,13 @@ export function BuyOrderForm({
 }) {
   const countries = useCountries();
   const datasets = useDatasets();
-  const [activeDatasets, setActiveDatasets] = useState<number[]>([]);
-  const [activeCountries, setActiveCountries] = useState<string[]>([]);
+  const [activeDatasets, setActiveDatasets] = useState<number[]>(
+    buyOrder?.datasetIds ?? []
+  );
+  const [globalActiveCountries] = useGlobalCountyList(countries);
+  const [activeCountries, setActiveCountries] = useState<string[]>(
+    buyOrder?.countries ?? globalActiveCountries
+  );
   const [name, setName] = useState(buyOrder?.name ?? "");
   const [budget, setBudget] = useState(buyOrder?.budget ?? 0);
   const result: BuyOrderFormResult = {

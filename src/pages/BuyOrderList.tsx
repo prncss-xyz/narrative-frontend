@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Box, Flex, Grid, H1 } from "../elements/shared";
-import { Showing } from "../elements/Showing";
+import { GlobalCountryList } from "../elements/GlobalCountrySelection";
 import { BuyOrder, useBuyOrders } from "../hooks/buyOrders";
+import { useCountries } from "../hooks/countries";
 
 function OrderRow({ name, value }: { name: string; value: string }) {
   return (
@@ -51,12 +52,13 @@ function BuyOrderItem({ buyOrders }: { buyOrders: BuyOrder[] }) {
 export default function BuyOrderList() {
   const buyOrders = useBuyOrders();
   const orderCount = buyOrders.length;
+  const countries = useCountries();
   return (
     <>
       <H1>Your Buy Orders</H1>
       <Flex justifyContent="center">
         <Flex flexDirection="column">
-          <Showing count={orderCount} />
+          <GlobalCountryList count={orderCount} countries={countries} />
           <BuyOrderItem buyOrders={buyOrders} />
         </Flex>
       </Flex>

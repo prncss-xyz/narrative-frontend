@@ -13,7 +13,7 @@ import ViewBuyOrder from "./pages/ViewBuyOrder";
 import EditBuyOrder from "./pages/EditBuyOrder";
 import NewBuyOrder from "./pages/NewBuyOrder";
 import Error404 from "./pages/404";
-import { CountrySelectorContext } from "./elements/CountrySelector";
+import { CountrySelectorContext } from "./elements/GlobalCountrySelection";
 
 import theme from "./theme";
 
