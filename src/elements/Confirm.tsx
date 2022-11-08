@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Clickable } from "./Clickable";
 import { Overlay } from "./Overlay";
-import { OverlayActionBox, Flex } from "./shared";
+import { OverlayActionBox, Flex } from "./basics";
 
 export function Confirm({
   overlayVisible,

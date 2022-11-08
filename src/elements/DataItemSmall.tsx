@@ -1,5 +1,5 @@
 import { Dataset } from "../hooks/datasets";
-import { Flex, Img, Box } from "./shared";
+import { Flex, Img, Box } from "./basics";
 
 export function DatasetItemSmall({
   dataset,

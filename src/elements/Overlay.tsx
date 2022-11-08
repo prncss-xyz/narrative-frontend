@@ -1,5 +1,5 @@
 import { useClickOutside } from "../hooks/clickOutside";
-import { Box, Flex } from "./shared";
+import { Box, Flex } from "./basics";
 
 export function Overlay({
   visible,

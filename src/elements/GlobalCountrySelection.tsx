@@ -1,4 +1,4 @@
-import { Flex, Box, H3 } from "./shared";
+import { Flex, Box, H3 } from "./basics";
 import { Overlay } from "./Overlay";
 import { Clickable } from "./Clickable";
 import { createContext, useContext, useState } from "react";

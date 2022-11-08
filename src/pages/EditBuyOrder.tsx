@@ -1,70 +1,67 @@
-import { Await, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
+import { ActionBox, Box, Flex, H1 } from "../elements/basics";
 import { BuyOrderForm } from "../elements/BuyOrderForm";
 import { Clickable } from "../elements/Clickable";
-import { ActionBox, Box, Flex, H1 } from "../elements/shared";
-import { BuyOrder, BuyOrderSchema, useBuyOrder } from "../hooks/buyOrders";
+import {
+    BuyOrder,
+    BuyOrderSchema,
+    useBuyOrder,
+    useUpdateBuyOrder
+} from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
-import React from "react";
 
 function Actions({ buyOrder }: { buyOrder: BuyOrder }) {
-  const navigate = useNavigate();
-  const saveHandler = () => {
-    console.log("save id", buyOrder.id); //TODO:
-    navigate("/buy-order-list");
-  };
+  const mutation = useUpdateBuyOrder();
   return (
-    <Flex justifyContent="center">
-      <Clickable onClick={saveHandler}>
-        <ActionBox>Save</ActionBox>
-      </Clickable>
-    </Flex>
+    <>
+      {mutation.isSuccess && <Navigate to="/buy-order-list" />}
+      <Flex justifyContent="center">
+        <Clickable onClick={() => mutation.mutate(buyOrder)}>
+          <ActionBox>Save</ActionBox>
+        </Clickable>
+      </Flex>
+    </>
   );
 }
 
-function EditBuyOrderFetch({ id }: { id: string }) {
-  const buyOrderPromise = useBuyOrder(id);
-  const datasetsPromise = useDatasets();
-  const countriesPromise = useCountries();
-  const resolve = Promise.all([
-    buyOrderPromise,
-    datasetsPromise,
-    countriesPromise,
-  ]);
+function Resolved({
+  buyOrder,
+  datasets,
+  countries,
+}: {
+  buyOrder: BuyOrder;
+  datasets: Dataset[];
+  countries: Country[];
+}) {
   return (
-    <React.Suspense>
-      <Await
-        resolve={resolve}
-        children={([buyOrder, datasets, countries]: [
-          BuyOrder | null,
-          Dataset[],
-          Country[]
-        ]) => {
-          if (!buyOrder)
-            return (
-              <>
-                <Box>
-                  Order with id <i>{id}</i> do not seem to exist.
-                </Box>
-              </>
-            );
-          return (
-            <BuyOrderForm
-              buyOrder={buyOrder}
-              datasets={datasets}
-              countries={countries}
-              toActions={(result) => {
-                return <Actions buyOrder={BuyOrderSchema.parse(result)} />;
-              }}
-            />
-          );
-        }}
-      />
-    </React.Suspense>
+    <BuyOrderForm
+      buyOrder={buyOrder}
+      datasets={datasets}
+      countries={countries}
+      toActions={(result) => {
+        return <Actions buyOrder={BuyOrderSchema.parse(result)} />;
+      }}
+    />
   );
 }
 
-function EditBuyOrderValidate() {
+function Fetch({ id }: { id: string }) {
+  const [datasetsError, datasets] = useDatasets();
+  const [countriesError, countries] = useCountries();
+  const [buyOrderError, buyOrder] = useBuyOrder(id);
+  const error = datasetsError ?? countriesError ?? buyOrderError;
+  if (error)
+    return <Box>{"An error has occurred: " + (error as any).message}</Box>;
+  if (!datasets || !countries || !buyOrder) return <></>;
+  return (
+    <>
+      <Resolved buyOrder={buyOrder} countries={countries} datasets={datasets} />
+    </>
+  );
+}
+
+function Validate() {
   const { id } = useParams();
   if (!id)
     return (
@@ -72,14 +69,14 @@ function EditBuyOrderValidate() {
         URL should specify an <i>id</i> parameter
       </Box>
     );
-  return <EditBuyOrderFetch id={id} />;
+  return <Fetch id={id} />;
 }
 
-export default function EditBuyOrder() {
+export default function EditBuyOrderPage() {
   return (
     <>
       <H1>Edit Buy Order</H1>
-      <EditBuyOrderValidate />
+      <Validate />
     </>
   );
 }

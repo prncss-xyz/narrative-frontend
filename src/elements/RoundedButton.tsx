@@ -1,4 +1,4 @@
-import { Box } from "./shared";
+import { Box } from "./basics";
 
 export function RoundedButton({
   active,

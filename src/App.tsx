@@ -1,21 +1,21 @@
+import { Global, ThemeProvider, useTheme } from "@emotion/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "modern-css-reset/dist/reset.min.css";
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
   Navigate,
+  Route,
+  Routes,
 } from "react-router-dom";
-import { Global, ThemeProvider, useTheme } from "@emotion/react";
-import Navigation from "./elements/Navigation";
-import BuyOrderList from "./pages/BuyOrderList";
-import DatasetList from "./pages/DatasetList";
-import ViewBuyOrder from "./pages/ViewBuyOrder";
-import EditBuyOrder from "./pages/EditBuyOrder";
-import NewBuyOrder from "./pages/NewBuyOrder";
-import Error404 from "./pages/404";
 import { CountrySelectorContext } from "./elements/GlobalCountrySelection";
-
+import Navigation from "./elements/Navigation";
+import Error404Page from "./pages/404";
+import BuyOrderListPage from "./pages/BuyOrderList";
+import DatasetListPage from "./pages/DatasetList";
+import NewBuyOrderPage from "./pages/CreateBuyOrder";
 import theme from "./theme";
+import ViewBuyOrderPage from "./pages/ViewBuyOrder";
+import EditBuyOrderPage from "./pages/EditBuyOrder";
 
 function GlobalStyle() {
   const theme = useTheme() as any;
@@ -40,25 +40,38 @@ function GlobalStyle() {
   );
 }
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CountrySelectorContext>
-        <GlobalStyle />
-        <Router>
-          <Navigation />
-          <Routes>
-            <Route path="/" element={<Navigate replace to="/buy-order-list" />} />
-            <Route path="/buy-order-list" element={<BuyOrderList />} />
-            <Route path="/dataset-list" element={<DatasetList />} />
-            <Route path="/view-buy-order/:id" element={<ViewBuyOrder />} />
-            <Route path="/edit-buy-order/:id" element={<EditBuyOrder />} />
-            <Route path="/new-buy-order/" element={<NewBuyOrder />} />
-            <Route path="*" element={<Error404 />} />
-          </Routes>
-        </Router>
-      </CountrySelectorContext>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <CountrySelectorContext>
+          <Router>
+            <GlobalStyle />
+            <Navigation />
+            <Routes>
+              <Route
+                path="/"
+                element={<Navigate replace to="/buy-order-list" />}
+              />
+              <Route path="/buy-order-list" element={<BuyOrderListPage />} />
+              <Route path="/dataset-list" element={<DatasetListPage />} />
+              <Route
+                path="/view-buy-order/:id"
+                element={<ViewBuyOrderPage />}
+              />
+              <Route
+                path="/edit-buy-order/:id"
+                element={<EditBuyOrderPage />}
+              />
+              <Route path="/new-buy-order/" element={<NewBuyOrderPage />} />
+              <Route path="*" element={<Error404Page />} />
+            </Routes>
+          </Router>
+        </CountrySelectorContext>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 

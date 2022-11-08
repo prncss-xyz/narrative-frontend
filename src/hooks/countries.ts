@@ -1,5 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
-import { countries } from "../utils/samples.test";
+import config from "../config";
+import { countries } from "../utils/api_samples";
 
 const StoredDataSchema = z.object({
   datasetId: z.number(),
@@ -18,6 +20,18 @@ export type Country = z.infer<typeof CountrySchema>;
 
 const CountriesSchema = z.array(CountrySchema);
 
-export function useCountries() {
-  return Promise.resolve(CountriesSchema.parse(countries));
+function fetchCountries() {
+  if (config.isFake) {
+    console.log("fetching countries");
+    return Promise.resolve(CountriesSchema.parse(countries));
+  }
+  return Promise.reject({ message: "TODO" });
+}
+
+export function useCountries(): [unknown, undefined | Country[]] {
+  const { error, data } = useQuery({
+    queryKey: ["/countries"],
+    queryFn: fetchCountries,
+  });
+  return [error, data];
 }

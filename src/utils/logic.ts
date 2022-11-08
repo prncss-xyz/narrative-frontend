@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { BuyOrder } from "../hooks/buyOrders";
 
 export interface Dataset {
   id: number;
@@ -26,7 +26,7 @@ export interface Country {
  * @returns list of their current Buy Orders
  */
 export function prepareOrder(
-  buyOrder: z.infer<typeof BuyOrder>,
+  buyOrder: BuyOrder,
   countries: Country[],
   datasets: Dataset[]
 ) {

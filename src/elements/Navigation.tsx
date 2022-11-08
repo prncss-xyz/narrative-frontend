@@ -1,12 +1,13 @@
 import { useTheme } from "@emotion/react";
 import { NavLink } from "react-router-dom";
-import { Flex, Box } from "./shared";
+import { Flex, Box } from "./basics";
 
 export default function Navigation() {
   const theme = useTheme() as any;
   return (
     <Flex
       py={3}
+      mb={4}
       backgroundColor="gray1"
       color="gray2"
       css={{

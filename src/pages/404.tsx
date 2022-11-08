@@ -1,10 +1,11 @@
-import { H1 } from "../elements/shared";
+import { Box, H1 } from "../elements/basics";
 
-export default function Error404() {
+export default function Error404Page() {
   return (
-    <div>
+    <>
       <H1>404</H1>
-    </div>
+      <Box>This is not a page.</Box>
+    </>
   );
 }
 

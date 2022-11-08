@@ -1,11 +1,11 @@
-import { Await, Link } from "react-router-dom";
-import React from "react";
-import { Box, Flex, Grid, H1 } from "../elements/shared";
+import { Link } from "react-router-dom";
+import { ActionBox, Box, Flex, Grid, H1 } from "../elements/basics";
 import { GlobalCountryList } from "../elements/GlobalCountrySelection";
-import { BuyOrder, useBuyOrder, useBuyOrders } from "../hooks/buyOrders";
+import { BuyOrder, useBuyOrders } from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
+import { useDatasets } from "../hooks/datasets";
 
-function OrderRow({ name, value }: { name: string; value: string }) {
+function BuyOrderItem({ name, value }: { name: string; value: string }) {
   return (
     <Flex px={2} py={3} backgroundColor="gray2" flexDirection="column">
       <Box color="gray1" pb={1} textDecoration="underline">
@@ -16,18 +16,18 @@ function OrderRow({ name, value }: { name: string; value: string }) {
   );
 }
 
-function BuyOrderItem({ buyOrders }: { buyOrders: BuyOrder[] }) {
+function BuyOrderList({ buyOrders }: { buyOrders: BuyOrder[] }) {
   return (
     <Grid gridTemplateColumns={"auto auto auto"} gridRowGap="3">
       {buyOrders.flatMap((buyOrder) => [
         <div key={`${buyOrder.id}-name`}>
           <Link to={`/view-buy-order/${buyOrder.id}`}>
-            <OrderRow name="Order name" value={buyOrder.name} />
+            <BuyOrderItem name="Order name" value={buyOrder.name} />
           </Link>
         </div>,
         <div key={`${buyOrder.id}-createdAt`}>
           <Link to={`/view-buy-order/${buyOrder.id}`}>
-            <OrderRow
+            <BuyOrderItem
               name="Date Created"
               value={new Date(buyOrder.createdAt).toLocaleString([], {
                 year: "numeric",
@@ -39,7 +39,7 @@ function BuyOrderItem({ buyOrders }: { buyOrders: BuyOrder[] }) {
         </div>,
         <div key={`${buyOrder.id}-forcasted`}>
           <Link to={`/view-buy-order/${buyOrder.id}`}>
-            <OrderRow
+            <BuyOrderItem
               name="Forecasted Records"
               value={(1000).toLocaleString()}
             />
@@ -50,35 +50,51 @@ function BuyOrderItem({ buyOrders }: { buyOrders: BuyOrder[] }) {
   );
 }
 
-function BuyOrderListFetch() {
-  const buyOrdersPromise = useBuyOrders();
-  const countriesPromise = useCountries();
-  const resolve = Promise.all([buyOrdersPromise, countriesPromise]);
+function Resolved({
+  buyOrders,
+  countries,
+}: {
+  buyOrders: BuyOrder[];
+  countries: Country[];
+}) {
   return (
-    <React.Suspense>
-      <Await
-        resolve={resolve}
-        children={([buyOrders, countries]: [BuyOrder[], Country[]]) => (
-          <Flex justifyContent="center">
-            <Flex flexDirection="column">
-              <GlobalCountryList
-                count={buyOrders.length}
-                countries={countries}
-              />
-              <BuyOrderItem buyOrders={buyOrders} />
-            </Flex>
-          </Flex>
-        )}
-      />
-    </React.Suspense>
+    <>
+      <Flex justifyContent="center">
+        <Flex flexDirection="column">
+          <GlobalCountryList count={buyOrders.length} countries={countries} />
+          <BuyOrderList buyOrders={buyOrders} />
+        </Flex>
+      </Flex>
+      <Box mt={6} />
+      <Flex justifyContent="center">
+        <Link to={"/new-buy-order"}>
+          <ActionBox backgroundColor="gray2">New Order</ActionBox>
+        </Link>
+      </Flex>
+    </>
   );
 }
 
-export default function BuyOrderList() {
+function Fetch() {
+  const [datasetsError, datasets] = useDatasets();
+  const [countriesError, countries] = useCountries();
+  const [buyOrdersError, buyOrders] = useBuyOrders();
+  const error = datasetsError ?? countriesError ?? buyOrdersError;
+  if (error)
+    return <Box>{"An error has occurred: " + (error as any).message}</Box>;
+  if (!datasets || !countries || !buyOrders) return <></>;
+  return (
+    <>
+      <Resolved buyOrders={buyOrders} countries={countries} />
+    </>
+  );
+}
+
+export default function BuyOrderListPage() {
   return (
     <>
       <H1>Your Buy Orders</H1>
-      <BuyOrderListFetch />
+      <Fetch />
     </>
   );
 }

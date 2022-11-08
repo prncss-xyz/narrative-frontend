@@ -1,28 +1,27 @@
-import { Await, Link, useNavigate, useParams } from "react-router-dom";
-import { ActionBox, Box, Flex, H1 } from "../elements/shared";
-import { BuyOrder, BuyOrderSchema, useBuyOrder } from "../hooks/buyOrders";
-import { Clickable } from "../elements/Clickable";
 import { useState } from "react";
-import { Confirm } from "../elements/Confirm";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { ActionBox, Box, Flex, H1 } from "../elements/basics";
 import { BuyOrderForm } from "../elements/BuyOrderForm";
+import { Clickable } from "../elements/Clickable";
+import { Confirm } from "../elements/Confirm";
+import {
+    BuyOrder,
+    BuyOrderSchema,
+    useBuyOrder,
+    useDeleteBuyOrder
+} from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
-import React from "react";
-
-function deleteOrder(id: string) {
-  // TODO:
-  console.log("TODO", id);
-}
 
 function Actions({ buyOrder }: { buyOrder: BuyOrder }) {
+  const mutation = useDeleteBuyOrder();
   const [overlayVisible, setOverlayVisible] = useState(false);
-  const navigate = useNavigate();
   const deleteHandler = () => {
-    deleteOrder(buyOrder.id);
-    navigate("/buy-orders");
+    mutation.mutate(buyOrder.id);
   };
   return (
     <>
+      {mutation.isSuccess && <Navigate to="/buy-order-list" />}
       <Confirm
         overlayVisible={overlayVisible}
         setOverlayVisible={setOverlayVisible}
@@ -42,50 +41,44 @@ function Actions({ buyOrder }: { buyOrder: BuyOrder }) {
   );
 }
 
-function ViewBuyOrderFetch({ id }: { id: string }) {
-  const buyOrderPromise = useBuyOrder(id);
-  const datasetsPromise = useDatasets();
-  const countriesPromise = useCountries();
-  const resolve = Promise.all([
-    buyOrderPromise,
-    datasetsPromise,
-    countriesPromise,
-  ]);
+function Resolved({
+  buyOrder,
+  datasets,
+  countries,
+}: {
+  buyOrder: BuyOrder;
+  datasets: Dataset[];
+  countries: Country[];
+}) {
   return (
-    <React.Suspense>
-      <Await
-        resolve={resolve}
-        children={([buyOrder, datasets, countries]: [
-          BuyOrder | null,
-          Dataset[],
-          Country[]
-        ]) => {
-          if (!buyOrder)
-            return (
-              <>
-                <Box>
-                  Order with id <i>{id}</i> do not seem to exist.
-                </Box>
-              </>
-            );
-          return (
-            <BuyOrderForm
-              disabled
-              buyOrder={buyOrder}
-              datasets={datasets}
-              countries={countries}
-              toActions={(result) => {
-                return <Actions buyOrder={BuyOrderSchema.parse(result)} />;
-              }}
-            />
-          );
-        }}
-      />
-    </React.Suspense>
+    <BuyOrderForm
+      disabled
+      buyOrder={buyOrder}
+      datasets={datasets}
+      countries={countries}
+      toActions={(result) => {
+        return <Actions buyOrder={BuyOrderSchema.parse(result)} />;
+      }}
+    />
   );
 }
 
-function ViewBuyOrderValidate() {
+function Fetch({ id }: { id: string }) {
+  const [datasetsError, datasets] = useDatasets();
+  const [countriesError, countries] = useCountries();
+  const [buyOrderError, buyOrder] = useBuyOrder(id);
+  const error = datasetsError ?? countriesError ?? buyOrderError;
+  if (error)
+    return <Box>{"An error has occurred: " + (error as any).message}</Box>;
+  if (!datasets || !countries || !buyOrder) return <></>;
+  return (
+    <>
+      <Resolved buyOrder={buyOrder} countries={countries} datasets={datasets} />
+    </>
+  );
+}
+
+function Validate() {
   const { id } = useParams();
   if (!id)
     return (
@@ -93,14 +86,14 @@ function ViewBuyOrderValidate() {
         URL should specify an <i>id</i> parameter
       </Box>
     );
-  return <ViewBuyOrderFetch id={id} />;
+  return <Fetch id={id} />;
 }
 
-export default function ViewBuyOrder() {
+export default function ViewBuyOrderPage() {
   return (
     <>
       <H1>Buy Order Details</H1>
-      <ViewBuyOrderValidate />
+      <Validate />
     </>
   );
 }

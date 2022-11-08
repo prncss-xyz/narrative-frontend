@@ -1,9 +1,7 @@
-import { Box, Flex, Grid, H1, H3, Img } from "../elements/shared";
+import { Box, Flex, Grid, H1, H3, Img } from "../elements/basics";
 import { GlobalCountryList } from "../elements/GlobalCountrySelection";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
-import React from "react";
-import { Await } from "react-router-dom";
 
 function DatasetItem({ dataset }: { dataset: Dataset }) {
   const available = 4500; // TODO:
@@ -48,46 +46,49 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
   );
 }
 
-function DatasetListFetch() {
-  const datasetsPromise = useDatasets();
-  const countriesPromise = useCountries();
-  const resolve = Promise.all([datasetsPromise, countriesPromise]);
+function Resolved({
+  datasets,
+  countries,
+}: {
+  datasets: Dataset[];
+  countries: Country[];
+}) {
   return (
-    <React.Suspense>
-      <Await
-        resolve={resolve}
-        children={([datasets, countries]: [Dataset[], Country[]]) => (
-          <Flex flexDirection="row" justifyContent="center">
-            <Box>
-              <GlobalCountryList
-                count={datasets.length}
-                countries={countries}
-              />
-              <Grid
-                gridTemplateColumns={"auto auto"}
-                alignItems="start"
-                gridRowGap={2}
-                gridColumnGap={2}
-              >
-                {datasets.map((dataset) => (
-                  <div key={dataset.id}>
-                    <DatasetItem dataset={dataset} />
-                  </div>
-                ))}
-              </Grid>
-            </Box>
-          </Flex>
-        )}
-      />
-    </React.Suspense>
+    <Flex flexDirection="row" justifyContent="center">
+      <Box>
+        <GlobalCountryList count={datasets.length} countries={countries} />
+        <Grid
+          gridTemplateColumns={"auto auto"}
+          alignItems="start"
+          gridRowGap={2}
+          gridColumnGap={2}
+        >
+          {datasets.map((dataset) => (
+            <div key={dataset.id}>
+              <DatasetItem dataset={dataset} />
+            </div>
+          ))}
+        </Grid>
+      </Box>
+    </Flex>
   );
 }
 
-export default function DatasetList() {
+function Fetch() {
+  const [datasetsError, datasets] = useDatasets();
+  const [countriesError, countries] = useCountries();
+  const error = datasetsError ?? countriesError;
+  if (error)
+    return <Box>{"An error has occurred: " + (error as any).message}</Box>;
+  if (!datasets || !countries) return <></>;
+  return <Resolved datasets={datasets} countries={countries} />;
+}
+
+export default function DatasetListPage() {
   return (
     <>
       <H1>Datasets</H1>
-      <DatasetListFetch />
+      <Fetch />
     </>
   );
 }

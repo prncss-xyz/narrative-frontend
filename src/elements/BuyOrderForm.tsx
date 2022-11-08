@@ -6,7 +6,7 @@ import { DatasetItemSmall } from "./DataItemSmall";
 import { useGlobalCountyList } from "./GlobalCountrySelection";
 import { Input, identityString, positve } from "./Input";
 import { RoundedButton } from "./RoundedButton";
-import { Box, Flex, Grid, H3 } from "./shared";
+import { Box, Flex, Grid, H3 } from "./basics";
 import { TogglingSelector } from "./TogglingSelector";
 
 // export interface BuyOrderFormResult {
