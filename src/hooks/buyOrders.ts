@@ -60,7 +60,8 @@ function fetchBuyOrder(id: string) {
   if (config.isFake) {
     console.log("fetching buyorder", id);
     const buyOrder = buyOrders.find((b) => b.id === id);
-    if (!buyOrder) return Promise.reject(`Buy order ${id} do net exits.`);
+    if (!buyOrder)
+      return Promise.reject({ message: `Buy order ${id} do not exists.` });
     return Promise.resolve(BuyOrderSchema.parse(processDate(buyOrder)));
   }
   return Promise.reject({ message: "TODO" });

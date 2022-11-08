@@ -2,11 +2,12 @@ import { Navigate, useParams } from "react-router-dom";
 import { ActionBox, Box, Flex, H1 } from "../elements/basics";
 import { BuyOrderForm } from "../elements/BuyOrderForm";
 import { Clickable } from "../elements/Clickable";
+import { Loading } from "../elements/Loading";
 import {
-    BuyOrder,
-    BuyOrderSchema,
-    useBuyOrder,
-    useUpdateBuyOrder
+  BuyOrder,
+  BuyOrderSchema,
+  useBuyOrder,
+  useUpdateBuyOrder,
 } from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
@@ -50,14 +51,12 @@ function Fetch({ id }: { id: string }) {
   const [datasetsError, datasets] = useDatasets();
   const [countriesError, countries] = useCountries();
   const [buyOrderError, buyOrder] = useBuyOrder(id);
-  const error = datasetsError ?? countriesError ?? buyOrderError;
-  if (error)
-    return <Box>{"An error has occurred: " + (error as any).message}</Box>;
-  if (!datasets || !countries || !buyOrder) return <></>;
+  if (datasetsError) throw datasetsError;
+  if (countriesError) throw countriesError;
+  if (buyOrderError) throw buyOrderError;
+  if (!datasets || !countries || !buyOrder) return <Loading />;
   return (
-    <>
-      <Resolved buyOrder={buyOrder} countries={countries} datasets={datasets} />
-    </>
+    <Resolved buyOrder={buyOrder} countries={countries} datasets={datasets} />
   );
 }
 

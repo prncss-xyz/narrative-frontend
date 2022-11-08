@@ -1,5 +1,6 @@
-import { Box, Flex, Grid, H1, H3, Img } from "../elements/basics";
+import { Box, Flex, Grid, H1, H2, Img } from "../elements/basics";
 import { GlobalCountryList } from "../elements/GlobalCountrySelection";
+import { Loading } from "../elements/Loading";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
 
@@ -27,7 +28,7 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
         </Box>
       </Flex>
       <Flex flexDirection="column">
-        <H3>Dataset Description</H3>
+        <H2>Dataset Description</H2>
         <Box>{dataset.description}</Box>
       </Flex>
       <Flex
@@ -35,11 +36,11 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
         justifyContent="space-between"
         alignItems="flex-end"
       >
-        <H3 my={0}>Cost Per Record</H3>
+        <H2 my={0}>Cost Per Record</H2>
         <Box>${dataset.costPerRecord}</Box>
       </Flex>
       <Flex flexDirection="row" justifyContent="space-between">
-        <H3 my={0}>Available Records</H3>
+        <H2 my={0}>Available Records</H2>
         <Box>{`${available} records`}</Box>
       </Flex>
     </Flex>
@@ -77,18 +78,12 @@ function Resolved({
 function Fetch() {
   const [datasetsError, datasets] = useDatasets();
   const [countriesError, countries] = useCountries();
-  const error = datasetsError ?? countriesError;
-  if (error)
-    return <Box>{"An error has occurred: " + (error as any).message}</Box>;
-  if (!datasets || !countries) return <></>;
+  if (datasetsError) throw datasetsError;
+  if (countriesError) throw countriesError;
+  if (!datasets || !countries) return <Loading />;
   return <Resolved datasets={datasets} countries={countries} />;
 }
 
 export default function DatasetListPage() {
-  return (
-    <>
-      <H1>Datasets</H1>
-      <Fetch />
-    </>
-  );
+  return <Fetch />;
 }

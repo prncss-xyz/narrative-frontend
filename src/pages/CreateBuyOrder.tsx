@@ -2,6 +2,7 @@ import { Navigate } from "react-router-dom";
 import { ActionBox, Box, Flex, H1 } from "../elements/basics";
 import { BuyOrderForm, BuyOrderFormResult } from "../elements/BuyOrderForm";
 import { Clickable } from "../elements/Clickable";
+import { Loading } from "../elements/Loading";
 import { useCreateBuyOrder } from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
@@ -40,21 +41,11 @@ function Fetch() {
   const [datasetsError, datasets] = useDatasets();
   const [countriesError, countries] = useCountries();
   const error = datasetsError ?? countriesError;
-  if (error)
-    return <Box>{"An error has occurred: " + (error as any).message}</Box>;
-  if (!datasets || !countries) return <></>;
-  return (
-    <>
-      <Resolved countries={countries} datasets={datasets} />
-    </>
-  );
+  if (error) throw error;
+  if (!datasets || !countries) return <Loading />;
+  return <Resolved countries={countries} datasets={datasets} />;
 }
 
 export default function CreateBuyOrderPage() {
-  return (
-    <>
-      <H1>Order name</H1>
-      <Fetch />
-    </>
-  );
+  return <Fetch />;
 }

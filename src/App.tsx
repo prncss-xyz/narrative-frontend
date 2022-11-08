@@ -16,6 +16,9 @@ import NewBuyOrderPage from "./pages/CreateBuyOrder";
 import theme from "./theme";
 import ViewBuyOrderPage from "./pages/ViewBuyOrder";
 import EditBuyOrderPage from "./pages/EditBuyOrder";
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorFallback } from "./elements/ErrorFallback";
+import { H1 } from "./elements/basics";
 
 function GlobalStyle() {
   const theme = useTheme() as any;
@@ -40,6 +43,19 @@ function GlobalStyle() {
   );
 }
 
+function Headers() {
+  return (
+    <Routes>
+      <Route path="/buy-order-list" element={<H1>Your Buy Orders</H1>} />
+      <Route path="/dataset-list" element={<H1>Datasets</H1>} />
+      <Route path="/view-buy-order/:id" element={<H1>Buy Order Details</H1>} />
+      <Route path="/edit-buy-order/:id" element={<H1>Edit Buy Order</H1>} />
+      <Route path="/new-buy-order/" element={<H1>New Buy Order</H1>} />
+      <Route path="*" element={<H1>404</H1>} />
+    </Routes>
+  );
+}
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -50,24 +66,27 @@ function App() {
           <Router>
             <GlobalStyle />
             <Navigation />
-            <Routes>
-              <Route
-                path="/"
-                element={<Navigate replace to="/buy-order-list" />}
-              />
-              <Route path="/buy-order-list" element={<BuyOrderListPage />} />
-              <Route path="/dataset-list" element={<DatasetListPage />} />
-              <Route
-                path="/view-buy-order/:id"
-                element={<ViewBuyOrderPage />}
-              />
-              <Route
-                path="/edit-buy-order/:id"
-                element={<EditBuyOrderPage />}
-              />
-              <Route path="/new-buy-order/" element={<NewBuyOrderPage />} />
-              <Route path="*" element={<Error404Page />} />
-            </Routes>
+            <Headers />
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <Routes>
+                <Route
+                  path="/"
+                  element={<Navigate replace to="/buy-order-list" />}
+                />
+                <Route path="/buy-order-list" element={<BuyOrderListPage />} />
+                <Route path="/dataset-list" element={<DatasetListPage />} />
+                <Route
+                  path="/view-buy-order/:id"
+                  element={<ViewBuyOrderPage />}
+                />
+                <Route
+                  path="/edit-buy-order/:id"
+                  element={<EditBuyOrderPage />}
+                />
+                <Route path="/new-buy-order/" element={<NewBuyOrderPage />} />
+                <Route path="*" element={<Error404Page />} />
+              </Routes>
+            </ErrorBoundary>
           </Router>
         </CountrySelectorContext>
       </ThemeProvider>

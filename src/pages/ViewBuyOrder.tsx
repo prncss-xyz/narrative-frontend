@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { ActionBox, Box, Flex, H1 } from "../elements/basics";
+import { ActionBox, Box, Flex } from "../elements/basics";
 import { BuyOrderForm } from "../elements/BuyOrderForm";
 import { Clickable } from "../elements/Clickable";
 import { Confirm } from "../elements/Confirm";
+import { Loading } from "../elements/Loading";
 import {
-    BuyOrder,
-    BuyOrderSchema,
-    useBuyOrder,
-    useDeleteBuyOrder
+  BuyOrder,
+  BuyOrderSchema,
+  useBuyOrder,
+  useDeleteBuyOrder,
 } from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
@@ -67,33 +68,22 @@ function Fetch({ id }: { id: string }) {
   const [datasetsError, datasets] = useDatasets();
   const [countriesError, countries] = useCountries();
   const [buyOrderError, buyOrder] = useBuyOrder(id);
-  const error = datasetsError ?? countriesError ?? buyOrderError;
-  if (error)
-    return <Box>{"An error has occurred: " + (error as any).message}</Box>;
-  if (!datasets || !countries || !buyOrder) return <></>;
+  if (datasetsError) throw datasetsError;
+  if (countriesError) throw countriesError;
+  if (buyOrderError) throw buyOrderError;
+  if (!datasets || !countries || !buyOrder) return <Loading />;
   return (
-    <>
-      <Resolved buyOrder={buyOrder} countries={countries} datasets={datasets} />
-    </>
+    <Resolved buyOrder={buyOrder} countries={countries} datasets={datasets} />
   );
 }
 
 function Validate() {
   const { id } = useParams();
   if (!id)
-    return (
-      <Box>
-        URL should specify an <i>id</i> parameter
-      </Box>
-    );
+    throw new Error("There should be an id parameter (check the router)");
   return <Fetch id={id} />;
 }
 
 export default function ViewBuyOrderPage() {
-  return (
-    <>
-      <H1>Buy Order Details</H1>
-      <Validate />
-    </>
-  );
+  return <Validate />;
 }

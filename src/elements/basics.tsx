@@ -61,7 +61,7 @@ export function H1({
   );
 }
 
-export function H3({
+export function H2({
   children,
   ...props
 }: {
@@ -71,6 +71,27 @@ export function H3({
   return (
     <Box
       as="h2"
+      my={3}
+      color="gray1"
+      fontWeight="bold"
+      fontSize={3}
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+}
+
+export function H3({
+  children,
+  ...props
+}: {
+  children: React.ReactNode;
+  [prop: string]: unknown; // TODO: could be more restrictive
+}) {
+  return (
+    <Box
+      as="h3"
       my={1}
       color="gray1"
       fontWeight="normal"

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { ActionBox, Box, Flex, Grid, H1 } from "../elements/basics";
+import { ActionBox, Box, Flex, Grid } from "../elements/basics";
 import { GlobalCountryList } from "../elements/GlobalCountrySelection";
+import { Loading } from "../elements/Loading";
 import { BuyOrder, useBuyOrders } from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
 import { useDatasets } from "../hooks/datasets";
@@ -80,21 +81,11 @@ function Fetch() {
   const [countriesError, countries] = useCountries();
   const [buyOrdersError, buyOrders] = useBuyOrders();
   const error = datasetsError ?? countriesError ?? buyOrdersError;
-  if (error)
-    return <Box>{"An error has occurred: " + (error as any).message}</Box>;
-  if (!datasets || !countries || !buyOrders) return <></>;
-  return (
-    <>
-      <Resolved buyOrders={buyOrders} countries={countries} />
-    </>
-  );
+  if (error) throw error;
+  if (!datasets || !countries || !buyOrders) return <Loading />;
+  return <Resolved buyOrders={buyOrders} countries={countries} />;
 }
 
 export default function BuyOrderListPage() {
-  return (
-    <>
-      <H1>Your Buy Orders</H1>
-      <Fetch />
-    </>
-  );
+  return <Fetch />;
 }
