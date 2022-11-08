@@ -6,7 +6,7 @@ export function ErrorFallback({ error }: { error: any }) {
   return (
     <Box role="alert">
       <Box fontSize={3}>Something went wrong.</Box>
-      <pre>{error.message}</pre>
+      <pre>{error?.message}</pre>
     </Box>
   );
 }
