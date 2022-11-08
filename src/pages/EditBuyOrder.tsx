@@ -1,5 +1,5 @@
 import { Navigate, useParams } from "react-router-dom";
-import { ActionBox, Box, Flex, H1 } from "../elements/basics";
+import { ActionBox, Box, Flex } from "../elements/basics";
 import { BuyOrderForm } from "../elements/BuyOrderForm";
 import { Clickable } from "../elements/Clickable";
 import { Loading } from "../elements/Loading";
@@ -72,10 +72,5 @@ function Validate() {
 }
 
 export default function EditBuyOrderPage() {
-  return (
-    <>
-      <H1>Edit Buy Order</H1>
-      <Validate />
-    </>
-  );
+  return <Validate />;
 }

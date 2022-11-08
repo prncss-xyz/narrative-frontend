@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { ActionBox, Box, Flex, H1 } from "../elements/basics";
+import { ActionBox, Box, Flex } from "../elements/basics";
 import { BuyOrderForm, BuyOrderFormResult } from "../elements/BuyOrderForm";
 import { Clickable } from "../elements/Clickable";
 import { Loading } from "../elements/Loading";

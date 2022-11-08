@@ -7,7 +7,6 @@ export default function Navigation() {
   return (
     <Flex
       py={3}
-      mb={4}
       backgroundColor="gray1"
       color="gray2"
       css={{

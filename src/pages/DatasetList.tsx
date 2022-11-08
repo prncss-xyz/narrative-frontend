@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, H1, H2, Img } from "../elements/basics";
+import { Box, Flex, Grid, H2, Img } from "../elements/basics";
 import { GlobalCountryList } from "../elements/GlobalCountrySelection";
 import { Loading } from "../elements/Loading";
 import { Country, useCountries } from "../hooks/countries";
