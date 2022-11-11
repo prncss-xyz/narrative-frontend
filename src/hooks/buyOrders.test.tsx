@@ -12,7 +12,7 @@ import {
 } from "./buyOrders";
 
 describe("useBuyOrder", async () => {
-  it("should permform a complete cycle of create, update, get, delete, get maintaining consistant values", async () => {
+  it.skip("should permform a complete cycle of create, update, get, delete, get maintaining consistant values", async () => {
     const data1: ProBuyOrder = {
       name: "test name",
       datasetIds: [1],
@@ -67,7 +67,7 @@ describe("useBuyOrder", async () => {
   });
 });
 
-describe("useBuyOrders", () => {
+describe.skip("useBuyOrders", () => {
   const data = [
     {
       id: "1",

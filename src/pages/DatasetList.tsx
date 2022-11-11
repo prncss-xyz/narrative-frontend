@@ -1,11 +1,31 @@
 import { Box, Flex, Grid, H2, Img } from "../elements/basics";
-import { GlobalCountryList } from "../elements/GlobalCountrySelection";
+import {
+  countryString,
+  GlobalCountryList,
+  useGlobalCountyList,
+} from "../elements/GlobalCountrySelection";
 import { Loading } from "../elements/Loading";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
+import {
+  availableRecordCountForDataset,
+  includedCountries,
+  selectedDatasets,
+} from "../utils/logic";
 
-function DatasetItem({ dataset }: { dataset: Dataset }) {
-  const available = 4500; // TODO:
+function DatasetItem({
+  dataset,
+  countries,
+}: {
+  dataset: Dataset;
+  countries: Country[];
+}) {
+  const [activeCountries] = useGlobalCountyList(countries);
+  const available = availableRecordCountForDataset(
+    countries,
+    dataset,
+    activeCountries
+  );
   return (
     <Flex
       p={2}
@@ -31,6 +51,17 @@ function DatasetItem({ dataset }: { dataset: Dataset }) {
         <H2>Dataset Description</H2>
         <Box>{dataset.description}</Box>
       </Flex>
+      <Flex flexDirection="column" justifyContent="space-between">
+        <H2 my={0}>Included countries</H2>
+        <Box>
+          {countryString(
+            countries,
+            includedCountries(countries, dataset).map(
+              (country) => country.countryCode
+            )
+          )}
+        </Box>
+      </Flex>
       <Flex
         flexDirection="row"
         justifyContent="space-between"
@@ -54,19 +85,21 @@ function Resolved({
   datasets: Dataset[];
   countries: Country[];
 }) {
+  const [activeCountries] = useGlobalCountyList(countries);
+  const selected = selectedDatasets(countries, datasets, activeCountries);
   return (
     <Flex flexDirection="row" justifyContent="center">
       <Box>
-        <GlobalCountryList count={datasets.length} countries={countries} />
+        <GlobalCountryList count={selected.length} countries={countries} />
         <Grid
           gridTemplateColumns={"auto auto"}
           alignItems="start"
           gridRowGap={2}
           gridColumnGap={2}
         >
-          {datasets.map((dataset) => (
+          {selected.map((dataset) => (
             <div key={dataset.id}>
-              <DatasetItem dataset={dataset} />
+              <DatasetItem dataset={dataset} countries={countries} />
             </div>
           ))}
         </Grid>

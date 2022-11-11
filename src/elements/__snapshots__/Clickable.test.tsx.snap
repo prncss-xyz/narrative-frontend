@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<button
+  className="css-17pgxs5-Clickable"
+  onClick={[Function]}
+>
+  Test
+</button>
+`;

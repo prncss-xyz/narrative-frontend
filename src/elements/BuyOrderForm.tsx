@@ -8,6 +8,7 @@ import { Input, identityString, positve } from "./Input";
 import { RoundedButton } from "./RoundedButton";
 import { Box, Flex, Grid, H3 } from "./basics";
 import { TogglingSelector } from "./TogglingSelector";
+import { availableRecordCountForDataset, availableRecordCountForDatasets, forcastedRecordCount } from "../utils/logic";
 
 // export interface BuyOrderFormResult {
 export type BuyOrderFormResult = {
@@ -48,6 +49,9 @@ export function BuyOrderForm({
     datasetIds: activeDatasets,
     countries: activeCountries,
   };
+  const forcasted = forcastedRecordCount(countries, datasets, result);
+  const available = availableRecordCountForDatasets(countries, datasets, result.countries);
+
   return (
     <Flex justifyContent="center">
       <Flex flexDirection="column" width={6}>
@@ -93,7 +97,7 @@ export function BuyOrderForm({
             </Box>
             <Box>
               <H3>Forecasted Records</H3>
-              {`${0} of ${0} available records`}
+              {`${forcasted} of ${available} available records`}
             </Box>
           </Grid>
           <Box mt={4} />

@@ -18,7 +18,7 @@ import ViewBuyOrderPage from "./pages/ViewBuyOrder";
 import EditBuyOrderPage from "./pages/EditBuyOrder";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "./elements/ErrorFallback";
-import { H1 } from "./elements/basics";
+import { Box, H1 } from "./elements/basics";
 
 function GlobalStyle() {
   const theme = useTheme() as any;
@@ -87,6 +87,7 @@ function App() {
                 <Route path="*" element={<Error404Page />} />
               </Routes>
             </ErrorBoundary>
+            <Box pb={5} />
           </Router>
         </CountrySelectorContext>
       </ThemeProvider>

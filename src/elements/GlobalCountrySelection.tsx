@@ -6,11 +6,11 @@ import { Country } from "../hooks/countries";
 import { RoundedButton } from "./RoundedButton";
 import { TogglingSelector } from "./TogglingSelector";
 
-type State = string[];
+type CountryCodes = string[];
 
-const Context = createContext<null | [null | State, (state: State) => void]>(
-  null
-);
+const Context = createContext<
+  null | [null | CountryCodes, (state: CountryCodes) => void]
+>(null);
 
 export function countryString(countries: Country[], activeCountries: string[]) {
   const activeCountryNames = countries
@@ -18,6 +18,7 @@ export function countryString(countries: Country[], activeCountries: string[]) {
     .map(({ name }) => name)
     .sort();
   if (activeCountryNames.length === 0) return "none";
+  if (activeCountryNames.length === 1) return activeCountryNames[0];
   const last = activeCountryNames.at(-1);
   const rest = activeCountryNames.slice(0, -1);
   return [rest.join(", "), last].join(" & ");
@@ -38,7 +39,7 @@ export function CountrySelectorContext({
 
 export function useGlobalCountyList(
   countries: Country[]
-): [State, (state: State) => void] {
+): [CountryCodes, (state: CountryCodes) => void] {
   const context = useContext(Context);
   if (!context)
     throw new Error(
