@@ -76,10 +76,8 @@ function Resolved({
 }
 
 function Fetch() {
-  const [datasetsError, datasets] = useDatasets();
-  const [countriesError, countries] = useCountries();
-  if (datasetsError) throw datasetsError;
-  if (countriesError) throw countriesError;
+  const datasets = useDatasets();
+  const countries = useCountries();
   if (!datasets || !countries) return <Loading />;
   return <Resolved datasets={datasets} countries={countries} />;
 }

@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
-import { buyOrders } from "../utils/api_samples";
-import config from "../config";
+import { apiURL } from "../utils/apiURL";
+import { buyOrders } from "../utils/apiSamples";
 
-// TODO: preprocess
+const isFake = import.meta.env.VITE_FAKE;
 
 export const BuyOrderSchema = z.object({
   id: z.string(), // FIX: docs says its a number
@@ -40,39 +40,47 @@ export const BuyOrdersSchema = z.array(BuyOrderSchema);
 
 export type BuyOrders = z.infer<typeof BuyOrdersSchema>;
 
-function fetchBuyOrders() {
-  if (config.isFake) {
-    console.log("fetching buyorders");
+async function fetchBuyOrders(): Promise<BuyOrder[]> {
+  let json: object[];
+  if (isFake) {
     return Promise.resolve(BuyOrdersSchema.parse(processDates(buyOrders)));
+  } else {
+    const response = await fetch(apiURL + "buy-orders");
+    json = await response.json();
   }
-  return Promise.reject({ message: "TODO" });
+  return BuyOrdersSchema.parse(processDates(json));
 }
 
-export function useBuyOrders(): [unknown, undefined | BuyOrder[]] {
+export function useBuyOrders(): BuyOrder[] | undefined {
   const { error, data } = useQuery({
-    queryKey: ["/buy-orders"],
+    queryKey: ["buy-orders"],
     queryFn: fetchBuyOrders,
   });
-  return [error, data];
+  if (error) throw error;
+  return data;
 }
 
-function fetchBuyOrder(id: string) {
-  if (config.isFake) {
+export async function fetchBuyOrder(id: string): Promise<BuyOrder> {
+  let json: object;
+  if (isFake) {
     console.log("fetching buyorder", id);
     const buyOrder = buyOrders.find((b) => b.id === id);
-    if (!buyOrder)
-      return Promise.reject({ message: `Buy order ${id} do not exists.` });
-    return Promise.resolve(BuyOrderSchema.parse(processDate(buyOrder)));
+    if (!buyOrder) throw new Error(`Buy order ${id} do not exists.`);
+    json = buyOrder;
+  } else {
+    const response = await fetch(apiURL + `buy-orders/${id}`);
+    json = await response.json();
   }
-  return Promise.reject({ message: "TODO" });
+  return BuyOrderSchema.parse(processDate(json));
 }
 
-export function useBuyOrder(id: string): [unknown, undefined | BuyOrder] {
+export function useBuyOrder(id: string): BuyOrder | undefined {
   const { error, data } = useQuery({
-    queryKey: [`/buy-order/${id}`],
+    queryKey: [`buy-order/${id}`],
     queryFn: () => fetchBuyOrder(id),
   });
-  return [error, data];
+  if (error) throw error;
+  return data;
 }
 
 export interface ProBuyOrder {
@@ -82,13 +90,25 @@ export interface ProBuyOrder {
   budget: number;
 }
 
-function createBuyOrder(proBuyOrder: ProBuyOrder) {
-  const order = { ...proBuyOrder, createdAt: new Date() };
-  if (config.isFake) {
+async function createBuyOrder(proBuyOrder: ProBuyOrder) {
+  const order: {
+    name: string;
+    createdAt: string; // will be stringified
+    datasetIds: number[];
+    countries: string[];
+    budget: number;
+  } = { ...proBuyOrder, createdAt: new Date().toJSON() };
+  if (isFake) {
     console.log("creating buyorder", order);
-    return Promise.resolve(order);
+    return BuyOrderSchema.parse(order);
   }
-  return Promise.reject({ message: "TODO" });
+  const response = await fetch(apiURL + "buy-orders", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(order),
+  });
+  const json = await response.json();
+  return BuyOrderSchema.parse(processDate(json));
 }
 
 export function useCreateBuyOrder() {
@@ -99,47 +119,64 @@ export function useCreateBuyOrder() {
       queryClient.invalidateQueries({ queryKey: [] });
     },
   });
+  if (mutation.error) throw mutation.error;
   return mutation;
 }
 
-function deleteBuyOrder(id: string) {
-  if (config.isFake) {
+async function deleteBuyOrder(id: string): Promise<BuyOrder> {
+  let json;
+  if (isFake) {
     console.log("deleting buyorder", id);
-    return Promise.resolve(id);
+    const buyOrder = buyOrders.find((b) => b.id === id);
+    if (!buyOrder) throw new Error(`Buy order ${id} do not exists.`);
+    json = buyOrder;
+  } else {
+    const response = await fetch(apiURL + `buy-orders/${id}`, {
+      method: "DELETE",
+    });
+    json = await response.json();
   }
-  return Promise.reject({ message: "TODO" });
+  return BuyOrderSchema.parse(processDate(json));
 }
 
 export function useDeleteBuyOrder() {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: deleteBuyOrder,
-    onSuccess: (id) => {
+    onSuccess: (buyOrder: any) => {
       queryClient.invalidateQueries({
-        queryKey: ["/buy-orders", `/buy-order/${id}`],
+        queryKey: ["buy-orders", `buy-order/${buyOrder.id}`],
       });
     },
   });
+  if (mutation.error) throw mutation.error;
   return mutation;
 }
 
-function updateBuyOrder(buyOrder: BuyOrder) {
-  if (config.isFake) {
+async function updateBuyOrder(buyOrder: BuyOrder): Promise<BuyOrder> {
+  if (isFake) {
     console.log("updating buyorder", buyOrder);
-    return Promise.resolve(buyOrder);
+    return buyOrder;
   }
-  return Promise.reject({ message: "TODO" });
+  const response = await fetch(apiURL + `buy-orders/${buyOrder.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...buyOrder, id: undefined }),
+  });
+  const json = await response.json();
+  return BuyOrderSchema.parse(processDate(json));
 }
 
 export function useUpdateBuyOrder() {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: updateBuyOrder,
-    onSuccess: (buyOrder) => {
+    onSuccess: (buyOrder: any) => {
       queryClient.invalidateQueries({
-        queryKey: ["/buy-orders", `/buy-order/${buyOrder.id}`],
+        queryKey: ["buy-orders", `buy-order/${buyOrder.id}`],
       });
     },
   });
+  if (mutation.error) throw mutation.error;
   return mutation;
 }

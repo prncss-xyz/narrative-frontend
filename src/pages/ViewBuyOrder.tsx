@@ -22,7 +22,7 @@ function Actions({ buyOrder }: { buyOrder: BuyOrder }) {
   };
   return (
     <>
-      {mutation.isSuccess && <Navigate to="/buy-order-list" />}
+      {mutation.data && <Navigate to="/buy-order-list" />}
       <Confirm
         overlayVisible={overlayVisible}
         setOverlayVisible={setOverlayVisible}
@@ -65,12 +65,9 @@ function Resolved({
 }
 
 function Fetch({ id }: { id: string }) {
-  const [datasetsError, datasets] = useDatasets();
-  const [countriesError, countries] = useCountries();
-  const [buyOrderError, buyOrder] = useBuyOrder(id);
-  if (datasetsError) throw datasetsError;
-  if (countriesError) throw countriesError;
-  if (buyOrderError) throw buyOrderError;
+  const  datasets = useDatasets();
+  const  countries = useCountries();
+  const  buyOrder = useBuyOrder(id);
   if (!datasets || !countries || !buyOrder) return <Loading />;
   return (
     <Resolved buyOrder={buyOrder} countries={countries} datasets={datasets} />

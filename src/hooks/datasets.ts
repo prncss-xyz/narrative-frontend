@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
-import config from "../config";
-import { datasets } from "../utils/api_samples";
+import { apiURL } from "../utils/apiURL";
+import { datasets } from "../utils/apiSamples";
 
+const isFake = import.meta.env.VITE_FAKE;
 const DatasetSchema = z.object({
   id: z.number(),
   name: z.string(),
@@ -18,18 +19,23 @@ const DatasetsSchema = z.array(DatasetSchema);
 
 export type Datasets = z.infer<typeof DatasetsSchema>;
 
-function fetchDatasets() {
-  if (config.isFake) {
+async function fetchDatasets(): Promise<Dataset[]> {
+  let json: object;
+  if (isFake) {
     console.log("fetching datasets");
-    return Promise.resolve(DatasetsSchema.parse(datasets));
+    json = datasets;
+  } else {
+    const response = await fetch(apiURL + "datasets");
+    json = await response.json();
   }
-  return Promise.reject({ message: "TODO" });
+  return DatasetsSchema.parse(json);
 }
 
-export function useDatasets(): [unknown, undefined | Dataset[]] {
+export function useDatasets(): Dataset[] | undefined {
   const { error, data } = useQuery({
-    queryKey: ["/datasets"],
+    queryKey: ["datasets"],
     queryFn: fetchDatasets,
   });
-  return [error, data];
+  if (error) throw error;
+  return data;
 }

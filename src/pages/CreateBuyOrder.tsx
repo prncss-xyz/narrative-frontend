@@ -11,7 +11,7 @@ function Actions({ result }: { result: BuyOrderFormResult }) {
   const mutation = useCreateBuyOrder();
   return (
     <>
-      {mutation.isSuccess && <Navigate to="/buy-order-list" />}
+      {mutation.data && <Navigate to="/buy-order-list" />}
       <Flex justifyContent="center">
         <Clickable onClick={() => mutation.mutate(result)}>
           <ActionBox>Create Order</ActionBox>
@@ -38,10 +38,8 @@ function Resolved({
 }
 
 function Fetch() {
-  const [datasetsError, datasets] = useDatasets();
-  const [countriesError, countries] = useCountries();
-  const error = datasetsError ?? countriesError;
-  if (error) throw error;
+  const datasets = useDatasets();
+  const countries = useCountries();
   if (!datasets || !countries) return <Loading />;
   return <Resolved countries={countries} datasets={datasets} />;
 }

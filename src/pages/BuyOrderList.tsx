@@ -77,11 +77,9 @@ function Resolved({
 }
 
 function Fetch() {
-  const [datasetsError, datasets] = useDatasets();
-  const [countriesError, countries] = useCountries();
-  const [buyOrdersError, buyOrders] = useBuyOrders();
-  const error = datasetsError ?? countriesError ?? buyOrdersError;
-  if (error) throw error;
+  const datasets = useDatasets();
+  const countries = useCountries();
+  const buyOrders = useBuyOrders();
   if (!datasets || !countries || !buyOrders) return <Loading />;
   return <Resolved buyOrders={buyOrders} countries={countries} />;
 }
