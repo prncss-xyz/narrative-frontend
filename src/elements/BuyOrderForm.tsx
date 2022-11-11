@@ -4,11 +4,20 @@ import { Country } from "../hooks/countries";
 import { Dataset } from "../hooks/datasets";
 import { DatasetItemSmall } from "./DataItemSmall";
 import { useGlobalCountyList } from "./GlobalCountrySelection";
-import { Input, identityString, positve } from "./Input";
+import { Input } from "./Input";
 import { RoundedButton } from "./RoundedButton";
 import { Box, Flex, Grid, H3 } from "./basics";
 import { TogglingSelector } from "./TogglingSelector";
-import { availableRecordCountForDataset, availableRecordCountForDatasets, forcastedRecordCount } from "../utils/logic";
+import {
+  availableRecordCountForDatasets,
+  forcastedRecordCount,
+} from "../utils/logic";
+
+function validateMoney(value: string) {
+  if (value.match(/\..../)) return false; // no more than 2 decimals
+  if (Number(value) >= 0) return true; // a number that is positve
+  return false;
+}
 
 // export interface BuyOrderFormResult {
 export type BuyOrderFormResult = {
@@ -41,16 +50,20 @@ export function BuyOrderForm({
     buyOrder?.countries ?? globalActiveCountries
   );
   const [name, setName] = useState(buyOrder?.name ?? "");
-  const [budget, setBudget] = useState(buyOrder?.budget ?? 0);
+  const [budget, setBudget] = useState(String(buyOrder?.budget ?? 0));
   const result: BuyOrderFormResult = {
     ...buyOrder,
     name,
-    budget,
+    budget: Number(budget),
     datasetIds: activeDatasets,
     countries: activeCountries,
   };
   const forcasted = forcastedRecordCount(countries, datasets, result);
-  const available = availableRecordCountForDatasets(countries, datasets, result.countries);
+  const available = availableRecordCountForDatasets(
+    countries,
+    datasets,
+    result.countries
+  );
 
   return (
     <Flex justifyContent="center">
@@ -66,7 +79,7 @@ export function BuyOrderForm({
               <H3>Order name</H3>
               <Input
                 disabled={disabled}
-                convert={identityString}
+                validate={() => true}
                 placeholder="name"
                 value={name}
                 setValue={setName}
@@ -89,7 +102,7 @@ export function BuyOrderForm({
               $&nbsp;
               <Input
                 disabled={disabled}
-                convert={positve}
+                validate={validateMoney}
                 placeholder="budget"
                 value={budget}
                 setValue={setBudget}

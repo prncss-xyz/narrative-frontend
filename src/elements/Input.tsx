@@ -1,4 +1,5 @@
 export function identityString(valueString: string) {
+  console.log(JSON.stringify(valueString));
   return valueString;
 }
 
@@ -9,24 +10,23 @@ export function positve(valueString: string) {
 }
 
 // type="number" behehaves too weird
-export function Input<T>({
+export function Input({
   placeholder,
   value,
   setValue,
   disabled,
-  convert,
+  validate,
 }: {
   placeholder: string;
-  value: T;
-  setValue: (value: T) => void;
+  value: string;
+  setValue: (value: string) => void;
   disabled?: boolean;
-  convert: (value: string) => T | undefined;
+  validate: (value: string) => any;
 }) {
   const handleChange = ({
     currentTarget: { value },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    const value_ = convert(value);
-    if (value_) setValue(value_);
+    if (validate(value)) setValue(value);
   };
   return (
     <>
@@ -36,7 +36,7 @@ export function Input<T>({
         <input
           type="text"
           placeholder={placeholder}
-          value={String(value)}
+          value={value}
           onChange={handleChange}
         />
       )}
