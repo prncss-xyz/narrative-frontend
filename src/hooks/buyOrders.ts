@@ -36,9 +36,7 @@ function processDates(rawBuyOrders: object[]) {
 
 export type BuyOrder = z.infer<typeof BuyOrderSchema>;
 
-export const BuyOrdersSchema = z.array(BuyOrderSchema);
-
-export type BuyOrders = z.infer<typeof BuyOrdersSchema>;
+const BuyOrdersSchema = z.array(BuyOrderSchema);
 
 async function fetchBuyOrders(): Promise<BuyOrder[]> {
   let json: object[];
@@ -60,7 +58,7 @@ export function useBuyOrders(): BuyOrder[] | undefined {
   return data;
 }
 
-export async function fetchBuyOrder(id: string): Promise<BuyOrder> {
+async function fetchBuyOrder(id: string): Promise<BuyOrder> {
   let json: object;
   if (isFake) {
     console.log("fetching buyorder", id);

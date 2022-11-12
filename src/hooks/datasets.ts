@@ -4,6 +4,7 @@ import { apiURL } from "../utils/apiURL";
 import { datasets } from "../utils/apiSamples";
 
 const isFake = import.meta.env.VITE_FAKE;
+
 const DatasetSchema = z.object({
   id: z.number(),
   name: z.string(),
@@ -16,8 +17,6 @@ const DatasetSchema = z.object({
 export type Dataset = z.infer<typeof DatasetSchema>;
 
 const DatasetsSchema = z.array(DatasetSchema);
-
-export type Datasets = z.infer<typeof DatasetsSchema>;
 
 async function fetchDatasets(): Promise<Dataset[]> {
   let json: object;

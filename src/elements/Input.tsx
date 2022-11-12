@@ -1,14 +1,3 @@
-export function identityString(valueString: string) {
-  console.log(JSON.stringify(valueString));
-  return valueString;
-}
-
-export function positve(valueString: string) {
-  const value = Number(valueString);
-  if (value >= 0) return value;
-  return;
-}
-
 // type="number" behehaves too weird
 export function Input({
   placeholder,

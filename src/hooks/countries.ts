@@ -9,8 +9,6 @@ const StoredDataSchema = z.object({
   recordCount: z.number(),
 });
 
-export type StoredData = z.infer<typeof StoredDataSchema>;
-
 const CountrySchema = z.object({
   countryCode: z.string(),
   name: z.string(),
