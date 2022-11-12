@@ -12,9 +12,9 @@ const Context = createContext<
   null | [null | CountryCodes, (state: CountryCodes) => void]
 >(null);
 
-export function countryString(countries: Country[], activeCountries: string[]) {
+export function countryString(countries: Country[], activeCountryCodes: string[]) {
   const activeCountryNames = countries
-    .filter(({ countryCode }) => activeCountries.includes(countryCode))
+    .filter(({ countryCode }) => activeCountryCodes.includes(countryCode))
     .map(({ name }) => name)
     .sort();
   if (activeCountryNames.length === 0) return "none";
@@ -29,9 +29,9 @@ export function CountrySelectorContext({
 }: {
   children: React.ReactNode;
 }) {
-  const [activeCountries, setActiveCountries] = useState<null | string[]>(null);
+  const [activeCountryCodes, setActiveCountryCodes] = useState<null | string[]>(null);
   return (
-    <Context.Provider value={[activeCountries, setActiveCountries]}>
+    <Context.Provider value={[activeCountryCodes, setActiveCountryCodes]}>
       {children}
     </Context.Provider>
   );
@@ -45,9 +45,9 @@ export function useGlobalCountyList(
     throw new Error(
       "CountrySelector should always be used inside CountrySelectorContext"
     );
-  let [activeCountries, setActiveCountries] = context;
-  activeCountries ??= countries.map((country) => country.countryCode);
-  return [activeCountries, setActiveCountries];
+  let [activeCountryCodes, setActiveCountryCodes] = context;
+  activeCountryCodes ??= countries.map((country) => country.countryCode);
+  return [activeCountryCodes, setActiveCountryCodes];
 }
 
 export function sortCountriesByName(countries: Country[]) {
@@ -65,7 +65,7 @@ export function GlobalCountryList({
 }) {
   const [overlayVisible, setOverlayVisible] = useState(false);
   countries = sortCountriesByName(countries);
-  const [activeCountries, setActiveCountries] = useGlobalCountyList(countries);
+  const [activeCountryCodes, setActiveCountryCodes] = useGlobalCountyList(countries);
   return (
     <>
       <Overlay
@@ -76,8 +76,8 @@ export function GlobalCountryList({
           <H3>Included countries</H3>
           <Flex gap={3}>
             <TogglingSelector
-              state={activeCountries}
-              setState={setActiveCountries}
+              state={activeCountryCodes}
+              setState={setActiveCountryCodes}
               items={countries.map((country) => ({
                 key: country.countryCode,
                 toElem: (props) => (
@@ -96,7 +96,7 @@ export function GlobalCountryList({
           </Box>
           <Box>results from</Box>
           <Box color="black" fontWeight="bold">
-            &nbsp;{countryString(countries, activeCountries)}&nbsp;
+            &nbsp;{countryString(countries, activeCountryCodes)}&nbsp;
           </Box>
         </Flex>
       </Clickable>

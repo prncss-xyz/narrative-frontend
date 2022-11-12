@@ -42,11 +42,11 @@ export function availableRecordCountForDatasets(
 export function selectedDatasets(
   countries: Country[],
   datasets: Dataset[],
-  selectedCountries: string[]
+  selectedCountryCodes: string[]
 ): Dataset[] {
   return datasets.filter((dataset) =>
     intersects(
-      selectedCountries,
+      selectedCountryCodes,
       includedCountries(countries, dataset).map(
         (country) => country.countryCode
       )

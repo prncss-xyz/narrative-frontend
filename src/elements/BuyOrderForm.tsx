@@ -46,7 +46,7 @@ export function BuyOrderForm({
     buyOrder?.datasetIds ?? []
   );
   const [globalActiveCountries] = useGlobalCountyList(countries);
-  const [activeCountries, setActiveCountries] = useState<string[]>(
+  const [activeCountryCodes, setActiveCountryCodes] = useState<string[]>(
     buyOrder?.countries ?? globalActiveCountries
   );
   const [name, setName] = useState(buyOrder?.name ?? "");
@@ -56,7 +56,7 @@ export function BuyOrderForm({
     name,
     budget: Number(budget),
     datasetIds: activeDatasets,
-    countries: activeCountries,
+    countries: activeCountryCodes,
   };
   const forcasted = forcastedRecordCount(countries, datasets, result);
   const available = availableRecordCountForDatasets(
@@ -138,8 +138,8 @@ export function BuyOrderForm({
           <Flex gap={3}>
             <TogglingSelector
               disabled={disabled}
-              state={activeCountries}
-              setState={setActiveCountries}
+              state={activeCountryCodes}
+              setState={setActiveCountryCodes}
               items={countries.map((country) => ({
                 key: country.countryCode,
                 toElem: (props) => (

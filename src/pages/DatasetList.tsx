@@ -20,11 +20,11 @@ function DatasetItem({
   dataset: Dataset;
   countries: Country[];
 }) {
-  const [activeCountries] = useGlobalCountyList(countries);
+  const [activeCountryCodes] = useGlobalCountyList(countries);
   const available = availableRecordCountForDataset(
     countries,
     dataset,
-    activeCountries
+    activeCountryCodes
   );
   return (
     <Flex
@@ -85,8 +85,8 @@ function Resolved({
   datasets: Dataset[];
   countries: Country[];
 }) {
-  const [activeCountries] = useGlobalCountyList(countries);
-  const selected = selectedDatasets(countries, datasets, activeCountries);
+  const [activeCountryCodes] = useGlobalCountyList(countries);
+  const selected = selectedDatasets(countries, datasets, activeCountryCodes);
   return (
     <Flex flexDirection="row" justifyContent="center">
       <Box>

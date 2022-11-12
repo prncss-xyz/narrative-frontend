@@ -70,13 +70,13 @@ function BuyOrderList({
   countries: Country[];
   datasets: Dataset[];
 }) {
-  const [activeCountries] = useGlobalCountyList(countries);
+  const [activeCountryCode] = useGlobalCountyList(countries);
   return (
     <Grid gridTemplateColumns={"auto auto auto"} gridRowGap="3">
       {buyOrders
         .filter((buyOrder) =>
-          buyOrder.countries.some((country) =>
-            activeCountries.includes(country)
+          buyOrder.countries.some((countryCode) =>
+            activeCountryCode.includes(countryCode)
           )
         )
         .flatMap((buyOrder) => buyOrderItem(countries, datasets, buyOrder))}
