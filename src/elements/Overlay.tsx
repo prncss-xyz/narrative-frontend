@@ -3,35 +3,39 @@ import { Box, Flex } from "./basics";
 
 export function Overlay({
   visible,
-  onClickOutside,
+  setVisible,
   children,
   ...props
 }: {
   visible: boolean;
-  onClickOutside: () => void;
+  setVisible: () => void;
   children: React.ReactNode;
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
-  const ref = useClickOutside(onClickOutside);
+  const ref = useClickOutside(setVisible);
   if (!visible) return null;
   return (
     <>
       <Box
         backgroundColor="black"
-        position="fixed"
-        left="0px"
-        top="0px"
-        zIndex={10}
-        opacity="50%"
+        css={{
+          position: "fixed",
+          left: "0px",
+          top: "0px",
+          zIndex: 10,
+          opacity: "50%",
+        }}
         height="100vh"
         width="100vw"
       />
       <Flex
         flexDirection="column"
-        position="fixed"
-        left="0px"
-        top="0px"
-        zIndex={10}
+        css={{
+          position: "fixed",
+          left: "0px",
+          top: "0px",
+          zIndex: 10,
+        }}
         height="100vh"
         width="100vw"
       >

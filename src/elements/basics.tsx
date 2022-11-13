@@ -12,8 +12,11 @@ import {
 
 const custom = system({
   gap: { property: "gap", scale: "space" },
+  left: { property: "left", scale: "space" },
+  top: { property: "top", scale: "space" },
   textDecoration: true,
   cursor: true,
+  position: true,
 });
 
 export const Img = styled.img(border, space, layout);

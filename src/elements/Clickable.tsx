@@ -12,17 +12,20 @@ export function Clickable({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box
-      as="button"
-      border="0px"
-      padding="0px"
-      height="100%"
-      cursor={disabled ? undefined : "pointer"}
-      disabled={disabled}
-      onClick={onClick}
-      {...props}
-    >
-      {children}
+    <Box>
+      <Box
+        as="button"
+        backgroundColor="inherit"
+        border="0px"
+        padding="0px"
+        height="100%"
+        cursor={disabled ? undefined : "pointer"}
+        disabled={disabled}
+        onClick={onClick}
+        {...props}
+      >
+        {children}
+      </Box>
     </Box>
   );
 }

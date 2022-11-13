@@ -62,51 +62,49 @@ export function sortCountriesByName(countries: Country[]) {
   );
 }
 
-export function GlobalCountrySelection({
+export function GlobalCountrySelector({ countries }: { countries: Country[] }) {
+  countries = sortCountriesByName(countries);
+  const [activeCountryCodes, setActiveCountryCodes] =
+    useGlobalCountyList(countries);
+  return (
+    <Box>
+      <H3>Included countries</H3>
+      <Flex gap={3}>
+        <TogglingSelector
+          state={activeCountryCodes}
+          setState={setActiveCountryCodes}
+          items={countries.map((country) => ({
+            key: country.countryCode,
+            toElem: (props) => (
+              <RoundedButton {...props}>{country.name}</RoundedButton>
+            ),
+          }))}
+        />
+      </Flex>
+    </Box>
+  );
+}
+
+export function GlobalCountrySelectionSummary({
   count,
   countries,
 }: {
   count: number;
   countries: Country[];
 }) {
-  const [overlayVisible, setOverlayVisible] = useState(false);
   countries = sortCountriesByName(countries);
   const [activeCountryCodes, setActiveCountryCodes] =
     useGlobalCountyList(countries);
   return (
-    <>
-      <Overlay
-        visible={overlayVisible}
-        onClickOutside={() => setOverlayVisible(false)}
-      >
-        <Box>
-          <H3>Included countries</H3>
-          <Flex gap={3}>
-            <TogglingSelector
-              state={activeCountryCodes}
-              setState={setActiveCountryCodes}
-              items={countries.map((country) => ({
-                key: country.countryCode,
-                toElem: (props) => (
-                  <RoundedButton {...props}>{country.name}</RoundedButton>
-                ),
-              }))}
-            />
-          </Flex>
-        </Box>
-      </Overlay>
-      <Clickable onClick={() => setOverlayVisible(true)}>
-        <Flex color="gray1">
-          <Box>Showing</Box>
-          <Box color="black" fontWeight="bold">
-            &nbsp;{count}&nbsp;
-          </Box>
-          <Box>results from</Box>
-          <Box color="black" fontWeight="bold">
-            &nbsp;{countryString(countries, activeCountryCodes)}&nbsp;
-          </Box>
-        </Flex>
-      </Clickable>
-    </>
+    <Flex color="gray1">
+      <Box>Showing</Box>
+      <Box color="black" fontWeight="bold">
+        &nbsp;{count}&nbsp;
+      </Box>
+      <Box>results from</Box>
+      <Box color="black" fontWeight="bold">
+        &nbsp;{countryString(countries, activeCountryCodes)}&nbsp;
+      </Box>
+    </Flex>
   );
 }

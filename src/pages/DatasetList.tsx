@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Box, Flex, Grid, H2, Img } from "../elements/basics";
+import { Clickable } from "../elements/Clickable";
 import {
   countryString,
-  GlobalCountryList,
+  GlobalCountrySelectionSummary,
+  GlobalCountrySelector,
   useGlobalCountyList,
 } from "../elements/GlobalCountrySelection";
 import { Loading } from "../elements/Loading";
+import { Overlay } from "../elements/Overlay";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
 import {
@@ -87,24 +91,38 @@ function Resolved({
 }) {
   const [activeCountryCodes] = useGlobalCountyList(countries);
   const selected = selectedDatasets(countries, datasets, activeCountryCodes);
+  const [overlayVisible, setOverlayvisible] = useState(false);
   return (
-    <Flex flexDirection="row" justifyContent="center">
-      <Box>
-        <GlobalCountryList count={selected.length} countries={countries} />
-        <Grid
-          gridTemplateColumns={"auto auto"}
-          alignItems="start"
-          gridRowGap={2}
-          gridColumnGap={2}
-        >
-          {selected.map((dataset) => (
-            <div key={dataset.id}>
-              <DatasetItem dataset={dataset} countries={countries} />
-            </div>
-          ))}
-        </Grid>
-      </Box>
-    </Flex>
+    <>
+      <Overlay
+        visible={overlayVisible}
+        setVisible={() => setOverlayvisible(false)}
+      >
+        <GlobalCountrySelector countries={countries} />
+      </Overlay>
+      <Flex flexDirection="row" justifyContent="center">
+        <Box>
+          <Clickable onClick={() => setOverlayvisible(true)}>
+            <GlobalCountrySelectionSummary
+              count={selected.length}
+              countries={countries}
+            />
+          </Clickable>
+          <Grid
+            gridTemplateColumns={"auto auto"}
+            alignItems="start"
+            gridRowGap={2}
+            gridColumnGap={2}
+          >
+            {selected.map((dataset) => (
+              <div key={dataset.id}>
+                <DatasetItem dataset={dataset} countries={countries} />
+              </div>
+            ))}
+          </Grid>
+        </Box>
+      </Flex>
+    </>
   );
 }
 

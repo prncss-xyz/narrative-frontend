@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { act } from "react-dom/test-utils";
 import {
   CountrySelectorContext,
-  GlobalCountrySelection,
+  GlobalCountrySelector,
   useGlobalCountyList,
 } from "./GlobalCountrySelection";
 
@@ -40,7 +40,7 @@ function Container(spy: (activeCountryCodes: string[]) => void) {
   // spy(activeCountryCodes);
   return (
     <CountrySelectorContext>
-      <GlobalCountrySelection count={3} countries={countries} />;
+      <GlobalCountrySelector count={3} countries={countries} />;
     </CountrySelectorContext>
   );
 }
@@ -48,7 +48,7 @@ function Container(spy: (activeCountryCodes: string[]) => void) {
 describe.todo("GlobalCountrySelection", async () => {
   const { container } = render(
     <CountrySelectorContext>
-      <GlobalCountrySelection count={3} countries={countries} />;
+      <GlobalCountrySelector count={3} countries={countries} />;
     </CountrySelectorContext>
   );
   it("should match snapshot", () => {

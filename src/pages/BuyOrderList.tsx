@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ActionBox, Box, Flex, Grid } from "../elements/basics";
+import { Clickable } from "../elements/Clickable";
 import {
-  GlobalCountryList,
+  GlobalCountrySelectionSummary,
+  GlobalCountrySelector,
   useGlobalCountyList,
 } from "../elements/GlobalCountrySelection";
 import { Loading } from "../elements/Loading";
+import { Overlay } from "../elements/Overlay";
 import { BuyOrder, useBuyOrders } from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
@@ -91,11 +95,23 @@ function Resolved({
   buyOrders: BuyOrder[];
   countries: Country[];
 }) {
+  const [overlayVisible, setOverlayvisible] = useState(false);
   return (
     <>
+      <Overlay
+        visible={overlayVisible}
+        setVisible={() => setOverlayvisible(false)}
+      >
+        <GlobalCountrySelector countries={countries} />
+      </Overlay>
       <Flex justifyContent="center">
         <Flex flexDirection="column">
-          <GlobalCountryList count={buyOrders.length} countries={countries} />
+          <Clickable onClick={() => setOverlayvisible(true)}>
+            <GlobalCountrySelectionSummary
+              count={buyOrders.length}
+              countries={countries}
+            />
+          </Clickable>
           <BuyOrderList
             countries={countries}
             datasets={datasets}
