@@ -1,33 +1,35 @@
 import { Global, ThemeProvider, useTheme } from "@emotion/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "modern-css-reset/dist/reset.min.css";
+import { ErrorBoundary } from "react-error-boundary";
 import {
   BrowserRouter as Router,
   Navigate,
   Route,
   Routes,
 } from "react-router-dom";
+import { Box, H1 } from "./elements/basics";
+import { ErrorFallback } from "./elements/ErrorFallback";
 import { CountrySelectorContext } from "./elements/GlobalCountrySelection";
-import Navigation from "./elements/Navigation";
+import { Navigation } from "./elements/Navigation";
 import Error404Page from "./pages/404";
 import BuyOrderListPage from "./pages/BuyOrderList";
-import DatasetListPage from "./pages/DatasetList";
 import NewBuyOrderPage from "./pages/CreateBuyOrder";
-import theme from "./theme";
-import ViewBuyOrderPage from "./pages/ViewBuyOrder";
+import DatasetListPage from "./pages/DatasetList";
 import EditBuyOrderPage from "./pages/EditBuyOrder";
-import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback } from "./elements/ErrorFallback";
-import { Box, H1 } from "./elements/basics";
+import ViewBuyOrderPage from "./pages/ViewBuyOrder";
+import theme from "./theme";
 
 function GlobalStyle() {
-  const theme = useTheme() as any;
+  const theme: any = useTheme();
   return (
     <Global
       styles={{
         body: {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
           backgroundColor: theme.colors.gray3,
           fontFamily: "Arial, Helvetica, sans serif",
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
           fontSize: theme.fontSizes[2],
           "& a": {
             color: "inherit",
@@ -62,9 +64,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
         <CountrySelectorContext>
           <Router>
-            <GlobalStyle />
             <Navigation />
             <Headers />
             <ErrorBoundary FallbackComponent={ErrorFallback}>
