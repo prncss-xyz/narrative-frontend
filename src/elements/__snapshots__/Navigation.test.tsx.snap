@@ -1,0 +1,31 @@
+// Vitest Snapshot v1
+
+exports[`Navigation > should match snapshot 1`] = `
+<div>
+  <div
+    class="css-pr8p4g-Box-Flex-Navigation edgsz5f1"
+    color="gray2"
+  >
+    <div
+      class="css-9teez-Box edgsz5f2"
+    >
+      <a
+        class=""
+        href="/buy-order-list"
+      >
+        Buy Orders
+      </a>
+    </div>
+    <div
+      class="css-9teez-Box edgsz5f2"
+    >
+      <a
+        class=""
+        href="/dataset-list"
+      >
+        Datasets
+      </a>
+    </div>
+  </div>
+</div>
+`;

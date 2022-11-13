@@ -1,3 +1,5 @@
+import { Box } from "./basics";
+
 export function Clickable({
   onClick,
   children,
@@ -10,18 +12,17 @@ export function Clickable({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <button
-      css={{
-        border: "0px",
-        background: "transparent",
-        padding: "0px",
-        cursor: disabled ? undefined : "pointer",
-      }}
+    <Box
+      as="button"
+      border="0px"
+      padding="0px"
+      height="100%"
+      cursor={disabled ? undefined : "pointer"}
       disabled={disabled}
       onClick={onClick}
       {...props}
     >
       {children}
-    </button>
+    </Box>
   );
 }

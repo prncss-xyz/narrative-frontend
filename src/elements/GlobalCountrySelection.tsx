@@ -1,8 +1,8 @@
-import { Flex, Box, H3 } from "./basics";
-import { Overlay } from "./Overlay";
-import { Clickable } from "./Clickable";
 import { createContext, useContext, useState } from "react";
 import { Country } from "../hooks/countries";
+import { Box, Flex, H3 } from "./basics";
+import { Clickable } from "./Clickable";
+import { Overlay } from "./Overlay";
 import { RoundedButton } from "./RoundedButton";
 import { TogglingSelector } from "./TogglingSelector";
 
@@ -12,7 +12,10 @@ const Context = createContext<
   null | [null | CountryCodes, (state: CountryCodes) => void]
 >(null);
 
-export function countryString(countries: Country[], activeCountryCodes: string[]) {
+export function countryString(
+  countries: Country[],
+  activeCountryCodes: string[]
+) {
   const activeCountryNames = countries
     .filter(({ countryCode }) => activeCountryCodes.includes(countryCode))
     .map(({ name }) => name)
@@ -29,7 +32,9 @@ export function CountrySelectorContext({
 }: {
   children: React.ReactNode;
 }) {
-  const [activeCountryCodes, setActiveCountryCodes] = useState<null | string[]>(null);
+  const [activeCountryCodes, setActiveCountryCodes] = useState<null | string[]>(
+    null
+  );
   return (
     <Context.Provider value={[activeCountryCodes, setActiveCountryCodes]}>
       {children}
@@ -45,6 +50,7 @@ export function useGlobalCountyList(
     throw new Error(
       "CountrySelector should always be used inside CountrySelectorContext"
     );
+  // eslint-disable-next-line prefer-const
   let [activeCountryCodes, setActiveCountryCodes] = context;
   activeCountryCodes ??= countries.map((country) => country.countryCode);
   return [activeCountryCodes, setActiveCountryCodes];
@@ -56,7 +62,7 @@ export function sortCountriesByName(countries: Country[]) {
   );
 }
 
-export function GlobalCountryList({
+export function GlobalCountrySelection({
   count,
   countries,
 }: {
@@ -65,7 +71,8 @@ export function GlobalCountryList({
 }) {
   const [overlayVisible, setOverlayVisible] = useState(false);
   countries = sortCountriesByName(countries);
-  const [activeCountryCodes, setActiveCountryCodes] = useGlobalCountyList(countries);
+  const [activeCountryCodes, setActiveCountryCodes] =
+    useGlobalCountyList(countries);
   return (
     <>
       <Overlay

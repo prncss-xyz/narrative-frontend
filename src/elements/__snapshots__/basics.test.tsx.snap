@@ -1,0 +1,23 @@
+// Vitest Snapshot v1
+
+exports[`basics > ActionBox > should match snapshot 1`] = `<div />`;
+
+exports[`basics > Box > should match snapshot 1`] = `<div />`;
+
+exports[`basics > Flex > should match snapshot 1`] = `<div />`;
+
+exports[`basics > H1 > should match snapshot 1`] = `<div />`;
+
+exports[`basics > H2 > should match snapshot 1`] = `<div />`;
+
+exports[`basics > H3 > should match snapshot 1`] = `<div />`;
+
+exports[`basics > Img > should match snapshot 1`] = `
+<div>
+  <img
+    class="css-174dvwn-Img edgsz5f3"
+  />
+</div>
+`;
+
+exports[`basics > OverlayActionBox > should match snapshot 1`] = `<div />`;

@@ -1,0 +1,5 @@
+// Vitest Snapshot v1
+
+exports[`RoundedButton > disabled > should match snapshot 1`] = `<div />`;
+
+exports[`RoundedButton > not disabled > should match snapshot 1`] = `<div />`;

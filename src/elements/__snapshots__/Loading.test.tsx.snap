@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`Loading > should match snapshot 1`] = `
+<div>
+  <h2
+    class="css-1ji1z45-Box edgsz5f2"
+    color="gray1"
+    font-size="3"
+    font-weight="bold"
+  >
+    Loading...
+  </h2>
+</div>
+`;

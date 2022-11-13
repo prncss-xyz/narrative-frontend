@@ -1,0 +1,5 @@
+// Vitest Snapshot v1
+
+exports[`Input > disabled > should match snapshot 1`] = `<div />`;
+
+exports[`Input > validate: true > should match snapshot 1`] = `<div />`;

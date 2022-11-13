@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { Clickable } from "./Clickable";
+import { RoundedButton } from "./RoundedButton";
 
-describe("Clickable", () => {
+describe("RoundedButton", () => {
   describe("not disabled", async () => {
     const spy = vi.fn();
     const { container } = render(
-      <Clickable onClick={spy}>not disabled</Clickable>
+      <RoundedButton onClick={spy}>not disabled</RoundedButton>
     );
     await userEvent.click(screen.getByText("not disabled"));
     it("should trigger when clicked", () => {
@@ -20,9 +20,9 @@ describe("Clickable", () => {
   describe("disabled", async () => {
     const spy = vi.fn();
     const { container } = render(
-      <Clickable disabled={true} onClick={spy}>
+      <RoundedButton disabled={true} onClick={spy}>
         disabled
-      </Clickable>
+      </RoundedButton>
     );
     await userEvent.click(screen.getByText("disabled"));
     it("should trigger when clicked", () => {

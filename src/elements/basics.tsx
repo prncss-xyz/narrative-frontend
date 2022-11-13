@@ -1,25 +1,22 @@
 import styled from "@emotion/styled";
 import {
   border,
-  space,
-  layout,
   color,
   flexbox,
   grid,
-  typography,
+  layout,
+  space,
   system,
+  typography,
 } from "styled-system";
 
 const custom = system({
   gap: { property: "gap", scale: "space" },
   textDecoration: true,
+  cursor: true,
 });
 
-export const Img = styled.img(
-  border,
-  space,
-  layout,
-)
+export const Img = styled.img(border, space, layout);
 
 export const Box = styled.div(
   {
@@ -69,14 +66,7 @@ export function H2({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box
-      as="h2"
-      my={3}
-      color="gray1"
-      fontWeight="bold"
-      fontSize={3}
-      {...props}
-    >
+    <Box as="h2" my={3} color="gray1" fontWeight="bold" fontSize={3} {...props}>
       {children}
     </Box>
   );
@@ -112,19 +102,11 @@ export function ActionBox({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box
-      my={1}
-      color="gray1"
-      backgroundColor="gray3"
-      py={1}
-      px={2}
-      {...props}
-    >
+    <Box my={1} color="gray1" backgroundColor="gray3" py={1} px={2} {...props}>
       {children}
     </Box>
   );
 }
-
 
 export function OverlayActionBox({
   children,
@@ -134,14 +116,7 @@ export function OverlayActionBox({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box
-      my={1}
-      color="gray1"
-      backgroundColor="white"
-      py={1}
-      px={2}
-      {...props}
-    >
+    <Box my={1} color="gray1" backgroundColor="white" py={1} px={2} {...props}>
       {children}
     </Box>
   );

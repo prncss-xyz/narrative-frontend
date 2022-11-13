@@ -18,24 +18,20 @@ export function Overlay({
     <>
       <Box
         backgroundColor="black"
-        css={{
-          position: "fixed",
-          left: "0px",
-          top: "0px",
-          zIndex: 10,
-          opacity: "50%",
-        }}
+        position="fixed"
+        left="0px"
+        top="0px"
+        zIndex={10}
+        opacity="50%"
         height="100vh"
         width="100vw"
       />
       <Flex
         flexDirection="column"
-        css={{
-          position: "fixed",
-          left: "0px",
-          top: "0px",
-          zIndex: 10,
-        }}
+        position="fixed"
+        left="0px"
+        top="0px"
+        zIndex={10}
         height="100vh"
         width="100vw"
       >

@@ -1,3 +1,5 @@
+import { Box } from "./basics";
+
 // type="number" behehaves too weird
 export function Input({
   placeholder,
@@ -10,7 +12,7 @@ export function Input({
   value: string;
   setValue: (value: string) => void;
   disabled?: boolean;
-  validate: (value: string) => any;
+  validate: (value: string) => unknown;
 }) {
   const handleChange = ({
     currentTarget: { value },
@@ -20,7 +22,7 @@ export function Input({
   return (
     <>
       {disabled ? (
-        <div css={{ display: "inline" }}>{String(value)}</div>
+        <Box display="inline">{String(value)}</Box>
       ) : (
         <input
           type="text"

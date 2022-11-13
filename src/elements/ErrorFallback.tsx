@@ -1,12 +1,16 @@
 import { Box } from "./basics";
 
-export function ErrorFallback({ error }: { error: any }) {
+interface Error {
+  message: string;
+}
+
+export function ErrorFallback({ error }: { error: Error }) {
   // TODO: could send log to server
   console.error(error);
   return (
     <Box role="alert">
       <Box fontSize={3}>Something went wrong.</Box>
-      <pre>{error?.message}</pre>
+      <pre>{error.message}</pre>
     </Box>
   );
 }

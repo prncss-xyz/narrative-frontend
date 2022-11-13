@@ -1,5 +1,5 @@
 import { Dataset } from "../hooks/datasets";
-import { Flex, Img, Box } from "./basics";
+import { Box, Flex, Img } from "./basics";
 
 export function DatasetItemSmall({
   dataset,
@@ -22,9 +22,7 @@ export function DatasetItemSmall({
       color={active ? undefined : "gray1"}
       backgroundColor={active ? "white" : "gray3"}
       onClick={disabled ? undefined : onClick}
-      css={{
-        cursor: disabled ? undefined : "pointer",
-      }}
+      cursor={disabled ? undefined : "pointer"}
     >
       <Flex minWidth={1} flexDirection="column" justifyContent="center">
         <Img

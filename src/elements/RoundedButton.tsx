@@ -21,9 +21,7 @@ export function RoundedButton({
       backgroundColor={active ? "white" : "gray3"}
       borderRadius={3}
       onClick={disabled ? undefined : onClick}
-      css={{
-        cursor: disabled ? undefined : "pointer",
-      }}
+      cursor={disabled ? undefined : "pointer"}
     >
       {children}
     </Box>

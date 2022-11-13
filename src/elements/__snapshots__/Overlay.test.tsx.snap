@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`Overlay > opened > should match snapshot 1`] = `<div />`;
