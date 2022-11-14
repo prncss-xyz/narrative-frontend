@@ -67,59 +67,84 @@ export function BuyOrderForm({
 
   return (
     <Flex justifyContent="center">
-      <Flex flexDirection="column" width={6}>
-        <Box px={4} py={3} backgroundColor="tone2">
-          <Grid
-            gridTemplateColumns={"1fr 1fr"}
-            alignItems="start"
-            gridRowGap={2}
-            gridColumnGap={2}
-          >
-            <Box>
-              <H3>Order name</H3>
-              <Input
-                disabled={disabled}
-                validate={() => true}
-                placeholder="name"
-                value={name}
-                setValue={setName}
-              />
-            </Box>
-            <Box>
-              {buyOrder && (
-                <>
-                  <H3>Date Created</H3>
+      <Flex
+        width={6}
+        gap={3}
+        flexDirection="column"
+        px={4}
+        py={3}
+        backgroundColor="tone2"
+      >
+        <Grid
+          gridTemplateRows={"1fr 1fr"}
+          gridTemplateColumns={"1fr 1fr"}
+          gridRowGap={3}
+          gridColumnGap={3}
+        >
+          <Box>
+            <H3>Order name</H3>
+            <Input
+              py="0px"
+              px={disabled ? 0 : 1}
+              width="100%"
+              borderStyle="none"
+              maxHeight={1}
+              disabled={disabled}
+              validate={() => true}
+              placeholder="name"
+              value={name}
+              setValue={setName}
+            />
+          </Box>
+          <Box>
+            {buyOrder ? (
+              <>
+                <H3>Date Created</H3>
+                <Box height={1} p="0px" alignItems="baseline">
                   {buyOrder.createdAt.toLocaleString([], {
                     year: "numeric",
                     month: "numeric",
                     day: "numeric",
                   })}
-                </>
-              )}
-            </Box>
-            <Box>
-              <H3>Order budget</H3>
-              $&nbsp;
+                </Box>
+              </>
+            ) : (
+              <Box />
+            )}
+          </Box>
+          <Box>
+            <H3>Order budget</H3>
+            <Flex alignItems="baseline">
+              <Box>$</Box>
               <Input
+                borderStyle="none"
+                width="100%"
+                maxHeight={1}
+                py="0px"
+                px={disabled ? 0 : 1}
+                ml={!disabled && 2}
                 disabled={disabled}
                 validate={validateMoney}
                 placeholder="budget"
                 value={budget}
                 setValue={setBudget}
               />
-            </Box>
-            <Box>
-              <H3>Forecasted Records</H3>
+            </Flex>
+          </Box>
+          <Box>
+            <H3>Forecasted Records</H3>
+            <Box height={1} p="0px" alignItems="baseline">
               {`${forcasted} of ${available} available records`}
             </Box>
-          </Grid>
-          <Box mt={4} />
+          </Box>
+        </Grid>
+        <Box>
           <H3>Included datasets</H3>
           <Grid
             gridTemplateColumns={"1fr 1fr"}
             alignItems="start"
-            gridRowGap={2}
-            gridColumnGap={2}
+            gridRowGap={3}
+            gridColumnGap={3}
           >
             <TogglingSelector
               disabled={disabled}
@@ -133,7 +158,8 @@ export function BuyOrderForm({
               }))}
             />
           </Grid>
-          <Box mt={4} />
+        </Box>
+        <Box>
           <H3>Included countries</H3>
           <Flex gap={3}>
             <TogglingSelector
@@ -154,9 +180,9 @@ export function BuyOrderForm({
               }))}
             />
           </Flex>
-          <Box mt={6} />
-          {toActions(result)}
         </Box>
+        <Box mt={5} />
+        {toActions(result)}
       </Flex>
     </Flex>
   );

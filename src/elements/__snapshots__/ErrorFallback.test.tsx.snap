@@ -3,11 +3,11 @@
 exports[`ErrorFallback > should match snapshot 1`] = `
 <div>
   <div
-    class="css-1x3sxzl-Box edgsz5f2"
+    class="css-1x3sxzl-Box edgsz5f3"
     role="alert"
   >
     <div
-      class="css-wn5gmn-Box edgsz5f2"
+      class="css-wn5gmn-Box edgsz5f3"
       font-size="3"
     >
       Something went wrong.

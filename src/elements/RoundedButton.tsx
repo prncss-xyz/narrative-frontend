@@ -16,11 +16,14 @@ export function RoundedButton({
   return (
     <Box
       as="button"
-      p={1}
+      px={2}
+      py={1}
+      height={1}
       borderStyle="solid"
       borderColor={active ? "black" : "tone4"}
       color={active ? "text" : "tone4"}
       backgroundColor={active ? "tone0" : "tone1"}
+      fontSize={0}
       borderRadius={3}
       onClick={disabled ? undefined : onClick}
       cursor={disabled ? undefined : "pointer"}

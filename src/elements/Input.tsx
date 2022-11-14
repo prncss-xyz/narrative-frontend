@@ -1,4 +1,4 @@
-import { Box } from "./basics";
+import { Box, InputRaw } from "./basics";
 
 // type="number" behehaves too weird
 export function Input({
@@ -7,12 +7,14 @@ export function Input({
   setValue,
   disabled,
   validate,
+  ...props
 }: {
   placeholder: string;
   value: string;
   setValue: (value: string) => void;
   disabled?: boolean;
   validate: (value: string) => unknown;
+  [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   const handleChange = ({
     currentTarget: { value },
@@ -22,13 +24,16 @@ export function Input({
   return (
     <>
       {disabled ? (
-        <Box display="inline">{String(value)}</Box>
+        <Box display="inline" {...props}>
+          {String(value)}
+        </Box>
       ) : (
-        <input
+        <InputRaw
           type="text"
           placeholder={placeholder}
           value={value}
           onChange={handleChange}
+          {...props}
         />
       )}
     </>

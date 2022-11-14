@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ActionBox, Box, Flex, Grid } from "../elements/basics";
+import { ActionBox, Box, Flex, Grid, H3 } from "../elements/basics";
 import { Clickable } from "../elements/Clickable";
 import {
   GlobalCountrySelectionSummary,
@@ -18,9 +18,7 @@ import { forcastedRecordCount } from "../utils/logic";
 function BuyOrderField({ name, value }: { name: string; value: string }) {
   return (
     <Flex px={2} py={3} backgroundColor="tone3" flexDirection="column">
-      <Box color="tone4" pb={1} textDecoration="underline">
-        {name}
-      </Box>
+      <H3>{name}</H3>
       <Box>{value}</Box>
     </Flex>
   );
@@ -69,14 +67,16 @@ function BuyOrderList({
   buyOrders,
   countries,
   datasets,
+  ...props
 }: {
   buyOrders: BuyOrder[];
   countries: Country[];
   datasets: Dataset[];
+  [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   const [activeCountryCode] = useGlobalCountyList(countries);
   return (
-    <Grid gridTemplateColumns={"auto auto auto"} gridRowGap="3">
+    <Grid gridTemplateColumns={"auto auto auto"} gridRowGap="3" {...props}>
       {buyOrders
         .filter((buyOrder) =>
           buyOrder.countries.some((countryCode) =>
@@ -105,7 +105,7 @@ function Resolved({
         <GlobalCountrySelector countries={countries} />
       </Overlay>
       <Flex justifyContent="center">
-        <Flex flexDirection="column">
+        <Flex flexDirection="column" width={6}>
           <Clickable onClick={() => setOverlayvisible(true)}>
             <GlobalCountrySelectionSummary
               count={buyOrders.length}
@@ -122,7 +122,9 @@ function Resolved({
       <Box mt={6} />
       <Flex justifyContent="center">
         <Link to={"/new-buy-order"}>
-          <ActionBox backgroundColor="tone3" color="tone1" >New Order</ActionBox>
+          <ActionBox backgroundColor="tone3" color="tone4">
+            New Order
+          </ActionBox>
         </Link>
       </Flex>
     </>

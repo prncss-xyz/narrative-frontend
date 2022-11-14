@@ -62,14 +62,21 @@ export function sortCountriesByName(countries: Country[]) {
   );
 }
 
-export function GlobalCountrySelector({ countries }: { countries: Country[] }) {
+export function GlobalCountrySelector({
+  countries,
+  ...props
+}: {
+  countries: Country[];
+
+  [prop: string]: unknown; // TODO: could be more restrictive
+}) {
   countries = sortCountriesByName(countries);
   const [activeCountryCodes, setActiveCountryCodes] =
     useGlobalCountyList(countries);
   return (
     <Box>
       <H3>Included countries</H3>
-      <Flex gap={3}>
+      <Flex gap={3} {...props}>
         <TogglingSelector
           state={activeCountryCodes}
           setState={setActiveCountryCodes}
@@ -88,22 +95,33 @@ export function GlobalCountrySelector({ countries }: { countries: Country[] }) {
 export function GlobalCountrySelectionSummary({
   count,
   countries,
+  ...props
 }: {
   count: number;
   countries: Country[];
+  [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   countries = sortCountriesByName(countries);
   const [activeCountryCodes, setActiveCountryCodes] =
     useGlobalCountyList(countries);
   return (
-    <Flex color="tone4">
-      <Box>Showing</Box>
-      <Box color="text" fontWeight="bold">
-        &nbsp;{count}&nbsp;
+    <Flex
+      justifyItems="start"
+      flexWrap="wrap"
+      color="tone4"
+      alignItems="baseline"
+      pb={2}
+      textAlign="left"
+      columnGap="0.4em"
+      {...props}
+    >
+      <Box display="inline">Showing</Box>
+      <Box display="inline" color="text" fontWeight="bold">
+        {count}
       </Box>
-      <Box>results from</Box>
-      <Box color="text" fontWeight="bold">
-        &nbsp;{countryString(countries, activeCountryCodes)}&nbsp;
+      <Box display="inline">{count === 1 ? "result" : "results"} from</Box>
+      <Box display="inline" color="text" fontWeight="bold">
+        {countryString(countries, activeCountryCodes)}
       </Box>
     </Flex>
   );

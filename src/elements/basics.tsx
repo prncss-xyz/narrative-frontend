@@ -12,6 +12,7 @@ import {
 
 const custom = system({
   gap: { property: "gap", scale: "space" },
+  columnGap: { property: "columnGap", scale: "space" },
   left: { property: "left", scale: "space" },
   top: { property: "top", scale: "space" },
   textDecoration: true,
@@ -19,7 +20,15 @@ const custom = system({
   position: true,
 });
 
-export const Img = styled.img(border, space, layout);
+export const Img = styled.img(
+  {
+    boxSizing: "border-box",
+    minWidth: 0,
+  },
+  border,
+  space,
+  layout
+);
 
 export const Box = styled.div(
   {
@@ -39,6 +48,17 @@ export const Box = styled.div(
 export const Flex = styled(Box)({ display: "flex" });
 
 export const Grid = styled(Box)({ display: "grid" });
+
+export const InputRaw = styled.input(
+  {
+    boxSizing: "border-box",
+    minWidth: 0,
+  },
+  border,
+  space,
+  layout,
+  color
+);
 
 export function H1({
   children,
@@ -96,7 +116,8 @@ export function H3({
       color="tone4"
       fontWeight="normal"
       textDecoration="underline"
-      fontSize={2}
+      textAlign="left"
+      fontSize={1}
       {...props}
     >
       {children}

@@ -6,34 +6,36 @@ export function DatasetItemSmall({
   active,
   disabled,
   onClick,
+  ...props
 }: {
   dataset: Dataset;
   active?: boolean;
   disabled?: boolean;
   onClick?: React.MouseEventHandler;
+  [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
     <Flex
-      p={1}
+      px={3}
+      py={1}
+      gap={3}
+      alignItems="center"
       flexDirection="row"
-      gap={2}
       borderStyle="solid"
       borderColor={active ? "text" : "tone1"}
       backgroundColor={active ? "tone0" : "tone1"}
       onClick={disabled ? undefined : onClick}
       cursor={disabled ? undefined : "pointer"}
+      {...props}
     >
-      <Flex minWidth={1} flexDirection="column" justifyContent="center">
-        <Img
-          src={dataset.thumbnailUrl}
-          width={1}
-          height={1}
-          alt="dataset thumbnail"
-        />
-      </Flex>
+      <Img height={1} src={dataset.thumbnailUrl} alt="dataset thumbnail" />
       <Flex flexDirection="column">
-        <Box color="text">{dataset.label}</Box>
-        <Box color="tone4">${dataset.costPerRecord} per record</Box>
+        <Box color="text" fontSize={2}>
+          {dataset.label}
+        </Box>
+        <Box color="tone4" fontSize={0}>
+          ${dataset.costPerRecord} per record
+        </Box>
       </Flex>
     </Flex>
   );

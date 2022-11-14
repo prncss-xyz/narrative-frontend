@@ -19,7 +19,7 @@ export type Dataset = z.infer<typeof DatasetSchema>;
 const DatasetsSchema = z.array(DatasetSchema);
 
 async function fetchDatasets(): Promise<Dataset[]> {
-  let json: object;
+  let json: unknown;
   if (isFake) {
     console.log("fetching datasets");
     json = datasets;

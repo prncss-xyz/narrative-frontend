@@ -12,6 +12,7 @@ export function Navigation() {
       zIndex={10}
       position="sticky"
       top="0px"
+      gap={4}
       css={{
         "& .active": {
           fontWeight: "bold",
@@ -20,10 +21,11 @@ export function Navigation() {
         },
       }}
     >
-      <Box mx={4}>
+      <Box/>
+      <Box>
         <NavLink to="/buy-order-list">Buy Orders</NavLink>
       </Box>
-      <Box mx={4}>
+      <Box>
         <NavLink to="/dataset-list">Datasets</NavLink>
       </Box>
     </Flex>

@@ -32,13 +32,14 @@ function DatasetItem({
   );
   return (
     <Flex
-      p={2}
+      p={3}
+      gap={2}
       width={5}
       minHeight={5}
       flexDirection="column"
       backgroundColor="tone3"
     >
-      <Flex flexDirection="row">
+      <Flex flexDirection="row" gap={2}>
         <Box maxHeight={3} minWidth={3} backgroundColor="tone1">
           <Img
             src={dataset.thumbnailUrl}
@@ -47,17 +48,17 @@ function DatasetItem({
             alt="dataset thumbnail"
           />
         </Box>
-        <H2 px={2} width="100%" textAlign="center">
-          {dataset.label}
-        </H2>
+        <Flex alignItems="center" width="100%">
+          <H2 my={0} width="100%">{dataset.label}</H2>
+        </Flex>
       </Flex>
       <Flex flexDirection="column">
         <H3>Dataset Description</H3>
-        <Box>{dataset.description}</Box>
+        <Box fontSize={1}>{dataset.description}</Box>
       </Flex>
       <Flex flexDirection="column" justifyContent="space-between">
         <H3 my={0}>Included countries</H3>
-        <Box>
+        <Box fontSize={1}>
           {countryString(
             countries,
             includedCountries(countries, dataset).map(
@@ -111,8 +112,8 @@ function Resolved({
           <Grid
             gridTemplateColumns={"auto auto"}
             alignItems="start"
-            gridRowGap={2}
-            gridColumnGap={2}
+            gridRowGap={4}
+            gridColumnGap={4}
           >
             {selected.map((dataset) => (
               <div key={dataset.id}>

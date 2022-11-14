@@ -28,9 +28,11 @@ function GlobalStyle() {
         body: {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
           backgroundColor: theme.colors.tone1,
-          fontFamily: "Arial, Helvetica, sans serif",
+          // fontFamily: "Arial, Helvetica, sans serif",
+          fontFamily: "'Noto Sans', Arial, Helvetica, sans serif",
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
           fontSize: theme.fontSizes[2],
+          lineHeight: "1.5",
           "& a": {
             color: "inherit",
             textDecoration: "inherit",
