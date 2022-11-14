@@ -5,23 +5,26 @@ export function RoundedButton({
   disabled,
   onClick,
   children,
+  ...props
 }: {
   active?: boolean;
   disabled?: boolean;
   onClick?: React.MouseEventHandler;
   children: React.ReactNode;
+  [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
     <Box
       as="button"
       p={1}
-      border={"solid"}
-      borderColor={active ? undefined : "gray3"}
-      color={active ? undefined : "gray1"}
-      backgroundColor={active ? "white" : "gray3"}
+      borderStyle="solid"
+      borderColor={active ? "black" : "tone4"}
+      color={active ? "text" : "tone4"}
+      backgroundColor={active ? "tone0" : "tone1"}
       borderRadius={3}
       onClick={disabled ? undefined : onClick}
       cursor={disabled ? undefined : "pointer"}
+      {...props}
     >
       {children}
     </Box>

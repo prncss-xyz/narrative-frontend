@@ -27,7 +27,7 @@ function GlobalStyle() {
       styles={{
         body: {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-          backgroundColor: theme.colors.gray3,
+          backgroundColor: theme.colors.tone1,
           fontFamily: "Arial, Helvetica, sans serif",
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
           fontSize: theme.fontSizes[2],

@@ -68,7 +68,7 @@ export function BuyOrderForm({
   return (
     <Flex justifyContent="center">
       <Flex flexDirection="column" width={6}>
-        <Box px={4} py={3} backgroundColor="gray25">
+        <Box px={4} py={3} backgroundColor="tone2">
           <Grid
             gridTemplateColumns={"1fr 1fr"}
             alignItems="start"
@@ -143,7 +143,13 @@ export function BuyOrderForm({
               items={countries.map((country) => ({
                 key: country.countryCode,
                 toElem: (props) => (
-                  <RoundedButton {...props}>{country.name}</RoundedButton>
+                  <RoundedButton
+                    {...props}
+                    // eslint-disable-next-line react/prop-types
+                    borderStyle={props.active ? "solid" : "none"}
+                  >
+                    {country.name}
+                  </RoundedButton>
                 ),
               }))}
             />

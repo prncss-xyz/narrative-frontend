@@ -1,5 +1,5 @@
-import { H2 } from "./basics";
+import { H3 } from "./basics";
 
 export function Loading() {
-  return <H2>Loading...</H2>;
+  return <H3>Loading...</H3>;
 }

@@ -17,10 +17,9 @@ export function DatasetItemSmall({
       p={1}
       flexDirection="row"
       gap={2}
-      border={"solid"}
-      borderColor={active ? undefined : "gray3"}
-      color={active ? undefined : "gray1"}
-      backgroundColor={active ? "white" : "gray3"}
+      borderStyle="solid"
+      borderColor={active ? "text" : "tone1"}
+      backgroundColor={active ? "tone0" : "tone1"}
       onClick={disabled ? undefined : onClick}
       cursor={disabled ? undefined : "pointer"}
     >
@@ -33,8 +32,8 @@ export function DatasetItemSmall({
         />
       </Flex>
       <Flex flexDirection="column">
-        <Box>{dataset.label}</Box>
-        <Box color={"gray1"}>${dataset.costPerRecord} per record</Box>
+        <Box color="text">{dataset.label}</Box>
+        <Box color="tone4">${dataset.costPerRecord} per record</Box>
       </Flex>
     </Flex>
   );

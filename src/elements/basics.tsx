@@ -53,7 +53,7 @@ export function H1({
       my={4}
       textAlign="center"
       fontWeight="normal"
-      fontSize={4}
+      fontSize={5}
       {...props}
     >
       {children}
@@ -69,7 +69,14 @@ export function H2({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box as="h2" my={3} color="gray1" fontWeight="bold" fontSize={3} {...props}>
+    <Box
+      as="h2"
+      my={4}
+      textAlign="center"
+      fontWeight="normal"
+      fontSize={4}
+      {...props}
+    >
       {children}
     </Box>
   );
@@ -86,7 +93,7 @@ export function H3({
     <Box
       as="h3"
       my={1}
-      color="gray1"
+      color="tone4"
       fontWeight="normal"
       textDecoration="underline"
       fontSize={2}
@@ -105,7 +112,7 @@ export function ActionBox({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box my={1} color="gray1" backgroundColor="gray3" py={1} px={2} {...props}>
+    <Box my={1} color="tone4" backgroundColor="tone1" py={1} px={2} {...props}>
       {children}
     </Box>
   );
@@ -119,7 +126,7 @@ export function OverlayActionBox({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box my={1} color="gray1" backgroundColor="white" py={1} px={2} {...props}>
+    <Box my={1} color="tone4" backgroundColor="tone0" py={1} px={2} {...props}>
       {children}
     </Box>
   );

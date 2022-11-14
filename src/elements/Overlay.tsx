@@ -43,14 +43,14 @@ export function Overlay({
           <Flex
             justifyContent="center"
             alignItems="center"
-            color="black"
+            color="text"
             flexDirection="column"
           >
             <Box
               ref={ref}
-              backgroundColor="gray3"
+              backgroundColor="tone1"
               p={2}
-              border="solid"
+              borderStyle="solid"
               {...props}
             >
               {children}

@@ -7,8 +7,8 @@ export function Navigation() {
   return (
     <Flex
       py={3}
-      backgroundColor="gray1"
-      color="gray2"
+      backgroundColor="tone5"
+      color="tone3"
       zIndex={10}
       position="sticky"
       top="0px"
@@ -16,7 +16,7 @@ export function Navigation() {
         "& .active": {
           fontWeight: "bold",
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
-          color: theme.colors.white,
+          color: theme.colors.tone0,
         },
       }}
     >

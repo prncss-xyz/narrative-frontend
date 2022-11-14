@@ -17,8 +17,8 @@ import { forcastedRecordCount } from "../utils/logic";
 
 function BuyOrderField({ name, value }: { name: string; value: string }) {
   return (
-    <Flex px={2} py={3} backgroundColor="gray2" flexDirection="column">
-      <Box color="gray1" pb={1} textDecoration="underline">
+    <Flex px={2} py={3} backgroundColor="tone3" flexDirection="column">
+      <Box color="tone4" pb={1} textDecoration="underline">
         {name}
       </Box>
       <Box>{value}</Box>
@@ -122,7 +122,7 @@ function Resolved({
       <Box mt={6} />
       <Flex justifyContent="center">
         <Link to={"/new-buy-order"}>
-          <ActionBox backgroundColor="gray2">New Order</ActionBox>
+          <ActionBox backgroundColor="tone3" color="tone1" >New Order</ActionBox>
         </Link>
       </Flex>
     </>

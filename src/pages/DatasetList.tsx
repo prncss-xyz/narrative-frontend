@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Flex, Grid, H2, Img } from "../elements/basics";
+import { Box, Flex, Grid, H2, H3, Img } from "../elements/basics";
 import { Clickable } from "../elements/Clickable";
 import {
   countryString,
@@ -36,10 +36,10 @@ function DatasetItem({
       width={5}
       minHeight={5}
       flexDirection="column"
-      backgroundColor="gray2"
+      backgroundColor="tone3"
     >
       <Flex flexDirection="row">
-        <Box minWidth={3} backgroundColor="gray3">
+        <Box maxHeight={3} minWidth={3} backgroundColor="tone1">
           <Img
             src={dataset.thumbnailUrl}
             width={3}
@@ -47,16 +47,16 @@ function DatasetItem({
             alt="dataset thumbnail"
           />
         </Box>
-        <Box px={2} width="100%" textAlign="center">
+        <H2 px={2} width="100%" textAlign="center">
           {dataset.label}
-        </Box>
+        </H2>
       </Flex>
       <Flex flexDirection="column">
-        <H2>Dataset Description</H2>
+        <H3>Dataset Description</H3>
         <Box>{dataset.description}</Box>
       </Flex>
       <Flex flexDirection="column" justifyContent="space-between">
-        <H2 my={0}>Included countries</H2>
+        <H3 my={0}>Included countries</H3>
         <Box>
           {countryString(
             countries,
@@ -71,11 +71,11 @@ function DatasetItem({
         justifyContent="space-between"
         alignItems="flex-end"
       >
-        <H2 my={0}>Cost Per Record</H2>
+        <H3 my={0}>Cost Per Record</H3>
         <Box>${dataset.costPerRecord}</Box>
       </Flex>
       <Flex flexDirection="row" justifyContent="space-between">
-        <H2 my={0}>Available Records</H2>
+        <H3 my={0}>Available Records</H3>
         <Box>{`${available} records`}</Box>
       </Flex>
     </Flex>

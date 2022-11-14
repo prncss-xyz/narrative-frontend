@@ -19,7 +19,7 @@ exports[`GlobalCountrySelection > should match snapshot 1`] = `
     >
       <div
         class="css-180d022-Box-Flex edgsz5f1"
-        color="black"
+        color="text"
       >
         <div
           class="css-13o8qag-Box edgsz5f2"
@@ -29,7 +29,7 @@ exports[`GlobalCountrySelection > should match snapshot 1`] = `
           >
             <h3
               class="css-3dw4s3-Box edgsz5f2"
-              color="gray1"
+              color="tone4"
               font-size="2"
               font-weight="normal"
               text-decoration="underline"
@@ -49,7 +49,7 @@ exports[`GlobalCountrySelection > should match snapshot 1`] = `
               <div>
                 <button
                   class="css-arwt-Box-RoundedButton edgsz5f2"
-                  color="gray1"
+                  color="tone4"
                 >
                   United States
                 </button>
@@ -65,7 +65,7 @@ exports[`GlobalCountrySelection > should match snapshot 1`] = `
   >
     <div
       class="css-1oaq5sg-Box-Flex edgsz5f1"
-      color="gray1"
+      color="tone4"
     >
       <div
         class="css-1x3sxzl-Box edgsz5f2"
@@ -74,7 +74,7 @@ exports[`GlobalCountrySelection > should match snapshot 1`] = `
       </div>
       <div
         class="css-t4uyl-Box edgsz5f2"
-        color="black"
+        color="text"
         font-weight="bold"
       >
          
@@ -88,7 +88,7 @@ exports[`GlobalCountrySelection > should match snapshot 1`] = `
       </div>
       <div
         class="css-t4uyl-Box edgsz5f2"
-        color="black"
+        color="text"
         font-weight="bold"
       >
          

@@ -34,7 +34,7 @@ Ignored nodes: comments, script, style
         [36m>[39m
           [36m<div[39m
             [33mclass[39m=[32m\\"css-180d022-Box-Flex edgsz5f1\\"[39m
-            [33mcolor[39m=[32m\\"black\\"[39m
+            [33mcolor[39m=[32m\\"text\\"[39m
           [36m>[39m
             [36m<div[39m
               [33mclass[39m=[32m\\"css-13o8qag-Box edgsz5f2\\"[39m
@@ -52,7 +52,7 @@ Ignored nodes: comments, script, style
                 [36m>[39m
                   [36m<div[39m
                     [33mclass[39m=[32m\\"css-zqq6fn-Box edgsz5f2\\"[39m
-                    [33mcolor[39m=[32m\\"gray1\\"[39m
+                    [33mcolor[39m=[32m\\"tone4\\"[39m
                   [36m>[39m
                     [0mYes[0m
                   [36m</div>[39m
@@ -64,7 +64,7 @@ Ignored nodes: comments, script, style
                 [36m>[39m
                   [36m<div[39m
                     [33mclass[39m=[32m\\"css-zqq6fn-Box edgsz5f2\\"[39m
-                    [33mcolor[39m=[32m\\"gray1\\"[39m
+                    [33mcolor[39m=[32m\\"tone4\\"[39m
                   [36m>[39m
                     [0mNo[0m
                   [36m</div>[39m

@@ -96,13 +96,13 @@ export function GlobalCountrySelectionSummary({
   const [activeCountryCodes, setActiveCountryCodes] =
     useGlobalCountyList(countries);
   return (
-    <Flex color="gray1">
+    <Flex color="tone4">
       <Box>Showing</Box>
-      <Box color="black" fontWeight="bold">
+      <Box color="text" fontWeight="bold">
         &nbsp;{count}&nbsp;
       </Box>
       <Box>results from</Box>
-      <Box color="black" fontWeight="bold">
+      <Box color="text" fontWeight="bold">
         &nbsp;{countryString(countries, activeCountryCodes)}&nbsp;
       </Box>
     </Flex>

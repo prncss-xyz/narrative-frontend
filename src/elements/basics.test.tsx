@@ -5,7 +5,6 @@ import {
   Box,
   Flex,
   H1,
-  H2,
   H3,
   Img,
   OverlayActionBox,
@@ -37,7 +36,7 @@ describe("basics", () => {
     });
   });
   describe("H2", () => {
-    const { container } = render(<H2>H2</H2>);
+    const { container } = render(<H3>H2</H3>);
     it("should match snapshot", () => {
       expect(container).toMatchSnapshot();
     });

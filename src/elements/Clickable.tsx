@@ -16,7 +16,7 @@ export function Clickable({
       <Box
         as="button"
         backgroundColor="inherit"
-        border="0px"
+        borderStyle="none"
         padding="0px"
         height="100%"
         cursor={disabled ? undefined : "pointer"}
