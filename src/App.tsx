@@ -8,10 +8,10 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { Box, H1 } from "./elements/basics";
-import { ErrorFallback } from "./elements/ErrorFallback";
-import { CountrySelectorContext } from "./elements/GlobalCountrySelection";
-import { Navigation } from "./elements/Navigation";
+import { Box, H1 } from "./components/basics";
+import { ErrorFallback } from "./components/ErrorFallback";
+import { CountrySelectorContext } from "./components/GlobalCountrySelection";
+import { Navigation } from "./components/Navigation";
 import Error404Page from "./pages/404";
 import BuyOrderListPage from "./pages/BuyOrderList";
 import NewBuyOrderPage from "./pages/CreateBuyOrder";

@@ -1,8 +1,8 @@
 import { Navigate, useParams } from "react-router-dom";
-import { ActionBox, Box, Flex } from "../elements/basics";
-import { BuyOrderForm } from "../elements/BuyOrderForm";
-import { Clickable } from "../elements/Clickable";
-import { Loading } from "../elements/Loading";
+import { ActionBox, Box, Flex } from "../components/basics";
+import { BuyOrderForm } from "../components/BuyOrderForm";
+import { Clickable } from "../components/Clickable";
+import { Loading } from "../components/Loading";
 import {
   BuyOrder,
   BuyOrderSchema,

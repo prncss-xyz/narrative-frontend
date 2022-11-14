@@ -1,4 +1,4 @@
-import { Box } from "../elements/basics";
+import { Box } from "../components/basics";
 
 export default function Error404Page() {
   return (

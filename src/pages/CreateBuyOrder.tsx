@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
-import { ActionBox, Box, Flex } from "../elements/basics";
-import { BuyOrderForm, BuyOrderFormResult } from "../elements/BuyOrderForm";
-import { Clickable } from "../elements/Clickable";
-import { Loading } from "../elements/Loading";
+import { ActionBox, Box, Flex } from "../components/basics";
+import { BuyOrderForm, BuyOrderFormResult } from "../components/BuyOrderForm";
+import { Clickable } from "../components/Clickable";
+import { Loading } from "../components/Loading";
 import { useCreateBuyOrder } from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";

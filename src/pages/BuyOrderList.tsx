@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ActionBox, Box, Flex, Grid, H3 } from "../elements/basics";
-import { Clickable } from "../elements/Clickable";
+import { ActionBox, Box, Flex, Grid, H3 } from "../components/basics";
+import { Clickable } from "../components/Clickable";
 import {
 GlobalCountrySelectionSummary,
 GlobalCountrySelector,
 useGlobalCountyList,
-} from "../elements/GlobalCountrySelection";
-import { Loading } from "../elements/Loading";
-import { Overlay } from "../elements/Overlay";
+} from "../components/GlobalCountrySelection";
+import { Loading } from "../components/Loading";
+import { Overlay } from "../components/Overlay";
 import { BuyOrder, useBuyOrders } from "../hooks/buyOrders";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";

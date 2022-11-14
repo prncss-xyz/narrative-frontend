@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { ActionBox, Box, Flex } from "../elements/basics";
-import { BuyOrderForm } from "../elements/BuyOrderForm";
-import { Clickable } from "../elements/Clickable";
-import { Confirm } from "../elements/Confirm";
-import { Loading } from "../elements/Loading";
+import { ActionBox, Box, Flex } from "../components/basics";
+import { BuyOrderForm } from "../components/BuyOrderForm";
+import { Clickable } from "../components/Clickable";
+import { Confirm } from "../components/Confirm";
+import { Loading } from "../components/Loading";
 import {
   BuyOrder,
   BuyOrderSchema,

@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`TogglingSelector > should match snapshot 1`] = `
-<div>
-  <div />
-</div>
-`;

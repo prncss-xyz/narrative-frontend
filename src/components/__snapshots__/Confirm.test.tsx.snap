@@ -17,43 +17,43 @@ Ignored nodes: comments, script, style
       [33mdata-testid[39m=[32m\\"opened-outside\\"[39m
     [36m>[39m
       [36m<div[39m
-        [33mclass[39m=[32m\\"css-5uqfag-Box-Overlay edgsz5f3\\"[39m
+        [33mclass[39m=[32m\\"css-5uqfag-Box-Overlay e2i8k6n3\\"[39m
         [33mheight[39m=[32m\\"100vh\\"[39m
         [33mwidth[39m=[32m\\"100vw\\"[39m
       [36m/>[39m
       [36m<div[39m
-        [33mclass[39m=[32m\\"css-1q8bug2-Box-Flex-Overlay edgsz5f2\\"[39m
+        [33mclass[39m=[32m\\"css-1q8bug2-Box-Flex-Overlay e2i8k6n2\\"[39m
         [33mheight[39m=[32m\\"100vh\\"[39m
         [33mwidth[39m=[32m\\"100vw\\"[39m
       [36m>[39m
         [36m<div[39m
-          [33mclass[39m=[32m\\"css-18ya61d-Box-Flex edgsz5f2\\"[39m
+          [33mclass[39m=[32m\\"css-18ya61d-Box-Flex e2i8k6n2\\"[39m
           [33mheight[39m=[32m\\"100%\\"[39m
           [33mwidth[39m=[32m\\"100%\\"[39m
         [36m>[39m
           [36m<div[39m
-            [33mclass[39m=[32m\\"css-15qjs6w-Box-Flex edgsz5f2\\"[39m
+            [33mclass[39m=[32m\\"css-15qjs6w-Box-Flex e2i8k6n2\\"[39m
             [33mcolor[39m=[32m\\"text\\"[39m
           [36m>[39m
             [36m<div[39m
-              [33mclass[39m=[32m\\"css-191d8jn-Box edgsz5f3\\"[39m
+              [33mclass[39m=[32m\\"css-191d8jn-Box e2i8k6n3\\"[39m
             [36m>[39m
               [36m<div>[39m
                 [0mopened-inside[0m
               [36m</div>[39m
               [36m<div[39m
-                [33mclass[39m=[32m\\"css-1ne0ra-Box-Flex edgsz5f2\\"[39m
+                [33mclass[39m=[32m\\"css-1ne0ra-Box-Flex e2i8k6n2\\"[39m
               [36m>[39m
                 [36m<div[39m
-                  [33mclass[39m=[32m\\"css-1x3sxzl-Box edgsz5f3\\"[39m
+                  [33mclass[39m=[32m\\"css-1x3sxzl-Box e2i8k6n3\\"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m\\"css-19fpo8m-Box edgsz5f3\\"[39m
+                    [33mclass[39m=[32m\\"css-19fpo8m-Box e2i8k6n3\\"[39m
                     [33mcursor[39m=[32m\\"pointer\\"[39m
                     [33mheight[39m=[32m\\"100%\\"[39m
                   [36m>[39m
                     [36m<div[39m
-                      [33mclass[39m=[32m\\"css-bgepeq-Box edgsz5f3\\"[39m
+                      [33mclass[39m=[32m\\"css-bgepeq-Box e2i8k6n3\\"[39m
                       [33mcolor[39m=[32m\\"tone4\\"[39m
                     [36m>[39m
                       [0mYes[0m
@@ -61,15 +61,15 @@ Ignored nodes: comments, script, style
                   [36m</button>[39m
                 [36m</div>[39m
                 [36m<div[39m
-                  [33mclass[39m=[32m\\"css-1x3sxzl-Box edgsz5f3\\"[39m
+                  [33mclass[39m=[32m\\"css-1x3sxzl-Box e2i8k6n3\\"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m\\"css-19fpo8m-Box edgsz5f3\\"[39m
+                    [33mclass[39m=[32m\\"css-19fpo8m-Box e2i8k6n3\\"[39m
                     [33mcursor[39m=[32m\\"pointer\\"[39m
                     [33mheight[39m=[32m\\"100%\\"[39m
                   [36m>[39m
                     [36m<div[39m
-                      [33mclass[39m=[32m\\"css-bgepeq-Box edgsz5f3\\"[39m
+                      [33mclass[39m=[32m\\"css-bgepeq-Box e2i8k6n3\\"[39m
                       [33mcolor[39m=[32m\\"tone4\\"[39m
                     [36m>[39m
                       [0mNo[0m

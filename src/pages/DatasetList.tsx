@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { Box, Flex, Grid, H2, H3, Img } from "../elements/basics";
-import { Clickable } from "../elements/Clickable";
+import { Box, Flex, Grid, H2, H3, Img } from "../components/basics";
+import { Clickable } from "../components/Clickable";
 import {
   countryString,
   GlobalCountrySelectionSummary,
   GlobalCountrySelector,
   useGlobalCountyList,
-} from "../elements/GlobalCountrySelection";
-import { Loading } from "../elements/Loading";
-import { Overlay } from "../elements/Overlay";
+} from "../components/GlobalCountrySelection";
+import { Loading } from "../components/Loading";
+import { Overlay } from "../components/Overlay";
 import { Country, useCountries } from "../hooks/countries";
 import { Dataset, useDatasets } from "../hooks/datasets";
 import {

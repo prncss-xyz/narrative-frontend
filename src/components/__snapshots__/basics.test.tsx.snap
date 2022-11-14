@@ -15,7 +15,7 @@ exports[`basics > H3 > should match snapshot 1`] = `<div />`;
 exports[`basics > Img > should match snapshot 1`] = `
 <div>
   <img
-    class="css-174dvwn-Img edgsz5f4"
+    class="css-qdb0d0-Img e2i8k6n4"
   />
 </div>
 `;
