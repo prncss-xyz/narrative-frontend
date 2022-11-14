@@ -1,10 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { apiURL } from "../utils/apiURL";
 import { useDatasets } from "./datasets";
 
-describe.skip("useDatasets", () => {
+test.skip("useDatasets", () => {
   const data = [
     {
       id: 1,
@@ -39,7 +38,7 @@ describe.skip("useDatasets", () => {
     vi.clearAllMocks();
   });
 
-  it("should fetch the datasets list", async () => {
+  test("should fetch the datasets list", async () => {
     const queryClient = new QueryClient();
     const wrapper = ({ children }: { children: React.ReactNode }) => (
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

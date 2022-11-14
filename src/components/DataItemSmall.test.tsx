@@ -1,6 +1,4 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { DatasetItemSmall } from "./DataItemSmall";
 
 const dataset = {
@@ -13,8 +11,8 @@ const dataset = {
   costPerRecord: 0.03,
 };
 
-describe("DataItemSmall", () => {
-  describe("not disabled", async () => {
+test("DataItemSmall", () => {
+  test("not disabled", async () => {
     const spy = vi.fn();
     const { container } = render(
       <DatasetItemSmall
@@ -22,7 +20,7 @@ describe("DataItemSmall", () => {
         onClick={spy}
       />
     );
-    await userEvent.click(screen.getByText("Not Disabled"));
+    fireEvent.click(screen.getByText("Not Disabled"));
     it("should trigger when clicked", () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -31,7 +29,7 @@ describe("DataItemSmall", () => {
     });
   });
 
-  describe("disabled", async () => {
+  test("disabled", async () => {
     const spy = vi.fn();
     const { container } = render(
       <DatasetItemSmall
@@ -40,7 +38,7 @@ describe("DataItemSmall", () => {
         disabled
       />
     );
-    await userEvent.click(screen.getByText("Disabled"));
+    fireEvent.click(screen.getByText("Disabled"));
     it("should not trigger when clicked", () => {
       expect(spy).toHaveBeenCalledTimes(0);
     });
@@ -49,7 +47,7 @@ describe("DataItemSmall", () => {
     });
   });
 
-  describe("active", () => {
+  test("active", () => {
     const { container } = render(
       <DatasetItemSmall dataset={{ ...dataset, label: "Disabled" }} active />
     );

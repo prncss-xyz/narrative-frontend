@@ -1,5 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Clickable > disabled > should match snapshot 1`] = `<div />`;
-
-exports[`Clickable > not disabled > should match snapshot 1`] = `<div />`;

@@ -1,15 +1,13 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { RoundedButton } from "./RoundedButton";
 
-describe("RoundedButton", () => {
-  describe("not disabled", async () => {
+test("RoundedButton", () => {
+  test("not disabled", () => {
     const spy = vi.fn();
     const { container } = render(
       <RoundedButton onClick={spy}>not disabled</RoundedButton>
     );
-    await userEvent.click(screen.getByText("not disabled"));
+    fireEvent.click(screen.getByText("not disabled"));
     it("should trigger when clicked", () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -17,14 +15,14 @@ describe("RoundedButton", () => {
       expect(container).toMatchSnapshot();
     });
   });
-  describe("disabled", async () => {
+  test("disabled", () => {
     const spy = vi.fn();
     const { container } = render(
       <RoundedButton disabled={true} onClick={spy}>
         disabled
       </RoundedButton>
     );
-    await userEvent.click(screen.getByText("disabled"));
+    fireEvent.click(screen.getByText("disabled"));
     it("should trigger when clicked", () => {
       expect(spy).toHaveBeenCalledTimes(0);
     });

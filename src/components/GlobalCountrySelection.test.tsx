@@ -1,7 +1,4 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { useRef } from "react";
-import { act } from "react-dom/test-utils";
+import { fireEvent, render, screen } from "@testing-library/react";
 import {
   CountrySelectorContext,
   GlobalCountrySelector,
@@ -45,22 +42,23 @@ function Container(spy: (activeCountryCodes: string[]) => void) {
   );
 }
 
-describe.todo("GlobalCountrySelection", async () => {
-  const { container } = render(
-    <CountrySelectorContext>
-      <GlobalCountrySelector count={3} countries={countries} />;
-    </CountrySelectorContext>
-  );
-  it("should match snapshot", () => {
-    expect(container).toMatchSnapshot();
+test.todo("GlobalCountrySelection", () => {
+  it("description", () => {
+    const { container } = render(
+      <CountrySelectorContext>
+        <GlobalCountrySelector count={3} countries={countries} />
+      </CountrySelectorContext>
+    );
+    it("should match snapshot", () => {
+      expect(container).toMatchSnapshot();
+    });
+    it("should not be invisible", () => {
+      expect(() => {
+        screen.getByText("United States");
+      }).toThrowError();
+    });
+    fireEvent.click(screen.getByText("Showing"));
+    // const s1 = JSON.stringify(screen.getByText("United States"));
+    fireEvent.click(screen.getByText("United States"));
   });
-  it("should not be invisible", () => {
-    expect(() => {
-      screen.getByText("United States");
-    }).toThrowError();
-  });
-  await userEvent.click(screen.getByText("Showing"));
-  await screen.findByText("United States");
-  // const s1 = JSON.stringify(screen.getByText("United States"));
-  await userEvent.click(screen.getByText("United States"));
 });

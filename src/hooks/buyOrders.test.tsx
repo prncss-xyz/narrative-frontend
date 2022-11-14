@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { apiURL } from "../utils/apiURL";
 import {
   ProBuyOrder,
@@ -11,7 +10,7 @@ import {
   useUpdateBuyOrder,
 } from "./buyOrders";
 
-describe("useBuyOrder", async () => {
+test("useBuyOrder", () => {
   it.skip("should permform a complete cycle of create, update, get, delete, get maintaining consistant values", async () => {
     const data1: ProBuyOrder = {
       name: "test name",
@@ -90,7 +89,7 @@ describe.skip("useBuyOrders", () => {
   function wrap(value: unknown) {
     return { json: () => Promise.resolve(value) };
   }
-  async function mocker() {
+  function mocker() {
     return wrap(data);
   }
   const fetchMock = vi.fn().mockImplementation(mocker);

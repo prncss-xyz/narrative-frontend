@@ -1,8 +1,7 @@
 import { render } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
 import { ErrorFallback } from "./ErrorFallback";
 
-describe("ErrorFallback", () => {
+test("ErrorFallback", () => {
   const { container } = render(
     <ErrorFallback error={{ message: "message" }} />
   );

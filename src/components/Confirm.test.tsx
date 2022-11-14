@@ -1,9 +1,8 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Confirm } from "./Confirm";
 
-describe("Confirm", () => {
-  describe("closed", () => {
+test("Confirm", () => {
+  test("closed", () => {
     const { container } = render(
       <div data-testid="closed-outside">
         <Confirm
@@ -28,7 +27,7 @@ describe("Confirm", () => {
       expect(container).toMatchSnapshot();
     });
   });
-  describe("opened", async () => {
+  describe("opened", () => {
     const setOverlayVisible = vi.fn();
     const handler = vi.fn();
     const { container } = render(
@@ -42,11 +41,11 @@ describe("Confirm", () => {
         </Confirm>
       </div>
     );
-    await userEvent.click(screen.getByText("Yes"));
+    fireEvent.click(screen.getByText("Yes"));
     it("should call handler", () => {
       expect(handler).toBeCalledTimes(1);
     });
-    await userEvent.click(screen.getByText("No"));
+    fireEvent.click(screen.getByText("No"));
     it("should call setOverlayVisible", () => {
       expect(setOverlayVisible).toBeCalledTimes(1);
       expect(setOverlayVisible).toBeCalledWith(false);

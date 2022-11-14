@@ -1,36 +1,36 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { apiURL } from "../utils/apiURL";
 import { useCountries } from "./countries";
 
-describe("useCountries", () => {
-  const data = [
-    {
-      countryCode: "FR",
-      name: "France",
-      storedData: [
-        { datasetId: 1, recordCount: 500 },
-        { datasetId: 2, recordCount: 0 },
-        { datasetId: 3, recordCount: 2500 },
-        { datasetId: 4, recordCount: 750 },
-        { datasetId: 5, recordCount: 50 },
-        { datasetId: 6, recordCount: 1000 },
-      ],
-    },
-    {
-      countryCode: "GB",
-      name: "United Kingdom",
-      storedData: [
-        { datasetId: 1, recordCount: 0 },
-        { datasetId: 2, recordCount: 1250 },
-        { datasetId: 3, recordCount: 2000 },
-        { datasetId: 4, recordCount: 1500 },
-        { datasetId: 5, recordCount: 500 },
-        { datasetId: 6, recordCount: 500 },
-      ],
-    },
-  ];
+const data = [
+  {
+    countryCode: "FR",
+    name: "France",
+    storedData: [
+      { datasetId: 1, recordCount: 500 },
+      { datasetId: 2, recordCount: 0 },
+      { datasetId: 3, recordCount: 2500 },
+      { datasetId: 4, recordCount: 750 },
+      { datasetId: 5, recordCount: 50 },
+      { datasetId: 6, recordCount: 1000 },
+    ],
+  },
+  {
+    countryCode: "GB",
+    name: "United Kingdom",
+    storedData: [
+      { datasetId: 1, recordCount: 0 },
+      { datasetId: 2, recordCount: 1250 },
+      { datasetId: 3, recordCount: 2000 },
+      { datasetId: 4, recordCount: 1500 },
+      { datasetId: 5, recordCount: 500 },
+      { datasetId: 6, recordCount: 500 },
+    ],
+  },
+];
+
+test("useCountries", () => {
   function wrap(value: unknown) {
     return { json: () => Promise.resolve(value) };
   }

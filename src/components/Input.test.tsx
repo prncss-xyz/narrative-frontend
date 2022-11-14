@@ -1,9 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
 import { Input } from "./Input";
 
-describe("Input", () => {
-  describe("validate: true", () => {
+test("Input", () => {
+  test("validate: true", () => {
     const validate = (_: string) => true;
     const setValue = vi.fn();
     const { container } = render(
@@ -23,7 +22,7 @@ describe("Input", () => {
       expect(container).toMatchSnapshot();
     });
   });
-  describe("validate: false", () => {
+  test("validate: false", () => {
     const validate = (_: string) => false;
     const setValue = vi.fn();
     render(
@@ -40,7 +39,7 @@ describe("Input", () => {
       expect(setValue).toHaveBeenCalledTimes(0);
     });
   });
-  describe("disabled", () => {
+  test("disabled", () => {
     const validate = (_: string) => false;
     const setValue = (_: string) => {
       /* do nothing */

@@ -1,14 +1,13 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Overlay } from "./Overlay";
 
-describe("Overlay", () => {
-  describe.skip("closed", () => {
+test("Overlay", () => {
+  test("closed", () => {
     const { container } = render(
       <div data-testid="closed-outside">
         <Overlay
           visible={false}
-          onClickOutside={() => {
+          setVisible={() => {
             /* do nothing */
           }}
         >
@@ -17,19 +16,17 @@ describe("Overlay", () => {
       </div>
     );
     it("should not find inside", () => {
-      expect(() => {
-        screen.getByText("closed-inside");
-      }).toThrowErrorMatchingSnapshot('"error"');
+      expect(screen.queryByText("closed-inside")).toBeNull();
     });
     it("should match snapshot", () => {
       expect(container).toMatchSnapshot();
     });
   });
-  describe("opened", async () => {
+  test("opened", () => {
     const spy = vi.fn();
     const { container } = render(
       <div data-testid="opened-outside">
-        <Overlay visible={true} onClickOutside={spy}>
+        <Overlay visible={true} setVisible={spy}>
           <div>opened-inside</div>
         </Overlay>
       </div>
@@ -37,7 +34,7 @@ describe("Overlay", () => {
     it("should be visible", () => {
       screen.getByText("opened-inside");
     });
-    await userEvent.click(screen.getByTestId("opened-outside"));
+    fireEvent.click(screen.getByTestId("opened-outside"));
     it("should call handler", () => {
       expect(spy).toBeCalledTimes(1);
     });

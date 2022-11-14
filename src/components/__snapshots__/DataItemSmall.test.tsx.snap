@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`DataItemSmall > active > should match snapshot 1`] = `<div />`;
-
-exports[`DataItemSmall > disabled > should match snapshot 1`] = `<div />`;
-
-exports[`DataItemSmall > not disabled > should match snapshot 1`] = `<div />`;

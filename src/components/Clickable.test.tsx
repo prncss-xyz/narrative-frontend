@@ -1,10 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
 import { Clickable } from "./Clickable";
 
-describe("Clickable", () => {
-  describe("not disabled", async () => {
+test("Clickable", () => {
+  test("not disabled", async () => {
     const spy = vi.fn();
     const { container } = render(
       <Clickable onClick={spy}>not disabled</Clickable>
@@ -17,7 +16,7 @@ describe("Clickable", () => {
       expect(container).toMatchSnapshot();
     });
   });
-  describe("disabled", async () => {
+  test("disabled", async () => {
     const spy = vi.fn();
     const { container } = render(
       <Clickable disabled={true} onClick={spy}>
