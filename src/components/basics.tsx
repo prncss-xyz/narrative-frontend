@@ -113,7 +113,7 @@ export function H3({
     <Box
       as="h3"
       my={1}
-      color="tone4"
+      color="muted"
       fontWeight="normal"
       textDecoration="underline"
       textAlign="left"
@@ -133,7 +133,7 @@ export function ActionBox({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box my={1} color="tone4" backgroundColor="tone1" py={1} px={2} {...props}>
+    <Box my={1} color="muted" backgroundColor="bgLight" py={1} px={2} {...props}>
       {children}
     </Box>
   );
@@ -147,7 +147,7 @@ export function OverlayActionBox({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box my={1} color="tone4" backgroundColor="tone0" py={1} px={2} {...props}>
+    <Box my={1} color="muted" backgroundColor="accent" py={1} px={2} {...props}>
       {children}
     </Box>
   );

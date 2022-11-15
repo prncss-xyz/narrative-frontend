@@ -108,7 +108,7 @@ export function GlobalCountrySelectionSummary({
     <Flex
       justifyItems="start"
       flexWrap="wrap"
-      color="tone4"
+      color="muted"
       alignItems="baseline"
       pb={2}
       textAlign="left"

@@ -48,7 +48,7 @@ export function Overlay({
           >
             <Box
               ref={ref}
-              backgroundColor="tone1"
+              backgroundColor="bgLight"
               p={2}
               borderStyle="solid"
               {...props}

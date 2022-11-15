@@ -20,9 +20,9 @@ export function RoundedButton({
       py={1}
       height={1}
       borderStyle="solid"
-      borderColor={active ? "black" : "tone4"}
-      color={active ? "text" : "tone4"}
-      backgroundColor={active ? "tone0" : "tone1"}
+      borderColor={active ? "black" : "muted"}
+      color={active ? "text" : "muted"}
+      backgroundColor={active ? "accent" : "bgLight"}
       fontSize={0}
       borderRadius={3}
       onClick={disabled ? undefined : onClick}

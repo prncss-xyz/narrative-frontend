@@ -37,10 +37,10 @@ function DatasetItem({
       width={5}
       minHeight={5}
       flexDirection="column"
-      backgroundColor="tone3"
+      backgroundColor="bgDark"
     >
       <Flex flexDirection="row" gap={2}>
-        <Box maxHeight={3} minWidth={3} backgroundColor="tone1">
+        <Box maxHeight={3} minWidth={3} backgroundColor="bgLight">
           <Img
             src={dataset.thumbnailUrl}
             width={3}

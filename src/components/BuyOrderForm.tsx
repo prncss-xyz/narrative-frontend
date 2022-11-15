@@ -29,6 +29,7 @@ export type BuyOrderFormResult = {
   budget: number;
 };
 
+// HACK: toAction is a little ackward; this could be avoided by commiting to a state managment library
 export function BuyOrderForm({
   disabled,
   buyOrder,
@@ -73,7 +74,7 @@ export function BuyOrderForm({
         flexDirection="column"
         px={4}
         py={3}
-        backgroundColor="tone2"
+        backgroundColor="bgMid"
       >
         <Grid
           gridTemplateRows={"1fr 1fr"}

@@ -22,8 +22,8 @@ export function DatasetItemSmall({
       alignItems="center"
       flexDirection="row"
       borderStyle="solid"
-      borderColor={active ? "text" : "tone1"}
-      backgroundColor={active ? "tone0" : "tone1"}
+      borderColor={active ? "text" : "bgLight"}
+      backgroundColor={active ? "accent" : "bgLight"}
       onClick={disabled ? undefined : onClick}
       cursor={disabled ? undefined : "pointer"}
       {...props}
@@ -33,7 +33,7 @@ export function DatasetItemSmall({
         <Box color="text" fontSize={2}>
           {dataset.label}
         </Box>
-        <Box color="tone4" fontSize={0}>
+        <Box color="muted" fontSize={0}>
           ${dataset.costPerRecord} per record
         </Box>
       </Flex>

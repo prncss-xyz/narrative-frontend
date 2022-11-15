@@ -17,7 +17,7 @@ import { forcastedRecordCount } from "../utils/logic";
 
 function BuyOrderField({ name, value }: { name: string; value: string }) {
 return (
-  <Flex px={2} py={3} backgroundColor="tone3" flexDirection="column">
+  <Flex px={2} py={3} backgroundColor="bgDark" flexDirection="column">
     <H3>{name}</H3>
     <Box>{value}</Box>
   </Flex>
@@ -123,7 +123,7 @@ const [activeCountryCode] = useGlobalCountyList(countries);
       <Box mt={6} />
       <Flex justifyContent="center">
         <Link to={"/new-buy-order"}>
-          <ActionBox backgroundColor="tone3" color="tone4">
+          <ActionBox backgroundColor="bgDark" color="muted">
             New Order
           </ActionBox>
         </Link>
