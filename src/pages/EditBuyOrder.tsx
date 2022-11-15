@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { ActionBox, Box, Flex } from "../components/basics";
-import { BuyOrderForm } from "../components/BuyOrderForm";
+import { BuyOrderForm, FormBuyOrder } from "../components/BuyOrderForm";
 import { Clickable } from "../components/Clickable";
 import { Loading } from "../components/Loading";
 import {
@@ -35,15 +36,19 @@ function Resolved({
   datasets: Dataset[];
   countries: Country[];
 }) {
+  const [formBuyOrder, setFormBuyOrder]: [
+    FormBuyOrder,
+    (s: FormBuyOrder) => void
+  ] = useState<FormBuyOrder>(buyOrder);
   return (
     <BuyOrderForm
-      buyOrder={buyOrder}
+      buyOrder={formBuyOrder}
+      setBuyOrder={setFormBuyOrder}
       datasets={datasets}
       countries={countries}
-      toActions={(result) => {
-        return <Actions buyOrder={BuyOrderSchema.parse(result)} />;
-      }}
-    />
+    >
+      <Actions buyOrder={BuyOrderSchema.parse(formBuyOrder)} />
+    </BuyOrderForm>
   );
 }
 

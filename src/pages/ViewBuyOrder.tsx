@@ -57,17 +57,16 @@ function Resolved({
       buyOrder={buyOrder}
       datasets={datasets}
       countries={countries}
-      toActions={(result) => {
-        return <Actions buyOrder={BuyOrderSchema.parse(result)} />;
-      }}
-    />
+    >
+      <Actions buyOrder={buyOrder} />
+    </BuyOrderForm>
   );
 }
 
 function Fetch({ id }: { id: string }) {
-  const  datasets = useDatasets();
-  const  countries = useCountries();
-  const  buyOrder = useBuyOrder(id);
+  const datasets = useDatasets();
+  const countries = useCountries();
+  const buyOrder = useBuyOrder(id);
   if (!datasets || !countries || !buyOrder) return <Loading />;
   return (
     <Resolved buyOrder={buyOrder} countries={countries} datasets={datasets} />

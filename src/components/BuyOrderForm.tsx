@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BuyOrder } from "../hooks/buyOrders";
 import { Country } from "../hooks/countries";
 import { Dataset } from "../hooks/datasets";
 import {
@@ -8,19 +7,19 @@ import {
 } from "../utils/logic";
 import { Box, Flex, Grid, H3 } from "./basics";
 import { DatasetItemSmall } from "./DataItemSmall";
-import { useGlobalCountyList } from "./GlobalCountrySelection";
 import { Input } from "./Input";
 import { RoundedButton } from "./RoundedButton";
 import { TogglingSelector } from "./TogglingSelector";
 
-function validateMoney(value: string) {
-  if (value.match(/\..../)) return false; // no more than 2 decimals
-  if (Number(value) >= 0) return true; // a number that is positve
-  return false;
+function validateMoney(value: string): number | undefined {
+  if (value.endsWith(".")) value = value.slice(0, -1);
+  const num = Number(value);
+  if (num >= 0) return num;
+  return;
 }
 
 // export interface BuyOrderFormResult {
-export type BuyOrderFormResult = {
+export type FormBuyOrder = {
   id?: string;
   name: string;
   createdAt?: Date;
@@ -33,39 +32,25 @@ export type BuyOrderFormResult = {
 export function BuyOrderForm({
   disabled,
   buyOrder,
+  setBuyOrder,
   datasets,
   countries,
-  toActions,
+  children,
 }: {
   disabled?: boolean;
-  buyOrder?: BuyOrder;
+  buyOrder: FormBuyOrder;
+  setBuyOrder?: (BuyOrder: FormBuyOrder) => void;
   datasets: Dataset[];
   countries: Country[];
-  toActions: (result: BuyOrderFormResult) => React.ReactNode;
+  children: React.ReactNode;
 }) {
-  const [activeDatasets, setActiveDatasets] = useState<number[]>(
-    buyOrder?.datasetIds ?? []
-  );
-  const [globalActiveCountries] = useGlobalCountyList(countries);
-  const [activeCountryCodes, setActiveCountryCodes] = useState<string[]>(
-    buyOrder?.countries ?? globalActiveCountries
-  );
-  const [name, setName] = useState(buyOrder?.name ?? "");
-  const [budget, setBudget] = useState(String(buyOrder?.budget ?? 0));
-  const result: BuyOrderFormResult = {
-    ...buyOrder,
-    name,
-    budget: Number(budget),
-    datasetIds: activeDatasets,
-    countries: activeCountryCodes,
-  };
-  const forcasted = forcastedRecordCount(countries, datasets, result);
+  const forcasted = forcastedRecordCount(countries, datasets, buyOrder);
   const available = availableRecordCountForDatasets(
     countries,
     datasets,
-    result.countries
+    buyOrder.countries
   );
-
+  const [budgetStr, setBudgetStr] = useState(String(buyOrder.budget));
   return (
     <Flex justifyContent="center">
       <Flex
@@ -91,14 +76,15 @@ export function BuyOrderForm({
               borderStyle="none"
               maxHeight={1}
               disabled={disabled}
-              validate={() => true}
               placeholder="name"
-              value={name}
-              setValue={setName}
+              value={buyOrder.name}
+              setValue={(name) =>
+                setBuyOrder && setBuyOrder({ ...buyOrder, name })
+              }
             />
           </Box>
           <Box>
-            {buyOrder ? (
+            {buyOrder.createdAt ? (
               <>
                 <H3>Date Created</H3>
                 <Box height={1} p="0px" alignItems="baseline">
@@ -125,10 +111,15 @@ export function BuyOrderForm({
                 px={disabled ? 0 : 1}
                 ml={!disabled && 2}
                 disabled={disabled}
-                validate={validateMoney}
                 placeholder="budget"
-                value={budget}
-                setValue={setBudget}
+                value={budgetStr}
+                setValue={(budgetStr_) => {
+                  if (!setBuyOrder) return;
+                  const budget = validateMoney(budgetStr_);
+                  if (budget === undefined) return;
+                  setBudgetStr(budgetStr_);
+                  setBuyOrder({ ...buyOrder, budget });
+                }}
               />
             </Flex>
           </Box>
@@ -149,8 +140,10 @@ export function BuyOrderForm({
           >
             <TogglingSelector
               disabled={disabled}
-              state={activeDatasets}
-              setState={setActiveDatasets}
+              state={buyOrder.datasetIds}
+              setState={(datasetIds) =>
+                setBuyOrder && setBuyOrder({ ...buyOrder, datasetIds })
+              }
               items={datasets.map((dataset) => ({
                 key: dataset.id,
                 toElem: (props) => (
@@ -165,8 +158,10 @@ export function BuyOrderForm({
           <Flex gap={3}>
             <TogglingSelector
               disabled={disabled}
-              state={activeCountryCodes}
-              setState={setActiveCountryCodes}
+              state={buyOrder.countries}
+              setState={(countries) =>
+                setBuyOrder && setBuyOrder({ ...buyOrder, countries })
+              }
               items={countries.map((country) => ({
                 key: country.countryCode,
                 toElem: (props) => (
@@ -183,7 +178,7 @@ export function BuyOrderForm({
           </Flex>
         </Box>
         <Box mt={5} />
-        {toActions(result)}
+        {children}
       </Flex>
     </Flex>
   );

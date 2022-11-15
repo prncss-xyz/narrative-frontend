@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
-import { apiURL } from "../utils/apiURL";
 import { buyOrders } from "../utils/apiSamples";
+import { apiURL } from "../utils/apiURL";
 
 const isFake = import.meta.env.VITE_FAKE;
 
@@ -66,8 +66,8 @@ async function fetchBuyOrder(id: string): Promise<BuyOrder> {
     if (!buyOrder) throw new Error(`Buy order ${id} do not exists.`);
     json = buyOrder;
   } else {
-    const response = await fetch(apiURL + `buy-orders/${id}`);
-    json = await response.json();
+    const response: unknown = await fetch(apiURL + `buy-orders/${id}`);
+    json: object = await response.json();
   }
   return BuyOrderSchema.parse(processDate(json));
 }
@@ -98,7 +98,7 @@ async function createBuyOrder(proBuyOrder: ProBuyOrder) {
   } = { ...proBuyOrder, createdAt: new Date().toJSON() };
   if (isFake) {
     console.log("creating buyorder", order);
-    return BuyOrderSchema.parse(order);
+    return BuyOrderSchema.parse(processDate({ ...order, id: "1" }));
   }
   const response = await fetch(apiURL + "buy-orders", {
     method: "POST",
@@ -114,6 +114,7 @@ export function useCreateBuyOrder() {
   const mutation = useMutation({
     mutationFn: createBuyOrder,
     onSuccess: () => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       queryClient.invalidateQueries({ queryKey: [] });
     },
   });

@@ -6,20 +6,18 @@ export function Input({
   value,
   setValue,
   disabled,
-  validate,
   ...props
 }: {
   placeholder: string;
   value: string;
   setValue: (value: string) => void;
   disabled?: boolean;
-  validate: (value: string) => unknown;
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   const handleChange = ({
     currentTarget: { value },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    if (validate(value)) setValue(value);
+    setValue(value);
   };
   return (
     <>
