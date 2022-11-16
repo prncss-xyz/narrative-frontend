@@ -1,0 +1,612 @@
+// Vitest Snapshot v1
+
+exports[`BuyOrderForm > should render correctly 1`] = `
+<div>
+  <div
+    class="css-1g12luf-Box-Flex e2i8k6n2"
+  >
+    <div
+      class="css-1x3sxzl-Box e2i8k6n3"
+    >
+      <div
+        class="css-1x3sxzl-Box e2i8k6n3"
+      >
+        <button
+          class="css-19fpo8m-Box e2i8k6n3"
+          cursor="pointer"
+          height="100%"
+        >
+          <div
+            class="css-104t6km-Box-Flex e2i8k6n2"
+            color="muted"
+          >
+            <div
+              class="css-4mhvi5-Box e2i8k6n3"
+              display="inline"
+            >
+              Showing
+            </div>
+            <div
+              class="css-1x0dezy-Box e2i8k6n3"
+              color="text"
+              display="inline"
+              font-weight="bold"
+            >
+              5
+            </div>
+            <div
+              class="css-4mhvi5-Box e2i8k6n3"
+              display="inline"
+            >
+              results
+               from
+            </div>
+            <div
+              class="css-1x0dezy-Box e2i8k6n3"
+              color="text"
+              display="inline"
+              font-weight="bold"
+            >
+              United Kingdom & United States
+            </div>
+          </div>
+        </button>
+      </div>
+      <div
+        class="css-1vhj0ch-Box-Grid e2i8k6n1"
+      >
+        <div>
+          <div
+            class="css-1y0qilw-Box-Flex e2i8k6n2"
+            width="5"
+          >
+            <div
+              class="css-wxi0h7-Box-Flex e2i8k6n2"
+            >
+              <div
+                class="css-z7haim-Box e2i8k6n3"
+              >
+                <img
+                  alt="dataset thumbnail"
+                  class="css-1v0ofof-Img e2i8k6n4"
+                  height="3"
+                  src="https://picsum.photos/id/1038/92/92"
+                  width="3"
+                />
+              </div>
+              <div
+                class="css-1hg49r7-Box-Flex e2i8k6n2"
+                width="100%"
+              >
+                <h2
+                  class="css-x4oqgn-Box e2i8k6n3"
+                  font-size="4"
+                  font-weight="normal"
+                  width="100%"
+                >
+                  Fishing Zones
+                </h2>
+              </div>
+            </div>
+            <div
+              class="css-d9aoz6-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Dataset Description
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                Data about global fishing zones, including yields, historical trends and ocean life surveys.
+              </div>
+            </div>
+            <div
+              class="css-1rdjp9o-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Included countries
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                United States
+              </div>
+            </div>
+            <div
+              class="css-14cjmhn-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Cost Per Record
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                $
+                0.03
+              </div>
+            </div>
+            <div
+              class="css-1ezxmef-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Available Records
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                500 records
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="css-1y0qilw-Box-Flex e2i8k6n2"
+            width="5"
+          >
+            <div
+              class="css-wxi0h7-Box-Flex e2i8k6n2"
+            >
+              <div
+                class="css-z7haim-Box e2i8k6n3"
+              >
+                <img
+                  alt="dataset thumbnail"
+                  class="css-1v0ofof-Img e2i8k6n4"
+                  height="3"
+                  src="https://picsum.photos/id/1002/92/92"
+                  width="3"
+                />
+              </div>
+              <div
+                class="css-1hg49r7-Box-Flex e2i8k6n2"
+                width="100%"
+              >
+                <h2
+                  class="css-x4oqgn-Box e2i8k6n3"
+                  font-size="4"
+                  font-weight="normal"
+                  width="100%"
+                >
+                  Shipping Routes
+                </h2>
+              </div>
+            </div>
+            <div
+              class="css-d9aoz6-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Dataset Description
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                Metadata regarding global shipping routes. Contains data such as traffic volumne, operating restrictiona and mileage of routes.
+              </div>
+            </div>
+            <div
+              class="css-1rdjp9o-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Included countries
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                United Kingdom
+              </div>
+            </div>
+            <div
+              class="css-14cjmhn-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Cost Per Record
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                $
+                0.05
+              </div>
+            </div>
+            <div
+              class="css-1ezxmef-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Available Records
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                1250 records
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="css-1y0qilw-Box-Flex e2i8k6n2"
+            width="5"
+          >
+            <div
+              class="css-wxi0h7-Box-Flex e2i8k6n2"
+            >
+              <div
+                class="css-z7haim-Box e2i8k6n3"
+              >
+                <img
+                  alt="dataset thumbnail"
+                  class="css-1v0ofof-Img e2i8k6n4"
+                  height="3"
+                  src="https://picsum.photos/id/1026/92/92"
+                  width="3"
+                />
+              </div>
+              <div
+                class="css-1hg49r7-Box-Flex e2i8k6n2"
+                width="100%"
+              >
+                <h2
+                  class="css-x4oqgn-Box e2i8k6n3"
+                  font-size="4"
+                  font-weight="normal"
+                  width="100%"
+                >
+                  Ports of Entry
+                </h2>
+              </div>
+            </div>
+            <div
+              class="css-d9aoz6-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Dataset Description
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                Detailed information about ports related to cargo shipping.
+              </div>
+            </div>
+            <div
+              class="css-1rdjp9o-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Included countries
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                United Kingdom & United States
+              </div>
+            </div>
+            <div
+              class="css-14cjmhn-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Cost Per Record
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                $
+                0.02
+              </div>
+            </div>
+            <div
+              class="css-1ezxmef-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Available Records
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                4500 records
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="css-1y0qilw-Box-Flex e2i8k6n2"
+            width="5"
+          >
+            <div
+              class="css-wxi0h7-Box-Flex e2i8k6n2"
+            >
+              <div
+                class="css-z7haim-Box e2i8k6n3"
+              >
+                <img
+                  alt="dataset thumbnail"
+                  class="css-1v0ofof-Img e2i8k6n4"
+                  height="3"
+                  src="https://picsum.photos/id/1024/92/92"
+                  width="3"
+                />
+              </div>
+              <div
+                class="css-1hg49r7-Box-Flex e2i8k6n2"
+                width="100%"
+              >
+                <h2
+                  class="css-x4oqgn-Box e2i8k6n3"
+                  font-size="4"
+                  font-weight="normal"
+                  width="100%"
+                >
+                  Ocean Measurements
+                </h2>
+              </div>
+            </div>
+            <div
+              class="css-d9aoz6-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Dataset Description
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                Detailed measurements of many ocean locations, including LAT/LON, temperature, humidity and precipitation.
+              </div>
+            </div>
+            <div
+              class="css-1rdjp9o-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Included countries
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                United Kingdom & United States
+              </div>
+            </div>
+            <div
+              class="css-14cjmhn-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Cost Per Record
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                $
+                0.01
+              </div>
+            </div>
+            <div
+              class="css-1ezxmef-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Available Records
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                2250 records
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="css-1y0qilw-Box-Flex e2i8k6n2"
+            width="5"
+          >
+            <div
+              class="css-wxi0h7-Box-Flex e2i8k6n2"
+            >
+              <div
+                class="css-z7haim-Box e2i8k6n3"
+              >
+                <img
+                  alt="dataset thumbnail"
+                  class="css-1v0ofof-Img e2i8k6n4"
+                  height="3"
+                  src="https://picsum.photos/id/135/92/92"
+                  width="3"
+                />
+              </div>
+              <div
+                class="css-1hg49r7-Box-Flex e2i8k6n2"
+                width="100%"
+              >
+                <h2
+                  class="css-x4oqgn-Box e2i8k6n3"
+                  font-size="4"
+                  font-weight="normal"
+                  width="100%"
+                >
+                  Weather and Climate
+                </h2>
+              </div>
+            </div>
+            <div
+              class="css-d9aoz6-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Dataset Description
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                Historical averages and trends of oceanographic climate.
+              </div>
+            </div>
+            <div
+              class="css-1rdjp9o-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Included countries
+              </h3>
+              <div
+                class="css-10zvdr1-Box e2i8k6n3"
+                font-size="1"
+              >
+                United Kingdom & United States
+              </div>
+            </div>
+            <div
+              class="css-14cjmhn-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Cost Per Record
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                $
+                0.04
+              </div>
+            </div>
+            <div
+              class="css-1ezxmef-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-1mp3576-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Available Records
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                550 records
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

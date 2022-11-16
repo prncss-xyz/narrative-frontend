@@ -1,56 +1,10 @@
-import { useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
-import { ActionBox, Box, Flex } from "../components/basics";
-import { BuyOrderForm, FormBuyOrder } from "../components/BuyOrderForm";
-import { Clickable } from "../components/Clickable";
+import { useParams } from "react-router-dom";
+import { Box } from "../components/basics";
 import { Loading } from "../components/Loading";
-import {
-  BuyOrder,
-  BuyOrderSchema,
-  useBuyOrder,
-  useUpdateBuyOrder,
-} from "../hooks/buyOrders";
-import { Country, useCountries } from "../hooks/countries";
-import { Dataset, useDatasets } from "../hooks/datasets";
-
-function Actions({ buyOrder }: { buyOrder: BuyOrder }) {
-  const mutation = useUpdateBuyOrder();
-  return (
-    <>
-      {mutation.data && <Navigate to="/buy-order-list" />}
-      <Flex justifyContent="center">
-        <Clickable onClick={() => mutation.mutate(buyOrder)}>
-          <ActionBox>Save</ActionBox>
-        </Clickable>
-      </Flex>
-    </>
-  );
-}
-
-function Resolved({
-  buyOrder,
-  datasets,
-  countries,
-}: {
-  buyOrder: BuyOrder;
-  datasets: Dataset[];
-  countries: Country[];
-}) {
-  const [formBuyOrder, setFormBuyOrder]: [
-    FormBuyOrder,
-    (s: FormBuyOrder) => void
-  ] = useState<FormBuyOrder>(buyOrder);
-  return (
-    <BuyOrderForm
-      buyOrder={formBuyOrder}
-      setBuyOrder={setFormBuyOrder}
-      datasets={datasets}
-      countries={countries}
-    >
-      <Actions buyOrder={BuyOrderSchema.parse(formBuyOrder)} />
-    </BuyOrderForm>
-  );
-}
+import { EditBuyOrderResolved } from "../components/pages/EditBuyOrderResolved";
+import { useBuyOrder } from "../hooks/buyOrders";
+import { useCountries } from "../hooks/countries";
+import { useDatasets } from "../hooks/datasets";
 
 function Fetch({ id }: { id: string }) {
   const datasets = useDatasets();
@@ -58,7 +12,11 @@ function Fetch({ id }: { id: string }) {
   const buyOrder = useBuyOrder(id);
   if (!datasets || !countries || !buyOrder) return <Loading />;
   return (
-    <Resolved buyOrder={buyOrder} countries={countries} datasets={datasets} />
+    <EditBuyOrderResolved
+      buyOrder={buyOrder}
+      countries={countries}
+      datasets={datasets}
+    />
   );
 }
 

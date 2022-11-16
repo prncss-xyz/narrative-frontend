@@ -1,0 +1,296 @@
+// Vitest Snapshot v1
+
+exports[`BuyListResolved > should render correctly 1`] = `
+<div>
+  <div
+    class="css-9wihcd-Box-Flex e2i8k6n2"
+  >
+    <div
+      class="css-1v4hth8-Box-Flex e2i8k6n2"
+      width="6"
+    >
+      <div
+        class="css-1x3sxzl-Box e2i8k6n3"
+      >
+        <button
+          class="css-19fpo8m-Box e2i8k6n3"
+          cursor="pointer"
+          height="100%"
+        >
+          <div
+            class="css-104t6km-Box-Flex e2i8k6n2"
+            color="muted"
+          >
+            <div
+              class="css-4mhvi5-Box e2i8k6n3"
+              display="inline"
+            >
+              Showing
+            </div>
+            <div
+              class="css-1x0dezy-Box e2i8k6n3"
+              color="text"
+              display="inline"
+              font-weight="bold"
+            >
+              3
+            </div>
+            <div
+              class="css-4mhvi5-Box e2i8k6n3"
+              display="inline"
+            >
+              results
+               from
+            </div>
+            <div
+              class="css-1x0dezy-Box e2i8k6n3"
+              color="text"
+              display="inline"
+              font-weight="bold"
+            >
+              United Kingdom & United States
+            </div>
+          </div>
+        </button>
+      </div>
+      <div
+        class="css-e6iyk4-Box-Grid e2i8k6n1"
+      >
+        <div>
+          <a
+            href="/view-buy-order/1"
+          >
+            <div
+              class="css-7w754j-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Order name
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                My first buy order
+              </div>
+            </div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="/view-buy-order/1"
+          >
+            <div
+              class="css-7w754j-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Date Created
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                10/25/2022
+              </div>
+            </div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="/view-buy-order/1"
+          >
+            <div
+              class="css-7w754j-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Forecasted Records
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                7,250 records
+              </div>
+            </div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="/view-buy-order/2"
+          >
+            <div
+              class="css-7w754j-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Order name
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                My shipping data
+              </div>
+            </div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="/view-buy-order/2"
+          >
+            <div
+              class="css-7w754j-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Date Created
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                9/29/2022
+              </div>
+            </div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="/view-buy-order/2"
+          >
+            <div
+              class="css-7w754j-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Forecasted Records
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                2,500 records
+              </div>
+            </div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="/view-buy-order/3"
+          >
+            <div
+              class="css-7w754j-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Order name
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                Ocean weather order
+              </div>
+            </div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="/view-buy-order/3"
+          >
+            <div
+              class="css-7w754j-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Date Created
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                9/26/2022
+              </div>
+            </div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="/view-buy-order/3"
+          >
+            <div
+              class="css-7w754j-Box-Flex e2i8k6n2"
+            >
+              <h3
+                class="css-5jl3ge-Box e2i8k6n3"
+                color="muted"
+                font-size="1"
+                font-weight="normal"
+                text-decoration="underline"
+              >
+                Forecasted Records
+              </h3>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                2,250 records
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="css-1sohzpi-Box e2i8k6n3"
+  />
+  <div
+    class="css-9wihcd-Box-Flex e2i8k6n2"
+  >
+    <a
+      href="/new-buy-order"
+    >
+      <div
+        class="css-12zc6c3-Box e2i8k6n3"
+        color="muted"
+      >
+        New Order
+      </div>
+    </a>
+  </div>
+</div>
+`;
