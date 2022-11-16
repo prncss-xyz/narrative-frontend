@@ -1,0 +1,21 @@
+// Vitest Snapshot v1
+
+exports[`TogglingSelector > toggle key appartenance to list when clicked on associated element 1`] = `
+<div>
+  <div>
+    <button>
+      a
+    </button>
+  </div>
+  <div>
+    <button>
+      b
+    </button>
+  </div>
+  <div>
+    <button>
+      c
+    </button>
+  </div>
+</div>
+`;

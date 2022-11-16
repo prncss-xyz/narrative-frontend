@@ -42,21 +42,18 @@ function Container(spy: (activeCountryCodes: string[]) => void) {
   );
 }
 
-test.todo("GlobalCountrySelection", () => {
-  it("description", () => {
+// TODO:
+describe.todo("GlobalCountrySelection", () => {
+  it("should be visible", () => {
     const { container } = render(
       <CountrySelectorContext>
         <GlobalCountrySelector count={3} countries={countries} />
       </CountrySelectorContext>
     );
-    it("should match snapshot", () => {
-      expect(container).toMatchSnapshot();
-    });
-    it("should not be invisible", () => {
-      expect(() => {
-        screen.getByText("United States");
-      }).toThrowError();
-    });
+    expect(container).toMatchSnapshot();
+    expect(() => {
+      screen.getByText("United States");
+    }).toThrowError();
     fireEvent.click(screen.getByText("Showing"));
     // const s1 = JSON.stringify(screen.getByText("United States"));
     fireEvent.click(screen.getByText("United States"));

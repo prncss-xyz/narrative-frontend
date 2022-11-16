@@ -1,0 +1,39 @@
+// Vitest Snapshot v1
+
+exports[`Input > disabled > should render correctly 1`] = `
+<div>
+  <input
+    class="css-mggwly-InputRaw e2i8k6n0"
+    placeholder="placeholder"
+    type="text"
+    value="3"
+  />
+</div>
+`;
+
+exports[`Input > validate: true > should trigger when clicked 1`] = `
+"Unable to find an element with the display value: a.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<input[39m
+      [33mclass[39m=[32m\\"css-mggwly-InputRaw e2i8k6n0\\"[39m
+      [33mplaceholder[39m=[32m\\"placeholder\\"[39m
+      [33mtype[39m=[32m\\"text\\"[39m
+      [33mvalue[39m=[32m\\"5\\"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m"
+`;
+
+exports[`Input > validate: true > should trigger when clicked 2`] = `
+<div>
+  <input
+    class="css-mggwly-InputRaw e2i8k6n0"
+    placeholder="placeholder"
+    type="text"
+    value="5"
+  />
+</div>
+`;

@@ -4,15 +4,15 @@ import { BrowserRouter as Router } from "react-router-dom";
 import theme from "../theme";
 import { Navigation } from "./Navigation";
 
-test("Navigation", () => {
-  const { container } = render(
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Navigation />
-      </Router>
-    </ThemeProvider>
-  );
-  it("should match snapshot", () => {
+describe("Navigation", () => {
+  it("should render correctly", () => {
+    const { container } = render(
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Navigation />
+        </Router>
+      </ThemeProvider>
+    );
     expect(container).toMatchSnapshot();
   });
 });

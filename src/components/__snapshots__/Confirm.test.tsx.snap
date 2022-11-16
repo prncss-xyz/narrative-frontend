@@ -1,0 +1,96 @@
+// Vitest Snapshot v1
+
+exports[`Confirm > closed > should not display child component > "error" 1`] = `
+"Unable to find an element with the text: closed-inside. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mdata-testid[39m=[32m\\"closed-outside\\"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m"
+`;
+
+exports[`Confirm > closed > should not display child component 1`] = `
+<div>
+  <div
+    data-testid="closed-outside"
+  />
+</div>
+`;
+
+exports[`Confirm > opened > should call handler 1`] = `
+<div>
+  <div
+    data-testid="opened-outside"
+  >
+    <div
+      class="css-5uqfag-Box-Overlay e2i8k6n3"
+      height="100vh"
+      width="100vw"
+    />
+    <div
+      class="css-1q8bug2-Box-Flex-Overlay e2i8k6n2"
+      height="100vh"
+      width="100vw"
+    >
+      <div
+        class="css-18ya61d-Box-Flex e2i8k6n2"
+        height="100%"
+        width="100%"
+      >
+        <div
+          class="css-15qjs6w-Box-Flex e2i8k6n2"
+          color="text"
+        >
+          <div
+            class="css-cex8gu-Box e2i8k6n3"
+          >
+            <div>
+              opened-inside
+            </div>
+            <div
+              class="css-1ne0ra-Box-Flex e2i8k6n2"
+            >
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                <button
+                  class="css-19fpo8m-Box e2i8k6n3"
+                  cursor="pointer"
+                  height="100%"
+                >
+                  <div
+                    class="css-qkisgj-Box e2i8k6n3"
+                    color="muted"
+                  >
+                    Yes
+                  </div>
+                </button>
+              </div>
+              <div
+                class="css-1x3sxzl-Box e2i8k6n3"
+              >
+                <button
+                  class="css-19fpo8m-Box e2i8k6n3"
+                  cursor="pointer"
+                  height="100%"
+                >
+                  <div
+                    class="css-qkisgj-Box e2i8k6n3"
+                    color="muted"
+                  >
+                    No
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

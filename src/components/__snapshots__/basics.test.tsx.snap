@@ -1,0 +1,87 @@
+// Vitest Snapshot v1
+
+exports[`basics > ActionBox > should render properly 1`] = `
+<div>
+  <div
+    class="css-byy0dv-Box e2i8k6n3"
+    color="muted"
+  >
+    h3
+  </div>
+</div>
+`;
+
+exports[`basics > Box > should render properly 1`] = `
+<div>
+  <div
+    class="css-1x3sxzl-Box e2i8k6n3"
+  />
+</div>
+`;
+
+exports[`basics > Flex > should render properly 1`] = `
+<div>
+  <div
+    class="css-1l4opbc-Box-Flex e2i8k6n2"
+  />
+</div>
+`;
+
+exports[`basics > H1 > should render properly 1`] = `
+<div>
+  <h1
+    class="css-n1cz4e-Box e2i8k6n3"
+    font-size="5"
+    font-weight="normal"
+  >
+    H1
+  </h1>
+</div>
+`;
+
+exports[`basics > H2 > should render properly 1`] = `
+<div>
+  <h3
+    class="css-5jl3ge-Box e2i8k6n3"
+    color="muted"
+    font-size="1"
+    font-weight="normal"
+    text-decoration="underline"
+  >
+    H2
+  </h3>
+</div>
+`;
+
+exports[`basics > H3 > should render properly 1`] = `
+<div>
+  <h3
+    class="css-5jl3ge-Box e2i8k6n3"
+    color="muted"
+    font-size="1"
+    font-weight="normal"
+    text-decoration="underline"
+  >
+    h3
+  </h3>
+</div>
+`;
+
+exports[`basics > Img > should render properly 1`] = `
+<div>
+  <img
+    class="css-qdb0d0-Img e2i8k6n4"
+  />
+</div>
+`;
+
+exports[`basics > OverlayActionBox > should render properly 1`] = `
+<div>
+  <div
+    class="css-qkisgj-Box e2i8k6n3"
+    color="muted"
+  >
+    h3
+  </div>
+</div>
+`;

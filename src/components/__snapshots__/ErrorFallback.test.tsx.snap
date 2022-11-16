@@ -1,0 +1,20 @@
+// Vitest Snapshot v1
+
+exports[`ErrorFallback > should render correctly 1`] = `
+<div>
+  <div
+    class="css-1x3sxzl-Box e2i8k6n3"
+    role="alert"
+  >
+    <div
+      class="css-wn5gmn-Box e2i8k6n3"
+      font-size="3"
+    >
+      Something went wrong.
+    </div>
+    <pre>
+      message
+    </pre>
+  </div>
+</div>
+`;

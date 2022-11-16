@@ -1,58 +1,47 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import {  fireEvent, render, screen } from "@testing-library/react";
 import { Input } from "./Input";
 
-test("Input", () => {
-  test("validate: true", () => {
-    const validate = (_: string) => true;
-    const setValue = vi.fn();
-    const { container } = render(
-      <Input
-        placeholder="placeholder"
-        value="value: true"
-        setValue={setValue}
-        validate={validate}
-      />
-    );
-    const input = screen.getByDisplayValue("value: true");
-    fireEvent.change(input, { target: { value: "new" } });
+describe("Input", () => {
+  describe("validate: true", () => {
     it("should trigger when clicked", () => {
+      function converter(v: string) {
+        const n = Number(v);
+        if (isNaN(n)) return;
+        return n;
+      }
+      const setValue = vi.fn();
+      const { container } = render(
+        <Input
+          placeholder="placeholder"
+          value={3}
+          setValue={setValue}
+          converter={converter}
+        />
+      );
+      const input3 = screen.getByDisplayValue("3");
+      fireEvent.change(input3, { target: { value: "5" } });
+      const input5 = screen.getByDisplayValue("5");
       expect(setValue).toHaveBeenCalledTimes(1);
-    });
-    it("should match snapshot", () => {
+      fireEvent.change(input5, { target: { value: "a" } });
+      expect(() => {
+        screen.getByDisplayValue("a");
+      }).toThrowErrorMatchingSnapshot();
       expect(container).toMatchSnapshot();
     });
   });
-  test("validate: false", () => {
-    const validate = (_: string) => false;
-    const setValue = vi.fn();
-    render(
-      <Input
-        placeholder="placeholder"
-        value="value: false"
-        setValue={setValue}
-        validate={validate}
-      />
-    );
-    const input = screen.getByDisplayValue("value: false");
-    fireEvent.change(input, { target: { value: "new" } });
-    it("should trigger when clicked", () => {
-      expect(setValue).toHaveBeenCalledTimes(0);
-    });
-  });
-  test("disabled", () => {
-    const validate = (_: string) => false;
-    const setValue = (_: string) => {
-      /* do nothing */
-    };
-    const { container } = render(
-      <Input
-        placeholder="placeholder"
-        value="disabled"
-        setValue={setValue}
-        validate={validate}
-      />
-    );
-    it("should match snapshot", () => {
+  describe("disabled", () => {
+    it("should render correctly", () => {
+      const setValue = () => {
+        /* do nothing */
+      };
+      const { container } = render(
+        <Input
+          placeholder="placeholder"
+          value={3}
+          setValue={setValue}
+          converter={Number}
+        />
+      );
       expect(container).toMatchSnapshot();
     });
   });

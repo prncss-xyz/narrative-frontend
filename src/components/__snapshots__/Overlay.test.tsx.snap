@@ -1,0 +1,47 @@
+// Vitest Snapshot v1
+
+exports[`Overlay > closed > should not display child component 1`] = `
+<div>
+  <div
+    data-testid="closed-outside"
+  />
+</div>
+`;
+
+exports[`Overlay > opened > should call handler when clicked outside 1`] = `
+<div>
+  <div
+    data-testid="opened-outside"
+  >
+    <div
+      class="css-5uqfag-Box-Overlay e2i8k6n3"
+      height="100vh"
+      width="100vw"
+    />
+    <div
+      class="css-1q8bug2-Box-Flex-Overlay e2i8k6n2"
+      height="100vh"
+      width="100vw"
+    >
+      <div
+        class="css-18ya61d-Box-Flex e2i8k6n2"
+        height="100%"
+        width="100%"
+      >
+        <div
+          class="css-15qjs6w-Box-Flex e2i8k6n2"
+          color="text"
+        >
+          <div
+            class="css-cex8gu-Box e2i8k6n3"
+          >
+            <div>
+              opened-inside
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

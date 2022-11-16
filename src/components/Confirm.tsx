@@ -17,7 +17,7 @@ export function Confirm({
   return (
     <Overlay
       visible={overlayVisible}
-      onClickOutside={() => setOverlayVisible(false)}
+      setVisible={() => setOverlayVisible(false)}
     >
       {children}
       <Flex mt={4} gap={2} justifyContent="flex-end">

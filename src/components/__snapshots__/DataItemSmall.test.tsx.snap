@@ -1,0 +1,108 @@
+// Vitest Snapshot v1
+
+exports[`DataItemSmall > active > should render correctly 1`] = `
+<div>
+  <div
+    class="css-nj16u6-Box-Flex e2i8k6n2"
+    cursor="pointer"
+  >
+    <img
+      alt="dataset thumbnail"
+      class="css-p7u6kb-Img e2i8k6n4"
+      height="1"
+      src="https://picsum.photos/id/1038/92/92"
+    />
+    <div
+      class="css-d9aoz6-Box-Flex e2i8k6n2"
+    >
+      <div
+        class="css-9g59n2-Box e2i8k6n3"
+        color="text"
+        font-size="2"
+      >
+        Disabled
+      </div>
+      <div
+        class="css-11jaf6e-Box e2i8k6n3"
+        color="muted"
+        font-size="0"
+      >
+        $
+        0.03
+         per record
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataItemSmall > disabled > should not trigger when clicked 1`] = `
+<div>
+  <div
+    class="css-svkabz-Box-Flex e2i8k6n2"
+  >
+    <img
+      alt="dataset thumbnail"
+      class="css-p7u6kb-Img e2i8k6n4"
+      height="1"
+      src="https://picsum.photos/id/1038/92/92"
+    />
+    <div
+      class="css-d9aoz6-Box-Flex e2i8k6n2"
+    >
+      <div
+        class="css-9g59n2-Box e2i8k6n3"
+        color="text"
+        font-size="2"
+      >
+        Disabled
+      </div>
+      <div
+        class="css-11jaf6e-Box e2i8k6n3"
+        color="muted"
+        font-size="0"
+      >
+        $
+        0.03
+         per record
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DataItemSmall > not disabled > should trigger when clicked 1`] = `
+<div>
+  <div
+    class="css-irgnby-Box-Flex e2i8k6n2"
+    cursor="pointer"
+  >
+    <img
+      alt="dataset thumbnail"
+      class="css-p7u6kb-Img e2i8k6n4"
+      height="1"
+      src="https://picsum.photos/id/1038/92/92"
+    />
+    <div
+      class="css-d9aoz6-Box-Flex e2i8k6n2"
+    >
+      <div
+        class="css-9g59n2-Box e2i8k6n3"
+        color="text"
+        font-size="2"
+      >
+        Not Disabled
+      </div>
+      <div
+        class="css-11jaf6e-Box e2i8k6n3"
+        color="muted"
+        font-size="0"
+      >
+        $
+        0.03
+         per record
+      </div>
+    </div>
+  </div>
+</div>
+`;

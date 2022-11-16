@@ -1,35 +1,50 @@
+import { useState } from "react";
 import { Box, InputRaw } from "./basics";
 
+function identity(s: string) {
+  return s;
+}
+
 // type="number" behehaves too weird
-export function Input({
+export function Input<T>({
   placeholder,
   value,
   setValue,
   disabled,
+  normalizer,
+  converter,
   ...props
 }: {
   placeholder: string;
-  value: string;
-  setValue: (value: string) => void;
+  value: T;
+  setValue: (value: T) => void;
   disabled?: boolean;
+  normalizer?: (stringValue_: string) => string;
+  converter: (stringValue_: string) => T | undefined;
+
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
+  const [stringValue, setStringValue] = useState(String(value));
+  const n = normalizer || identity;
   const handleChange = ({
-    currentTarget: { value },
+    currentTarget: { value: value_ },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(value);
+    const converted = converter(n(value_));
+    if (converted === undefined) return;
+    setValue(converted);
+    setStringValue(value_);
   };
   return (
     <>
       {disabled ? (
         <Box display="inline" {...props}>
-          {String(value)}
+          {n(stringValue)}
         </Box>
       ) : (
         <InputRaw
           type="text"
           placeholder={placeholder}
-          value={value}
+          value={n(stringValue)}
           onChange={handleChange}
           {...props}
         />

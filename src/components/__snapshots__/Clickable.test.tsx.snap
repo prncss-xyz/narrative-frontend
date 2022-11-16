@@ -1,0 +1,33 @@
+// Vitest Snapshot v1
+
+exports[`Clickable > disabled > should trigger when clicked 1`] = `
+<div>
+  <div
+    class="css-1x3sxzl-Box e2i8k6n3"
+  >
+    <button
+      class="css-19fpo8m-Box e2i8k6n3"
+      cursor="pointer"
+      height="100%"
+    >
+      not disabled
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Clickable > disabled > should trigger when clicked 2`] = `
+<div>
+  <div
+    class="css-1x3sxzl-Box e2i8k6n3"
+  >
+    <button
+      class="css-84vwd6-Box e2i8k6n3"
+      disabled=""
+      height="100%"
+    >
+      disabled
+    </button>
+  </div>
+</div>
+`;

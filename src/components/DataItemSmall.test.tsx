@@ -11,47 +11,43 @@ const dataset = {
   costPerRecord: 0.03,
 };
 
-test("DataItemSmall", () => {
-  test("not disabled", async () => {
-    const spy = vi.fn();
-    const { container } = render(
-      <DatasetItemSmall
-        dataset={{ ...dataset, label: "Not Disabled" }}
-        onClick={spy}
-      />
-    );
-    fireEvent.click(screen.getByText("Not Disabled"));
+describe("DataItemSmall", () => {
+  describe("not disabled", () => {
     it("should trigger when clicked", () => {
+      const spy = vi.fn();
+      const { container } = render(
+        <DatasetItemSmall
+          dataset={{ ...dataset, label: "Not Disabled" }}
+          onClick={spy}
+        />
+      );
+      fireEvent.click(screen.getByText("Not Disabled"));
       expect(spy).toHaveBeenCalledTimes(1);
-    });
-    it("should match snapshot", () => {
       expect(container).toMatchSnapshot();
     });
   });
 
-  test("disabled", async () => {
-    const spy = vi.fn();
-    const { container } = render(
-      <DatasetItemSmall
-        dataset={{ ...dataset, label: "Disabled" }}
-        onClick={spy}
-        disabled
-      />
-    );
-    fireEvent.click(screen.getByText("Disabled"));
+  describe("disabled", () => {
     it("should not trigger when clicked", () => {
+      const spy = vi.fn();
+      const { container } = render(
+        <DatasetItemSmall
+          dataset={{ ...dataset, label: "Disabled" }}
+          onClick={spy}
+          disabled
+        />
+      );
+      fireEvent.click(screen.getByText("Disabled"));
       expect(spy).toHaveBeenCalledTimes(0);
-    });
-    it("should match snapshot", () => {
       expect(container).toMatchSnapshot();
     });
   });
 
-  test("active", () => {
-    const { container } = render(
-      <DatasetItemSmall dataset={{ ...dataset, label: "Disabled" }} active />
-    );
-    it("should match snapshot", () => {
+  describe("active", () => {
+    it("should render correctly", () => {
+      const { container } = render(
+        <DatasetItemSmall dataset={{ ...dataset, label: "Disabled" }} active />
+      );
       expect(container).toMatchSnapshot();
     });
   });
