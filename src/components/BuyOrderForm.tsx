@@ -1,22 +1,15 @@
-import { useState } from "react";
 import { Country } from "../hooks/countries";
 import { Dataset } from "../hooks/datasets";
 import {
   availableRecordCountForDatasets,
   forcastedRecordCount,
 } from "../utils/logic";
+import { convertMoney, normalizeMoney } from "../utils/money";
 import { Box, Flex, Grid, H3 } from "./basics";
 import { DatasetItemSmall } from "./DataItemSmall";
 import { Input } from "./Input";
 import { RoundedButton } from "./RoundedButton";
 import { TogglingSelector } from "./TogglingSelector";
-
-function validateMoney(value: string): number | undefined {
-  if (value.endsWith(".")) value = value.slice(0, -1);
-  const num = Number(value);
-  if (num >= 0) return num;
-  return;
-}
 
 // export interface BuyOrderFormResult {
 export type FormBuyOrder = {
@@ -28,16 +21,13 @@ export type FormBuyOrder = {
   budget: number;
 };
 
-// HACK: toAction is a little ackward; this could be avoided by commiting to a state managment library
 export function BuyOrderForm({
-  disabled,
   buyOrder,
   setBuyOrder,
   datasets,
   countries,
   children,
 }: {
-  disabled?: boolean;
   buyOrder: FormBuyOrder;
   setBuyOrder?: (BuyOrder: FormBuyOrder) => void;
   datasets: Dataset[];
@@ -50,7 +40,7 @@ export function BuyOrderForm({
     datasets,
     buyOrder.countries
   );
-  const [budgetStr, setBudgetStr] = useState(String(buyOrder.budget));
+  const disabled = setBuyOrder === undefined;
   return (
     <Flex justifyContent="center">
       <Flex
@@ -78,6 +68,7 @@ export function BuyOrderForm({
               disabled={disabled}
               placeholder="name"
               value={buyOrder.name}
+              converter={String}
               setValue={(name) =>
                 setBuyOrder && setBuyOrder({ ...buyOrder, name })
               }
@@ -112,14 +103,12 @@ export function BuyOrderForm({
                 ml={!disabled && 2}
                 disabled={disabled}
                 placeholder="budget"
-                value={budgetStr}
-                setValue={(budgetStr_) => {
-                  if (!setBuyOrder) return;
-                  const budget = validateMoney(budgetStr_);
-                  if (budget === undefined) return;
-                  setBudgetStr(budgetStr_);
-                  setBuyOrder({ ...buyOrder, budget });
-                }}
+                value={buyOrder.budget}
+                normalizer={normalizeMoney}
+                converter={convertMoney}
+                setValue={(budget) =>
+                  setBuyOrder && setBuyOrder({ ...buyOrder, budget })
+                }
               />
             </Flex>
           </Box>
