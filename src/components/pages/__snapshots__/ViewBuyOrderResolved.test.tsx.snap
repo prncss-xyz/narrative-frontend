@@ -117,7 +117,8 @@ exports[`ViewBuyOrderResolved > should render correctly 1`] = `
         >
           <div>
             <div
-              class="css-p155cz-Box-Flex e2i8k6n2"
+              class="css-nj16u6-Box-Flex e2i8k6n2"
+              cursor="pointer"
             >
               <img
                 alt="dataset thumbnail"
@@ -149,7 +150,8 @@ exports[`ViewBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-svkabz-Box-Flex e2i8k6n2"
+              class="css-irgnby-Box-Flex e2i8k6n2"
+              cursor="pointer"
             >
               <img
                 alt="dataset thumbnail"
@@ -181,7 +183,8 @@ exports[`ViewBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-p155cz-Box-Flex e2i8k6n2"
+              class="css-nj16u6-Box-Flex e2i8k6n2"
+              cursor="pointer"
             >
               <img
                 alt="dataset thumbnail"
@@ -213,7 +216,8 @@ exports[`ViewBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-p155cz-Box-Flex e2i8k6n2"
+              class="css-nj16u6-Box-Flex e2i8k6n2"
+              cursor="pointer"
             >
               <img
                 alt="dataset thumbnail"
@@ -245,7 +249,8 @@ exports[`ViewBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-svkabz-Box-Flex e2i8k6n2"
+              class="css-irgnby-Box-Flex e2i8k6n2"
+              cursor="pointer"
             >
               <img
                 alt="dataset thumbnail"

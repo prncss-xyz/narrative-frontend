@@ -1,9 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { Country } from "../hooks/countries";
+import { setInArray } from "../utils/arrays";
 import { Box, Flex, H3 } from "./basics";
-import { Clickable } from "./Clickable";
-import { Overlay } from "./Overlay";
-import { RoundedButton } from "./RoundedButton";
+import { ToggleButton } from "./ToggleButton";
 import { TogglingSelector } from "./TogglingSelector";
 
 type CountryCodes = string[];
@@ -67,7 +66,6 @@ export function GlobalCountrySelector({
   ...props
 }: {
   countries: Country[];
-
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   countries = sortCountriesByName(countries);
@@ -77,16 +75,22 @@ export function GlobalCountrySelector({
     <Box>
       <H3>Included countries</H3>
       <Flex gap={3} {...props}>
-        <TogglingSelector
-          state={activeCountryCodes}
-          setState={setActiveCountryCodes}
-          items={countries.map((country) => ({
-            key: country.countryCode,
-            toElem: (props) => (
-              <RoundedButton {...props}>{country.name}</RoundedButton>
-            ),
-          }))}
-        />
+        {countries.map((country) => (
+          <div key={country.countryCode}>
+            <ToggleButton
+              active={activeCountryCodes.includes(country.countryCode)}
+              setActive={(status) =>
+                // status
+                setActiveCountryCodes(
+                  // activeCountryCodes
+                  setInArray(activeCountryCodes, country.countryCode, status)
+                )
+              }
+            >
+              {country.name}
+            </ToggleButton>
+          </div>
+        ))}
       </Flex>
     </Box>
   );

@@ -1,5 +1,6 @@
 import { Country } from "../hooks/countries";
 import { Dataset } from "../hooks/datasets";
+import { setInArray } from "../utils/arrays";
 import {
   availableRecordCountForDatasets,
   forcastedRecordCount,
@@ -8,7 +9,7 @@ import { convertMoney, normalizeMoney } from "../utils/money";
 import { Box, Flex, Grid, H3 } from "./basics";
 import { DatasetItemSmall } from "./DataItemSmall";
 import { Input } from "./Input";
-import { RoundedButton } from "./RoundedButton";
+import { ToggleButton } from "./ToggleButton";
 import { TogglingSelector } from "./TogglingSelector";
 
 // export interface BuyOrderFormResult {
@@ -127,43 +128,53 @@ export function BuyOrderForm({
             gridRowGap={3}
             gridColumnGap={3}
           >
-            <TogglingSelector
-              disabled={disabled}
-              state={buyOrder.datasetIds}
-              setState={(datasetIds) =>
-                setBuyOrder && setBuyOrder({ ...buyOrder, datasetIds })
-              }
-              items={datasets.map((dataset) => ({
-                key: dataset.id,
-                toElem: (props) => (
-                  <DatasetItemSmall dataset={dataset} {...props} />
-                ),
-              }))}
-            />
+            {datasets.map((dataset) => (
+              <div key={dataset.id}>
+                <DatasetItemSmall
+                  dataset={dataset}
+                  active={buyOrder.datasetIds.includes(dataset.id)}
+                  setActive={
+                    disabled
+                      ? undefined
+                      : (status) =>
+                          setBuyOrder({
+                            ...buyOrder,
+                            datasetIds: setInArray(
+                              buyOrder.datasetIds,
+                              dataset.id,
+                              status
+                            ),
+                          })
+                  }
+                />
+              </div>
+            ))}
           </Grid>
         </Box>
         <Box>
           <H3>Included countries</H3>
           <Flex gap={3}>
-            <TogglingSelector
-              disabled={disabled}
-              state={buyOrder.countries}
-              setState={(countries) =>
-                setBuyOrder && setBuyOrder({ ...buyOrder, countries })
-              }
-              items={countries.map((country) => ({
-                key: country.countryCode,
-                toElem: (props) => (
-                  <RoundedButton
-                    {...props}
-                    // eslint-disable-next-line react/prop-types
-                    borderStyle={props.active ? "solid" : "none"}
-                  >
-                    {country.name}
-                  </RoundedButton>
-                ),
-              }))}
-            />
+            {countries.map((country) => (
+              <div key={country.countryCode}>
+                <ToggleButton
+                  active={buyOrder.countries.includes(country.countryCode)}
+                  setActive={(status) =>
+                    setBuyOrder
+                      ? setBuyOrder({
+                          ...buyOrder,
+                          countries: setInArray(
+                            buyOrder.countries,
+                            country.countryCode,
+                            status
+                          ),
+                        })
+                      : undefined
+                  }
+                >
+                  {country.name}
+                </ToggleButton>
+              </div>
+            ))}
           </Flex>
         </Box>
         <Box mt={5} />

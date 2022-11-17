@@ -4,14 +4,12 @@ import { Box, Flex, Img } from "./basics";
 export function DatasetItemSmall({
   dataset,
   active,
-  disabled,
-  onClick,
+  setActive,
   ...props
 }: {
   dataset: Dataset;
-  active?: boolean;
-  disabled?: boolean;
-  onClick?: React.MouseEventHandler;
+  active: boolean;
+  setActive?: (s: boolean) => void;
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
@@ -24,8 +22,8 @@ export function DatasetItemSmall({
       borderStyle="solid"
       borderColor={active ? "text" : "bgLight"}
       backgroundColor={active ? "accent" : "bgLight"}
-      onClick={disabled ? undefined : onClick}
-      cursor={disabled ? undefined : "pointer"}
+      onClick={setActive ? () => setActive(!active) : undefined}
+      cursor={setActive ? undefined : "pointer"}
       {...props}
     >
       <Img height={1} src={dataset.thumbnailUrl} alt="dataset thumbnail" />

@@ -1,15 +1,13 @@
 import { Box } from "./basics";
 
-export function RoundedButton({
+export function ToggleButton({
   active,
-  disabled,
-  onClick,
+  setActive,
   children,
   ...props
 }: {
-  active?: boolean;
-  disabled?: boolean;
-  onClick?: React.MouseEventHandler;
+  active: boolean;
+  setActive?: (b: boolean) => void;
   children: React.ReactNode;
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
@@ -25,8 +23,8 @@ export function RoundedButton({
       backgroundColor={active ? "accent" : "bgLight"}
       fontSize={0}
       borderRadius={3}
-      onClick={disabled ? undefined : onClick}
-      cursor={disabled ? undefined : "pointer"}
+      onClick={setActive ? () => setActive(!active) : undefined}
+      cursor={setActive ? undefined : "pointer"}
       {...props}
     >
       {children}

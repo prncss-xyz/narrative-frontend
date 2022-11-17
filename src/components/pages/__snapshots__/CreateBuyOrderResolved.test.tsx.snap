@@ -1,342 +1,5 @@
 // Vitest Snapshot v1
 
-exports[`BuyOrderForm > should render correctly 1`] = `
-<div>
-  <div
-    class="css-9wihcd-Box-Flex e2i8k6n2"
-  >
-    <div
-      class="css-1dv1990-Box-Flex e2i8k6n2"
-      width="6"
-    >
-      <div
-        class="css-uoxz8q-Box-Grid e2i8k6n1"
-      >
-        <div
-          class="css-1x3sxzl-Box e2i8k6n3"
-        >
-          <h3
-            class="css-5jl3ge-Box e2i8k6n3"
-            color="muted"
-            font-size="1"
-            font-weight="normal"
-            text-decoration="underline"
-          >
-            Order name
-          </h3>
-          <input
-            class="css-1ld7d19-InputRaw e2i8k6n0"
-            placeholder="name"
-            type="text"
-            value=""
-            width="100%"
-          />
-        </div>
-        <div
-          class="css-1x3sxzl-Box e2i8k6n3"
-        >
-          <div
-            class="css-1x3sxzl-Box e2i8k6n3"
-          />
-        </div>
-        <div
-          class="css-1x3sxzl-Box e2i8k6n3"
-        >
-          <h3
-            class="css-5jl3ge-Box e2i8k6n3"
-            color="muted"
-            font-size="1"
-            font-weight="normal"
-            text-decoration="underline"
-          >
-            Order budget
-          </h3>
-          <div
-            class="css-1pkfq1d-Box-Flex e2i8k6n2"
-          >
-            <div
-              class="css-1x3sxzl-Box e2i8k6n3"
-            >
-              $
-            </div>
-            <input
-              class="css-wt16d4-InputRaw e2i8k6n0"
-              placeholder="budget"
-              type="text"
-              value="0"
-              width="100%"
-            />
-          </div>
-        </div>
-        <div
-          class="css-1x3sxzl-Box e2i8k6n3"
-        >
-          <h3
-            class="css-5jl3ge-Box e2i8k6n3"
-            color="muted"
-            font-size="1"
-            font-weight="normal"
-            text-decoration="underline"
-          >
-            Forecasted Records
-          </h3>
-          <div
-            class="css-fqccl6-Box e2i8k6n3"
-            height="1"
-          >
-            0 of 9050 available records
-          </div>
-        </div>
-      </div>
-      <div
-        class="css-1x3sxzl-Box e2i8k6n3"
-      >
-        <h3
-          class="css-5jl3ge-Box e2i8k6n3"
-          color="muted"
-          font-size="1"
-          font-weight="normal"
-          text-decoration="underline"
-        >
-          Included datasets
-        </h3>
-        <div
-          class="css-7v5rcp-Box-Grid e2i8k6n1"
-        >
-          <div>
-            <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
-            >
-              <img
-                alt="dataset thumbnail"
-                class="css-p7u6kb-Img e2i8k6n4"
-                height="1"
-                src="https://picsum.photos/id/1038/92/92"
-              />
-              <div
-                class="css-d9aoz6-Box-Flex e2i8k6n2"
-              >
-                <div
-                  class="css-9g59n2-Box e2i8k6n3"
-                  color="text"
-                  font-size="2"
-                >
-                  Fishing Zones
-                </div>
-                <div
-                  class="css-11jaf6e-Box e2i8k6n3"
-                  color="muted"
-                  font-size="0"
-                >
-                  $
-                  0.03
-                   per record
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
-            >
-              <img
-                alt="dataset thumbnail"
-                class="css-p7u6kb-Img e2i8k6n4"
-                height="1"
-                src="https://picsum.photos/id/1002/92/92"
-              />
-              <div
-                class="css-d9aoz6-Box-Flex e2i8k6n2"
-              >
-                <div
-                  class="css-9g59n2-Box e2i8k6n3"
-                  color="text"
-                  font-size="2"
-                >
-                  Shipping Routes
-                </div>
-                <div
-                  class="css-11jaf6e-Box e2i8k6n3"
-                  color="muted"
-                  font-size="0"
-                >
-                  $
-                  0.05
-                   per record
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
-            >
-              <img
-                alt="dataset thumbnail"
-                class="css-p7u6kb-Img e2i8k6n4"
-                height="1"
-                src="https://picsum.photos/id/1026/92/92"
-              />
-              <div
-                class="css-d9aoz6-Box-Flex e2i8k6n2"
-              >
-                <div
-                  class="css-9g59n2-Box e2i8k6n3"
-                  color="text"
-                  font-size="2"
-                >
-                  Ports of Entry
-                </div>
-                <div
-                  class="css-11jaf6e-Box e2i8k6n3"
-                  color="muted"
-                  font-size="0"
-                >
-                  $
-                  0.02
-                   per record
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
-            >
-              <img
-                alt="dataset thumbnail"
-                class="css-p7u6kb-Img e2i8k6n4"
-                height="1"
-                src="https://picsum.photos/id/1024/92/92"
-              />
-              <div
-                class="css-d9aoz6-Box-Flex e2i8k6n2"
-              >
-                <div
-                  class="css-9g59n2-Box e2i8k6n3"
-                  color="text"
-                  font-size="2"
-                >
-                  Ocean Measurements
-                </div>
-                <div
-                  class="css-11jaf6e-Box e2i8k6n3"
-                  color="muted"
-                  font-size="0"
-                >
-                  $
-                  0.01
-                   per record
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
-            >
-              <img
-                alt="dataset thumbnail"
-                class="css-p7u6kb-Img e2i8k6n4"
-                height="1"
-                src="https://picsum.photos/id/135/92/92"
-              />
-              <div
-                class="css-d9aoz6-Box-Flex e2i8k6n2"
-              >
-                <div
-                  class="css-9g59n2-Box e2i8k6n3"
-                  color="text"
-                  font-size="2"
-                >
-                  Weather and Climate
-                </div>
-                <div
-                  class="css-11jaf6e-Box e2i8k6n3"
-                  color="muted"
-                  font-size="0"
-                >
-                  $
-                  0.04
-                   per record
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="css-1x3sxzl-Box e2i8k6n3"
-      >
-        <h3
-          class="css-5jl3ge-Box e2i8k6n3"
-          color="muted"
-          font-size="1"
-          font-weight="normal"
-          text-decoration="underline"
-        >
-          Included countries
-        </h3>
-        <div
-          class="css-vq3ac2-Box-Flex e2i8k6n2"
-        >
-          <div>
-            <button
-              class="css-1717d9d-Box e2i8k6n3"
-              color="text"
-              cursor="pointer"
-              font-size="0"
-              height="1"
-            >
-              United States
-            </button>
-          </div>
-          <div>
-            <button
-              class="css-1717d9d-Box e2i8k6n3"
-              color="text"
-              cursor="pointer"
-              font-size="0"
-              height="1"
-            >
-              United Kingdom
-            </button>
-          </div>
-        </div>
-      </div>
-      <div
-        class="css-sbc3pv-Box e2i8k6n3"
-      />
-      <div
-        class="css-9wihcd-Box-Flex e2i8k6n2"
-      >
-        <div
-          class="css-1x3sxzl-Box e2i8k6n3"
-        >
-          <button
-            class="css-19fpo8m-Box e2i8k6n3"
-            cursor="pointer"
-            height="100%"
-          >
-            <div
-              class="css-byy0dv-Box e2i8k6n3"
-              color="muted"
-            >
-              Create Order
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`CreateBuyOrderResolved > should render correctly 1`] = `
 <div>
   <div
@@ -442,8 +105,7 @@ exports[`CreateBuyOrderResolved > should render correctly 1`] = `
         >
           <div>
             <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-svkabz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -475,8 +137,7 @@ exports[`CreateBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-svkabz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -508,8 +169,7 @@ exports[`CreateBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-svkabz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -541,8 +201,7 @@ exports[`CreateBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-svkabz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -574,8 +233,7 @@ exports[`CreateBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-svkabz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -624,9 +282,8 @@ exports[`CreateBuyOrderResolved > should render correctly 1`] = `
         >
           <div>
             <button
-              class="css-1717d9d-Box e2i8k6n3"
+              class="css-1fbado3-Box e2i8k6n3"
               color="text"
-              cursor="pointer"
               font-size="0"
               height="1"
             >
@@ -635,9 +292,8 @@ exports[`CreateBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <button
-              class="css-1717d9d-Box e2i8k6n3"
+              class="css-1fbado3-Box e2i8k6n3"
               color="text"
-              cursor="pointer"
               font-size="0"
               height="1"
             >

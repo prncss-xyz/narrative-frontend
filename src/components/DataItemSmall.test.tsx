@@ -12,41 +12,28 @@ const dataset = {
 };
 
 describe("DataItemSmall", () => {
-  describe("not disabled", () => {
+  describe("not active", () => {
     it("should trigger when clicked", () => {
       const spy = vi.fn();
       const { container } = render(
         <DatasetItemSmall
-          dataset={{ ...dataset, label: "Not Disabled" }}
-          onClick={spy}
+          dataset={{ ...dataset, label: "Not Active" }}
+          active={false}
+          setActive={spy}
         />
       );
-      fireEvent.click(screen.getByText("Not Disabled"));
+      fireEvent.click(screen.getByText("Not Active"));
       expect(spy).toHaveBeenCalledTimes(1);
       expect(container).toMatchSnapshot();
     });
   });
-
-  describe("disabled", () => {
-    it("should not trigger when clicked", () => {
-      const spy = vi.fn();
-      const { container } = render(
-        <DatasetItemSmall
-          dataset={{ ...dataset, label: "Disabled" }}
-          onClick={spy}
-          disabled
-        />
-      );
-      fireEvent.click(screen.getByText("Disabled"));
-      expect(spy).toHaveBeenCalledTimes(0);
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe("active", () => {
     it("should render correctly", () => {
       const { container } = render(
-        <DatasetItemSmall dataset={{ ...dataset, label: "Disabled" }} active />
+        <DatasetItemSmall
+          active={true}
+          dataset={{ ...dataset, label: "Active" }}
+        />
       );
       expect(container).toMatchSnapshot();
     });

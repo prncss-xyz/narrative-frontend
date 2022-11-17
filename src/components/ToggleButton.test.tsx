@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { RoundedButton } from "./RoundedButton";
+import { ToggleButton } from "./ToggleButton";
 
-describe("RoundedButton", () => {
+describe("ToggleButton", () => {
   describe("not disabled", () => {
     it("should trigger when clicked", () => {
       const spy = vi.fn();
       const { container } = render(
-        <RoundedButton onClick={spy}>not disabled</RoundedButton>
+        <ToggleButton onClick={spy}>not disabled</ToggleButton>
       );
       fireEvent.click(screen.getByText("not disabled"));
       expect(spy).toHaveBeenCalledTimes(1);
@@ -17,9 +17,9 @@ describe("RoundedButton", () => {
     it("should trigger when clicked", () => {
       const spy = vi.fn();
       const { container } = render(
-        <RoundedButton disabled={true} onClick={spy}>
+        <ToggleButton disabled={true} onClick={spy}>
           disabled
-        </RoundedButton>
+        </ToggleButton>
       );
       fireEvent.click(screen.getByText("disabled"));
       expect(spy).toHaveBeenCalledTimes(0);

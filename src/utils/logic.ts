@@ -1,7 +1,7 @@
 import { ProBuyOrder } from "../hooks/buyOrders";
 import { Country } from "../hooks/countries";
 import { Dataset } from "../hooks/datasets";
-import { intersects } from "./intersects";
+import { intersects } from "./arrays";
 
 function getRecordCount(country: Country, dataset: Dataset): number {
   const data = country.storedData.find((data) => data.datasetId === dataset.id);

@@ -117,8 +117,7 @@ exports[`EditBuyOrderResolved > should render correctly 1`] = `
         >
           <div>
             <div
-              class="css-nj16u6-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-p155cz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -150,8 +149,7 @@ exports[`EditBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-svkabz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -183,8 +181,7 @@ exports[`EditBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-nj16u6-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-p155cz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -216,8 +213,7 @@ exports[`EditBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-nj16u6-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-p155cz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -249,8 +245,7 @@ exports[`EditBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <div
-              class="css-irgnby-Box-Flex e2i8k6n2"
-              cursor="pointer"
+              class="css-svkabz-Box-Flex e2i8k6n2"
             >
               <img
                 alt="dataset thumbnail"
@@ -299,9 +294,8 @@ exports[`EditBuyOrderResolved > should render correctly 1`] = `
         >
           <div>
             <button
-              class="css-1717d9d-Box e2i8k6n3"
+              class="css-1fbado3-Box e2i8k6n3"
               color="text"
-              cursor="pointer"
               font-size="0"
               height="1"
             >
@@ -310,9 +304,8 @@ exports[`EditBuyOrderResolved > should render correctly 1`] = `
           </div>
           <div>
             <button
-              class="css-1717d9d-Box e2i8k6n3"
+              class="css-1fbado3-Box e2i8k6n3"
               color="text"
-              cursor="pointer"
               font-size="0"
               height="1"
             >
