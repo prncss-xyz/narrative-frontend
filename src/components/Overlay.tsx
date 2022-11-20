@@ -1,6 +1,10 @@
 import { useClickOutside } from "../hooks/clickOutside";
 import { Box, Flex } from "./basics";
 
+/*
+ * When visible is true, displays child component in overlay, shading what is behind
+ * When clicking outside setVisble is called with value false
+ */
 export function Overlay({
   visible,
   setVisible,

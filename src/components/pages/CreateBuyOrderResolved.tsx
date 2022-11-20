@@ -4,11 +4,11 @@ import { useCreateBuyOrder } from "../../hooks/buyOrders";
 import { Country } from "../../hooks/countries";
 import { Dataset } from "../../hooks/datasets";
 import { ActionBox, Flex } from "../basics";
-import { BuyOrderForm, FormBuyOrder } from "../BuyOrderForm";
+import { BuyOrderForm, BuyOrderContents } from "../BuyOrderForm";
 import { Clickable } from "../Clickable";
-import { useGlobalCountyList } from "../GlobalCountrySelection";
+import { useGlobalCountryList } from "../GlobalCountrySelection";
 
-function Actions({ result }: { result: FormBuyOrder }) {
+function Actions({ result }: { result: BuyOrderContents }) {
   const mutation = useCreateBuyOrder();
   return (
     <>
@@ -29,11 +29,9 @@ export function CreateBuyOrderResolved({
   datasets: Dataset[];
   countries: Country[];
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const [globalActiveCountries] = useGlobalCountyList(countries);
+  const [globalActiveCountries] = useGlobalCountryList(countries);
   const [activeCountryCodes] = useState<string[]>(globalActiveCountries);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const [formBuyOrder, setFormBuyOrder] = useState<FormBuyOrder>({
+  const [formBuyOrder, setFormBuyOrder] = useState<BuyOrderContents>({
     name: "",
     datasetIds: [],
     budget: 0,

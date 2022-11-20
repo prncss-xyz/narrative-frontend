@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import { useDatasets } from "./datasets";
 
-describe.skip("useDatasets", () => {
+describe("useDatasets", () => {
   it("should fetch the datasets list", async () => {
     const queryClient = new QueryClient();
     const wrapper = ({ children }: { children: React.ReactNode }) => (

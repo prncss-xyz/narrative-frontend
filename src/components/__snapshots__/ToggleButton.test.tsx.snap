@@ -3,8 +3,8 @@
 exports[`ToggleButton > disabled > should trigger when clicked 1`] = `
 <div>
   <button
-    class="css-z6k8zu-Box e2i8k6n3"
-    color="muted"
+    class="css-1717d9d-Box e2i8k6n3"
+    color="text"
     cursor="pointer"
     disabled=""
     font-size="0"
@@ -18,9 +18,8 @@ exports[`ToggleButton > disabled > should trigger when clicked 1`] = `
 exports[`ToggleButton > not disabled > should trigger when clicked 1`] = `
 <div>
   <button
-    class="css-z6k8zu-Box e2i8k6n3"
+    class="css-1gxxcqd-Box e2i8k6n3"
     color="muted"
-    cursor="pointer"
     font-size="0"
     height="1"
   >

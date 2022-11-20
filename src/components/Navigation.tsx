@@ -2,6 +2,9 @@ import { useTheme } from "@emotion/react";
 import { NavLink } from "react-router-dom";
 import { Box, Flex } from "./basics";
 
+/*
+ * The navigation bar appearing on top of every page
+ */
 export function Navigation() {
   const theme: any = useTheme();
   return (
@@ -16,12 +19,12 @@ export function Navigation() {
       css={{
         "& .active": {
           fontWeight: "bold",
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,
           color: theme.colors.accent,
         },
       }}
     >
-      <Box/>
+      <Box />
       <Box>
         <NavLink to="/buy-order-list">Buy Orders</NavLink>
       </Box>

@@ -8,7 +8,7 @@ import {
 import { Country } from "../../hooks/countries";
 import { Dataset } from "../../hooks/datasets";
 import { ActionBox, Flex } from "../basics";
-import { BuyOrderForm, FormBuyOrder } from "../BuyOrderForm";
+import { BuyOrderForm, BuyOrderContents } from "../BuyOrderForm";
 import { Clickable } from "../Clickable";
 
 function Actions({ buyOrder }: { buyOrder: BuyOrder }) {
@@ -35,9 +35,9 @@ export function EditBuyOrderResolved({
   countries: Country[];
 }) {
   const [formBuyOrder, setFormBuyOrder]: [
-    FormBuyOrder,
-    (s: FormBuyOrder) => void
-  ] = useState<FormBuyOrder>(buyOrder);
+    BuyOrderContents,
+    (s: BuyOrderContents) => void
+  ] = useState<BuyOrderContents>(buyOrder);
   return (
     <BuyOrderForm
       buyOrder={formBuyOrder}

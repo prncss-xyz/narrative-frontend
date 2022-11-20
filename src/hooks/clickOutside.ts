@@ -1,5 +1,8 @@
 import { RefObject, useEffect, useRef } from "react";
 
+/**
+ * hook to implemetn clickOutside events
+ */
 export function useClickOutside(onClickOutside: () => void) {
   const ref: RefObject<HTMLDivElement> = useRef(null);
   useEffect(() => {

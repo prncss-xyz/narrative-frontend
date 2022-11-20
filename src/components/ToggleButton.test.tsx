@@ -6,7 +6,9 @@ describe("ToggleButton", () => {
     it("should trigger when clicked", () => {
       const spy = vi.fn();
       const { container } = render(
-        <ToggleButton onClick={spy}>not disabled</ToggleButton>
+        <ToggleButton active={false} setActive={spy}>
+          not disabled
+        </ToggleButton>
       );
       fireEvent.click(screen.getByText("not disabled"));
       expect(spy).toHaveBeenCalledTimes(1);
@@ -17,7 +19,7 @@ describe("ToggleButton", () => {
     it("should trigger when clicked", () => {
       const spy = vi.fn();
       const { container } = render(
-        <ToggleButton disabled={true} onClick={spy}>
+        <ToggleButton active={true} disabled={true} onClick={spy}>
           disabled
         </ToggleButton>
       );

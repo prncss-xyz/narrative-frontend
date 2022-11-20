@@ -1,5 +1,9 @@
 import { Box } from "./basics";
 
+/*
+ * a simple toggling button
+ * when setActive is undefined, the button is readonly
+ */
 export function ToggleButton({
   active,
   setActive,

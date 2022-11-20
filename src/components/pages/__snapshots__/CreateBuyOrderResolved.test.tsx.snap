@@ -25,7 +25,7 @@ exports[`CreateBuyOrderResolved > should render correctly 1`] = `
             Order name
           </h3>
           <input
-            class="css-1ld7d19-InputRaw e2i8k6n0"
+            class="css-1wvieve-InputRaw e2i8k6n0"
             placeholder="name"
             type="text"
             value=""
@@ -60,7 +60,7 @@ exports[`CreateBuyOrderResolved > should render correctly 1`] = `
               $
             </div>
             <input
-              class="css-wt16d4-InputRaw e2i8k6n0"
+              class="css-1uryzeg-InputRaw e2i8k6n0"
               placeholder="budget"
               type="text"
               value="0"

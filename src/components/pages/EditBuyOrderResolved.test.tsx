@@ -1,10 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { FormBuyOrder } from "../BuyOrderForm";
 import { CountrySelectorContext } from "../GlobalCountrySelection";
-import { buyOrders } from "./BuyOrderListResolved.test";
-import { CreateBuyOrderResolved } from "./CreateBuyOrderResolved";
 import { EditBuyOrderResolved } from "./EditBuyOrderResolved";
 
 export const countries = [

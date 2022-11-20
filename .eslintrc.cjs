@@ -41,7 +41,8 @@ module.exports = {
     // https://stackoverflow.com/questions/64052318/how-to-disable-warn-about-some-unused-params-but-keep-typescript-eslint-no-un
     // note you must disable the base rule as it can report incorrect errors
     // "@typescript-eslint/no-unsafe-return": "off",
-    // "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn", // or "error"

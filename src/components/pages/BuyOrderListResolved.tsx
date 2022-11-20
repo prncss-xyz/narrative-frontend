@@ -9,7 +9,7 @@ import { Clickable } from "../Clickable";
 import {
   GlobalCountrySelectionSummary,
   GlobalCountrySelector,
-  useGlobalCountyList,
+  useGlobalCountryList,
 } from "../GlobalCountrySelection";
 import { Overlay } from "../Overlay";
 
@@ -91,7 +91,7 @@ export function BuyOrderListResolved({
   datasets: Dataset[];
 }) {
   const [overlayVisible, setOverlayvisible] = useState(false);
-  const [activeCountryCode] = useGlobalCountyList(countries);
+  const [activeCountryCode] = useGlobalCountryList(countries);
   const relevantBuyOrders = buyOrders.filter((buyOrder) =>
     buyOrder.countries.some((countryCode) =>
       activeCountryCode.includes(countryCode)

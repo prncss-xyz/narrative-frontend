@@ -3,6 +3,10 @@ import { Flex, OverlayActionBox } from "./basics";
 import { Clickable } from "./Clickable";
 import { Overlay } from "./Overlay";
 
+/**
+ * Set an overlay dialogue with custom message to answer a yes/no question.
+ * Clicking yes calls the handler, clicking outside or no close the dialogue.
+ */
 export function Confirm({
   overlayVisible,
   setOverlayVisible,

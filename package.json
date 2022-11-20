@@ -10,7 +10,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "format": "npx prettier --write src/**/*.ts{,x}",
-    "lint": "npx eslint src/**/*.ts{,x}"
+    "lint": "npx tsc --noEmit; npx eslint src/**/*.ts{,x}"
   },
   "dependencies": {
     "@babel/core": "^7.20.2",

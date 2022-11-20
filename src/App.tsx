@@ -26,11 +26,10 @@ function GlobalStyle() {
     <Global
       styles={{
         body: {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           backgroundColor: theme.colors.bgLight,
-          // fontFamily: "Arial, Helvetica, sans serif",
           fontFamily: "'Noto Sans', Arial, Helvetica, sans serif",
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           fontSize: theme.fontSizes[2],
           lineHeight: "1.5",
           "& a": {

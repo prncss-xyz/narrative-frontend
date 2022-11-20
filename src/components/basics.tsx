@@ -1,3 +1,6 @@
+/*
+ * Basic styled elements.
+ */
 import styled from "@emotion/styled";
 import {
   border,
@@ -133,7 +136,14 @@ export function ActionBox({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   return (
-    <Box my={1} color="muted" backgroundColor="bgLight" py={1} px={2} {...props}>
+    <Box
+      my={1}
+      color="muted"
+      backgroundColor="bgLight"
+      py={1}
+      px={2}
+      {...props}
+    >
       {children}
     </Box>
   );

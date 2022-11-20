@@ -25,7 +25,7 @@ exports[`ViewBuyOrderResolved > should render correctly 1`] = `
             Order name
           </h3>
           <div
-            class="css-mtpogc-Box e2i8k6n3"
+            class="css-vvbvml-Box e2i8k6n3"
             display="inline"
             width="100%"
           >
@@ -72,7 +72,7 @@ exports[`ViewBuyOrderResolved > should render correctly 1`] = `
               $
             </div>
             <div
-              class="css-mtpogc-Box e2i8k6n3"
+              class="css-kjnyg3-Box e2i8k6n3"
               display="inline"
               width="100%"
             >

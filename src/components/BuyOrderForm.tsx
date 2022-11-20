@@ -1,6 +1,6 @@
 import { Country } from "../hooks/countries";
 import { Dataset } from "../hooks/datasets";
-import { setInArray } from "../utils/arrays";
+import { setPresenceInArray } from "../utils/arrays";
 import {
   availableRecordCountForDatasets,
   forcastedRecordCount,
@@ -10,10 +10,8 @@ import { Box, Flex, Grid, H3 } from "./basics";
 import { DatasetItemSmall } from "./DataItemSmall";
 import { Input } from "./Input";
 import { ToggleButton } from "./ToggleButton";
-import { TogglingSelector } from "./TogglingSelector";
 
-// export interface BuyOrderFormResult {
-export type FormBuyOrder = {
+export type BuyOrderContents = {
   id?: string;
   name: string;
   createdAt?: Date;
@@ -22,6 +20,12 @@ export type FormBuyOrder = {
   budget: number;
 };
 
+/**
+ * The common component to view/edit a buyOrder
+ * buOrder.id and buyOrder.createdAt will be undefined to create a new buyOrder
+ * setBuyOrder wil be undefined for viewing (readonly)
+ * child component is used to place buttons a the bottom of the form
+ */
 export function BuyOrderForm({
   buyOrder,
   setBuyOrder,
@@ -29,8 +33,8 @@ export function BuyOrderForm({
   countries,
   children,
 }: {
-  buyOrder: FormBuyOrder;
-  setBuyOrder?: (BuyOrder: FormBuyOrder) => void;
+  buyOrder: BuyOrderContents;
+  setBuyOrder?: (BuyOrder: BuyOrderContents) => void;
   datasets: Dataset[];
   countries: Country[];
   children: React.ReactNode;
@@ -62,16 +66,17 @@ export function BuyOrderForm({
             <H3>Order name</H3>
             <Input
               py="0px"
-              px={disabled ? 0 : 1}
+              px={setBuyOrder ? 0 : 1}
               width="100%"
               borderStyle="none"
               maxHeight={1}
-              disabled={disabled}
               placeholder="name"
               value={buyOrder.name}
               converter={String}
-              setValue={(name) =>
-                setBuyOrder && setBuyOrder({ ...buyOrder, name })
+              setValue={
+                setBuyOrder
+                  ? (name) => setBuyOrder({ ...buyOrder, name })
+                  : undefined
               }
             />
           </Box>
@@ -100,15 +105,16 @@ export function BuyOrderForm({
                 width="100%"
                 maxHeight={1}
                 py="0px"
-                px={disabled ? 0 : 1}
-                ml={!disabled && 2}
-                disabled={disabled}
+                px={setBuyOrder ? 0 : 1}
+                ml={setBuyOrder ? 2 : 0}
                 placeholder="budget"
                 value={buyOrder.budget}
                 normalizer={normalizeMoney}
                 converter={convertMoney}
-                setValue={(budget) =>
-                  setBuyOrder && setBuyOrder({ ...buyOrder, budget })
+                setValue={
+                  setBuyOrder
+                    ? (budget) => setBuyOrder({ ...buyOrder, budget })
+                    : undefined
                 }
               />
             </Flex>
@@ -132,6 +138,9 @@ export function BuyOrderForm({
               <div key={dataset.id}>
                 <DatasetItemSmall
                   dataset={dataset}
+                  // To make this scalable, we would need to introduce
+                  // the kind of abstraction provided by
+                  // https://github.com/akheron/optics-ts
                   active={buyOrder.datasetIds.includes(dataset.id)}
                   setActive={
                     disabled
@@ -139,7 +148,7 @@ export function BuyOrderForm({
                       : (status) =>
                           setBuyOrder({
                             ...buyOrder,
-                            datasetIds: setInArray(
+                            datasetIds: setPresenceInArray(
                               buyOrder.datasetIds,
                               dataset.id,
                               status
@@ -162,7 +171,7 @@ export function BuyOrderForm({
                     setBuyOrder
                       ? setBuyOrder({
                           ...buyOrder,
-                          countries: setInArray(
+                          countries: setPresenceInArray(
                             buyOrder.countries,
                             country.countryCode,
                             status

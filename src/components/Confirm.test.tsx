@@ -25,7 +25,6 @@ describe("Confirm", () => {
       expect(container).toMatchSnapshot();
     });
   });
-  // TODO: missing part
   describe("opened", () => {
     it("should call handler", () => {
       const setOverlayVisible = vi.fn();

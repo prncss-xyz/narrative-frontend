@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
-import { apiURL } from "../utils/apiURL";
 import {
   ProBuyOrder,
   useBuyOrder,
@@ -11,7 +10,7 @@ import {
 } from "./buyOrders";
 
 describe("useBuyOrder", () => {
-  it.skip("should permform a complete cycle of create, update, get, delete, get maintaining consistant values", async () => {
+  it("should permform a complete cycle of create, update, get, delete, get maintaining consistant values", async () => {
     const data1: ProBuyOrder = {
       name: "test name",
       datasetIds: [1],
@@ -66,7 +65,7 @@ describe("useBuyOrder", () => {
   });
 });
 
-describe.skip("useBuyOrders", () => {
+describe("useBuyOrders", () => {
   it("should fetch a buyOrders list", async () => {
     const queryClient = new QueryClient();
     const wrapper = ({ children }: { children: React.ReactNode }) => (

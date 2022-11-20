@@ -1,4 +1,4 @@
-import { intersects, setInArray } from "./arrays";
+import { intersects, setPresenceInArray } from "./arrays";
 
 describe("intersects", () => {
   it("should determine wether elements of two arrays intersects", () => {
@@ -9,9 +9,9 @@ describe("intersects", () => {
 
 describe("setInArray", () => {
   it("should perform proper operations", () => {
-    expect(setInArray([1, 2, 3], 3, true)).toEqual([1, 2, 3]);
-    expect(setInArray([1, 2, 3], 0, true)).toEqual([0, 1, 2, 3]);
-    expect(setInArray([1, 2, 3], 2, false)).toEqual([1, 3]);
-    expect(setInArray([1, 2, 3], 0, false)).toEqual([1, 2, 3]);
+    expect(setPresenceInArray([1, 2, 3], 3, true)).toEqual([1, 2, 3]);
+    expect(setPresenceInArray([1, 2, 3], 0, true)).toEqual([0, 1, 2, 3]);
+    expect(setPresenceInArray([1, 2, 3], 2, false)).toEqual([1, 3]);
+    expect(setPresenceInArray([1, 2, 3], 0, false)).toEqual([1, 2, 3]);
   });
 });

@@ -1,6 +1,11 @@
 import { Dataset } from "../hooks/datasets";
 import { Box, Flex, Img } from "./basics";
 
+/* Small view of a dataset item that toggles when clicked.
+ * active is a list of dataset ids, state of current item (active or not)
+ * is determined by the datasetId's appartenance to that list
+ * absence of setActive property makes it readonly
+ */
 export function DatasetItemSmall({
   dataset,
   active,

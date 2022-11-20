@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import {
   CountrySelectorContext,
   GlobalCountrySelector,
-  useGlobalCountyList,
+  useGlobalCountryList,
 } from "./GlobalCountrySelection";
 
 export const countries = [
@@ -32,30 +32,32 @@ export const countries = [
   },
 ];
 
-function Container(spy: (activeCountryCodes: string[]) => void) {
-  const activeCountryCodes = useGlobalCountyList(countries);
-  // spy(activeCountryCodes);
+function Tester() {
+  const [countryCodes] = useGlobalCountryList(countries);
   return (
-    <CountrySelectorContext>
-      <GlobalCountrySelector count={3} countries={countries} />;
-    </CountrySelectorContext>
+    <>
+      <div>
+        {countryCodes.map((countryCode) => (
+          <div key={countryCode}>{countryCode}</div>
+        ))}
+      </div>
+      <GlobalCountrySelector count={3} countries={countries} />
+    </>
   );
 }
 
-// TODO:
-describe.todo("GlobalCountrySelection", () => {
-  it("should be visible", () => {
+describe("GlobalCountrySelection", () => {
+  it("should toggle country when clicked", () => {
     const { container } = render(
       <CountrySelectorContext>
-        <GlobalCountrySelector count={3} countries={countries} />
+        <Tester />
       </CountrySelectorContext>
     );
+    screen.getByText("US");
+    fireEvent.click(screen.getByText("United States"));
     expect(container).toMatchSnapshot();
     expect(() => {
-      screen.getByText("United States");
-    }).toThrowError();
-    fireEvent.click(screen.getByText("Showing"));
-    // const s1 = JSON.stringify(screen.getByText("United States"));
-    fireEvent.click(screen.getByText("United States"));
+      screen.getByText("US");
+    }).toThrow();
   });
 });

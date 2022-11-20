@@ -1,9 +1,10 @@
 import { createContext, useContext, useState } from "react";
 import { Country } from "../hooks/countries";
-import { setInArray } from "../utils/arrays";
+import { setPresenceInArray } from "../utils/arrays";
 import { Box, Flex, H3 } from "./basics";
 import { ToggleButton } from "./ToggleButton";
-import { TogglingSelector } from "./TogglingSelector";
+
+// TODO: more tests
 
 type CountryCodes = string[];
 
@@ -11,21 +12,10 @@ const Context = createContext<
   null | [null | CountryCodes, (state: CountryCodes) => void]
 >(null);
 
-export function countryString(
-  countries: Country[],
-  activeCountryCodes: string[]
-) {
-  const activeCountryNames = countries
-    .filter(({ countryCode }) => activeCountryCodes.includes(countryCode))
-    .map(({ name }) => name)
-    .sort();
-  if (activeCountryNames.length === 0) return "none";
-  if (activeCountryNames.length === 1) return activeCountryNames[0];
-  const last = activeCountryNames.at(-1);
-  const rest = activeCountryNames.slice(0, -1);
-  return [rest.join(", "), last].join(" & ");
-}
-
+/**
+ * context used to manage global country list;
+ * should be at the to of the app's component tree
+ */
 export function CountrySelectorContext({
   children,
 }: {
@@ -41,7 +31,29 @@ export function CountrySelectorContext({
   );
 }
 
-export function useGlobalCountyList(
+/**
+ * converts an array of country codes to a punctuated string of countries full names
+ */
+export function countryString(
+  countries: Country[],
+  activeCountryCodes: string[]
+) {
+  const activeCountryNames = countries
+    .filter(({ countryCode }) => activeCountryCodes.includes(countryCode))
+    .map(({ name }) => name)
+    .sort();
+  if (activeCountryNames.length === 0) return "none";
+  if (activeCountryNames.length === 1) return activeCountryNames[0];
+  const last = activeCountryNames.at(-1);
+  const rest = activeCountryNames.slice(0, -1);
+  return [rest.join(", "), last].join(" & ");
+}
+
+/**
+ * getter and setter to the global list of active countries
+ * all countries are active when initialised
+ */
+export function useGlobalCountryList(
   countries: Country[]
 ): [CountryCodes, (state: CountryCodes) => void] {
   const context = useContext(Context);
@@ -55,12 +67,18 @@ export function useGlobalCountyList(
   return [activeCountryCodes, setActiveCountryCodes];
 }
 
+/**
+ * returns a copy of the list of countries sorted by lexical order of the names
+ */
 export function sortCountriesByName(countries: Country[]) {
   return [...countries].sort((a, b) =>
     a.name < b.name ? -1 : a.name > b.name ? 1 : 0
   );
 }
 
+/**
+ * a widget to toggle countries in the global country list
+ */
 export function GlobalCountrySelector({
   countries,
   ...props
@@ -70,7 +88,7 @@ export function GlobalCountrySelector({
 }) {
   countries = sortCountriesByName(countries);
   const [activeCountryCodes, setActiveCountryCodes] =
-    useGlobalCountyList(countries);
+    useGlobalCountryList(countries);
   return (
     <Box>
       <H3>Included countries</H3>
@@ -80,10 +98,12 @@ export function GlobalCountrySelector({
             <ToggleButton
               active={activeCountryCodes.includes(country.countryCode)}
               setActive={(status) =>
-                // status
                 setActiveCountryCodes(
-                  // activeCountryCodes
-                  setInArray(activeCountryCodes, country.countryCode, status)
+                  setPresenceInArray(
+                    activeCountryCodes,
+                    country.countryCode,
+                    status
+                  )
                 )
               }
             >
@@ -96,6 +116,11 @@ export function GlobalCountrySelector({
   );
 }
 
+/**
+ * display a count and a list (text form) of active countries
+ * count's meaning will be provided by the context of the page
+ * on click, it will open a widget to edit the global list of active countries
+ */
 export function GlobalCountrySelectionSummary({
   count,
   countries,
@@ -106,8 +131,7 @@ export function GlobalCountrySelectionSummary({
   [prop: string]: unknown; // TODO: could be more restrictive
 }) {
   countries = sortCountriesByName(countries);
-  const [activeCountryCodes, setActiveCountryCodes] =
-    useGlobalCountyList(countries);
+  const [activeCountryCodes] = useGlobalCountryList(countries);
   return (
     <Flex
       justifyItems="start"

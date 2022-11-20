@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { FormBuyOrder } from "../BuyOrderForm";
+import { BuyOrderContents } from "../BuyOrderForm";
 import { CountrySelectorContext } from "../GlobalCountrySelection";
 import { DatasetListResolved } from "./DatasetListResolved";
 

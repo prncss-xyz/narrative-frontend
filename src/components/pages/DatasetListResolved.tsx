@@ -12,7 +12,7 @@ import {
   countryString,
   GlobalCountrySelectionSummary,
   GlobalCountrySelector,
-  useGlobalCountyList,
+  useGlobalCountryList,
 } from "../GlobalCountrySelection";
 import { Overlay } from "../Overlay";
 
@@ -23,7 +23,7 @@ function DatasetItem({
   dataset: Dataset;
   countries: Country[];
 }) {
-  const [activeCountryCodes] = useGlobalCountyList(countries);
+  const [activeCountryCodes] = useGlobalCountryList(countries);
   const available = availableRecordCountForDataset(
     countries,
     dataset,
@@ -91,7 +91,7 @@ export function DatasetListResolved({
   datasets: Dataset[];
   countries: Country[];
 }) {
-  const [activeCountryCodes] = useGlobalCountyList(countries);
+  const [activeCountryCodes] = useGlobalCountryList(countries);
   const selected = selectedDatasets(countries, datasets, activeCountryCodes);
   const [overlayVisible, setOverlayvisible] = useState(false);
   return (

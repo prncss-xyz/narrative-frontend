@@ -1,5 +1,8 @@
 import { Box } from "./basics";
 
+/*
+ * A formatted button
+ */
 export function Clickable({
   onClick,
   children,
