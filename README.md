@@ -2,7 +2,7 @@
 
 ## Setup
 
-Then enviroment variable `VITE_NARRATIVE_API_KEY` must be set to the UUID part of the link for the application to work properly. 
+The enviroment variable `VITE_NARRATIVE_API_KEY` must be set to the UUID part of the link for the application to work properly. 
 
 ## Remarks
 
