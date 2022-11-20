@@ -1,8 +1,11 @@
 // Vitest Snapshot v1
 
-exports[`GlobalCountrySelection > should be visible 1`] = `
+exports[`GlobalCountrySelection > should toggle country when clicked 1`] = `
 <div>
   <div>
+    <div>
+      CA
+    </div>
     <div>
       GB
     </div>
@@ -29,46 +32,9 @@ exports[`GlobalCountrySelection > should be visible 1`] = `
           font-size="0"
           height="1"
         >
-          United Kingdom
+          Canada
         </button>
       </div>
-      <div>
-        <button
-          class="css-1gxxcqd-Box e2i8k6n3"
-          color="muted"
-          font-size="0"
-          height="1"
-        >
-          United States
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`GlobalCountrySelection > should toggle country when clicked 1`] = `
-<div>
-  <div>
-    <div>
-      GB
-    </div>
-  </div>
-  <div
-    class="css-1x3sxzl-Box e2i8k6n3"
-  >
-    <h3
-      class="css-5jl3ge-Box e2i8k6n3"
-      color="muted"
-      font-size="1"
-      font-weight="normal"
-      text-decoration="underline"
-    >
-      Included countries
-    </h3>
-    <div
-      class="css-vq3ac2-Box-Flex e2i8k6n2"
-    >
       <div>
         <button
           class="css-1fbado3-Box e2i8k6n3"

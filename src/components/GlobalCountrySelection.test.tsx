@@ -1,7 +1,9 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import {
   CountrySelectorContext,
+  countryString,
   GlobalCountrySelector,
+  sortCountriesByName,
   useGlobalCountryList,
 } from "./GlobalCountrySelection";
 
@@ -28,6 +30,18 @@ export const countries = [
       { datasetId: 4, recordCount: 1500 },
       { datasetId: 5, recordCount: 500 },
       { datasetId: 6, recordCount: 500 },
+    ],
+  },
+  {
+    countryCode: "CA",
+    name: "Canada",
+    storedData: [
+      { datasetId: 1, recordCount: 1200 },
+      { datasetId: 2, recordCount: 799 },
+      { datasetId: 3, recordCount: 0 },
+      { datasetId: 4, recordCount: 0 },
+      { datasetId: 5, recordCount: 0 },
+      { datasetId: 6, recordCount: 900 },
     ],
   },
 ];
@@ -59,5 +73,28 @@ describe("GlobalCountrySelection", () => {
     expect(() => {
       screen.getByText("US");
     }).toThrow();
+  });
+});
+
+describe("coutryString", () => {
+  it("should format a list of countries", () => {
+    expect(countryString(countries, [])).toEqual("none");
+    expect(countryString(countries, ["US"])).toEqual("United States");
+    expect(countryString(countries, ["US", "GB"])).toEqual(
+      "United Kingdom & United States"
+    );
+    expect(countryString(countries, ["US", "GB", "CA"])).toEqual(
+      "Canada, United Kingdom & United States"
+    );
+  });
+});
+
+describe("sortCountriesByName", () => {
+  it("should sort countries by alphabetical order", () => {
+    expect(sortCountriesByName(countries)).toEqual([
+      countries[2],
+      countries[1],
+      countries[0],
+    ]);
   });
 });
